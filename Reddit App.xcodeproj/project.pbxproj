@@ -49,7 +49,6 @@
 		76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit_AppUITests.swift; sourceTree = "<group>"; };
 		76D3FED820A3EDA700E3CC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D3FEE420A4308D00E3CC42 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		76D3FEE820A4315F00E3CC42 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +106,6 @@
 				76D3FEE620A430A300E3CC42 /* App Functions */,
 				76D3FEBA20A3EDA600E3CC42 /* Main.storyboard */,
 				76D3FEBF20A3EDA700E3CC42 /* LaunchScreen.storyboard */,
-				76D3FEE820A4315F00E3CC42 /* README.md */,
 			);
 			path = "Reddit App";
 			sourceTree = "<group>";
