@@ -1,16 +1,15 @@
 //
-//  RoundButton.swift
+//  DashboardViewCell.swift
 //  Reddit App
 //
 //  Created by Jemimah Beryl M. Sai on 10/05/2018.
 //  Copyright © 2018 Jemimah Beryl M. Sai. All rights reserved.
 //
 
-import Foundation
-
 import UIKit
 
-@IBDesignable class RoundButton: UIButton {
+@IBDesignable class DashboardViewCell: UICollectionViewCell {
+    
     @IBInspectable var cornerRadius: CGFloat = 15 {
         didSet {
             refreshCorners(value: cornerRadius)
@@ -36,9 +35,7 @@ import UIKit
     
     func refreshCorners(value: CGFloat) {
         layer.cornerRadius = value
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
     }
     
-    
 }
+

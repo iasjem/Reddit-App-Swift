@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7685EFAE20A534EF0092EDAB /* SnappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7685EFAD20A534EF0092EDAB /* SnappingFlowLayout.swift */; };
 		76D3FEB720A3EDA600E3CC42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEB620A3EDA600E3CC42 /* AppDelegate.swift */; };
-		76D3FEB920A3EDA600E3CC42 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEB820A3EDA600E3CC42 /* MainViewController.swift */; };
+		76D3FEB920A3EDA600E3CC42 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEB820A3EDA600E3CC42 /* DashboardViewController.swift */; };
 		76D3FEBC20A3EDA600E3CC42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D3FEBA20A3EDA600E3CC42 /* Main.storyboard */; };
 		76D3FEBE20A3EDA700E3CC42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D3FEBD20A3EDA700E3CC42 /* Assets.xcassets */; };
 		76D3FEC120A3EDA700E3CC42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D3FEBF20A3EDA700E3CC42 /* LaunchScreen.storyboard */; };
 		76D3FECC20A3EDA700E3CC42 /* Reddit_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FECB20A3EDA700E3CC42 /* Reddit_AppTests.swift */; };
 		76D3FED720A3EDA700E3CC42 /* Reddit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */; };
 		76D3FEE520A4308D00E3CC42 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEE420A4308D00E3CC42 /* RoundButton.swift */; };
+		76D3FEF020A44C7F00E3CC42 /* DashboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEEF20A44C7F00E3CC42 /* DashboardViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7685EFAD20A534EF0092EDAB /* SnappingFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingFlowLayout.swift; sourceTree = "<group>"; };
 		76D3FEB320A3EDA600E3CC42 /* Reddit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D3FEB620A3EDA600E3CC42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76D3FEB820A3EDA600E3CC42 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		76D3FEB820A3EDA600E3CC42 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		76D3FEBB20A3EDA600E3CC42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76D3FEBD20A3EDA700E3CC42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76D3FEC020A3EDA700E3CC42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit_AppUITests.swift; sourceTree = "<group>"; };
 		76D3FED820A3EDA700E3CC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D3FEE420A4308D00E3CC42 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		76D3FEEF20A44C7F00E3CC42 /* DashboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				76D3FEE420A4308D00E3CC42 /* RoundButton.swift */,
+				7685EFAD20A534EF0092EDAB /* SnappingFlowLayout.swift */,
 			);
 			path = "App Functions";
 			sourceTree = "<group>";
@@ -139,7 +144,8 @@
 		76D3FEE720A430C100E3CC42 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				76D3FEB820A3EDA600E3CC42 /* MainViewController.swift */,
+				76D3FEB820A3EDA600E3CC42 /* DashboardViewController.swift */,
+				76D3FEEF20A44C7F00E3CC42 /* DashboardViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -276,8 +282,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				76D3FEE520A4308D00E3CC42 /* RoundButton.swift in Sources */,
-				76D3FEB920A3EDA600E3CC42 /* MainViewController.swift in Sources */,
+				76D3FEF020A44C7F00E3CC42 /* DashboardViewCell.swift in Sources */,
+				76D3FEB920A3EDA600E3CC42 /* DashboardViewController.swift in Sources */,
 				76D3FEB720A3EDA600E3CC42 /* AppDelegate.swift in Sources */,
+				7685EFAE20A534EF0092EDAB /* SnappingFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
