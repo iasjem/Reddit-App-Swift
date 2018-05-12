@@ -12,8 +12,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet weak var DashboardView: UICollectionView!
     
-    var reuseIdentifier = "secondCell"
-    
+    var cellViews = ["firstCell", "secondCell", "thirdCell", "fourthCell"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         DashboardView.delegate = self
@@ -21,18 +21,13 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         DashboardView.collectionViewLayout = SnappingFlowLayout()
     }
 
-    // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.cellViews.count
     }
     
-    // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! DashboardViewCell
-                
-        return cell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: cellViews[indexPath.item], for: indexPath as IndexPath)
     }
-
 }
+
 
