@@ -304,6 +304,14 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="PostAuthor" destination="6o1-ev-h1c" id="q1I-Qd-gC3"/>
+                                                    <outlet property="PostImage" destination="ZNB-n9-Hh3" id="ph9-6x-vG7"/>
+                                                    <outlet property="PostText" destination="HgI-JK-z33" id="WmZ-23-xzh"/>
+                                                    <outlet property="PostTime" destination="vt2-JR-N4v" id="UAs-rn-tai"/>
+                                                    <outlet property="PostTitle" destination="qDB-FZ-NyU" id="BLY-TG-O6L"/>
+                                                    <outlet property="SubReddit" destination="0mr-yf-fga" id="pe6-qw-p9n"/>
+                                                </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="secondCell" id="tmF-ts-h6p" userLabel="Second Cell">
                                                 <rect key="frame" x="4" y="268" width="337" height="261"/>
@@ -500,7 +508,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="thirdCell" id="O2s-hU-4GZ" userLabel="Third Cell" customClass="DashboardViewCell" customModule="Reddit_App" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="thirdCell" id="O2s-hU-4GZ" userLabel="Third Cell">
                                                 <rect key="frame" x="4" y="539" width="337" height="261"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -837,7 +845,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fourthCell" id="PZv-Mf-kES" userLabel="Fourth Cell" customClass="DashboardViewCell" customModule="Reddit_App" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fourthCell" id="PZv-Mf-kES" userLabel="Fourth Cell">
                                                 <rect key="frame" x="4" y="810" width="337" height="261"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

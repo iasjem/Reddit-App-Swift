@@ -8,34 +8,12 @@
 
 import UIKit
 
-@IBDesignable class DashboardViewCell: UICollectionViewCell {
-    
-    @IBInspectable var cornerRadius: CGFloat = 15 {
-        didSet {
-            refreshCorners(value: cornerRadius)
-        }
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        sharedInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        sharedInit()
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        sharedInit()
-    }
-    
-    func sharedInit() {
-        refreshCorners(value: cornerRadius)
-    }
-    
-    func refreshCorners(value: CGFloat) {
-        layer.cornerRadius = value
-    }
-    
+class DashboardViewCell: UICollectionViewCell {
+        @IBOutlet weak var PostImage: UIImageView!
+        @IBOutlet weak var PostTitle: UITextView!
+        @IBOutlet weak var PostText: UITextView!
+        @IBOutlet weak var SubReddit: UILabel!
+        @IBOutlet weak var PostAuthor: UILabel!
+        @IBOutlet weak var PostTime: UILabel!
 }
 

@@ -20,6 +20,7 @@
 		76F662F520ABB890002DE0F0 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F420ABB890002DE0F0 /* GCDBlackBox.swift */; };
 		76F662F720ABB922002DE0F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F620ABB922002DE0F0 /* Constants.swift */; };
 		76F662F920ABF08B002DE0F0 /* RedditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F820ABF08B002DE0F0 /* RedditData.swift */; };
+		76F662FB20AC33EE002DE0F0 /* MyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662FA20AC33EE002DE0F0 /* MyDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		76F662F420ABB890002DE0F0 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		76F662F620ABB922002DE0F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		76F662F820ABF08B002DE0F0 /* RedditData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditData.swift; sourceTree = "<group>"; };
+		76F662FA20AC33EE002DE0F0 /* MyDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				76F662F420ABB890002DE0F0 /* GCDBlackBox.swift */,
 				76F662F620ABB922002DE0F0 /* Constants.swift */,
 				76F662F820ABF08B002DE0F0 /* RedditData.swift */,
+				76F662FA20AC33EE002DE0F0 /* MyDate.swift */,
 			);
 			path = "App Functions";
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F662FB20AC33EE002DE0F0 /* MyDate.swift in Sources */,
 				76D3FEE520A4308D00E3CC42 /* RoundButton.swift in Sources */,
 				76F662F920ABF08B002DE0F0 /* RedditData.swift in Sources */,
 				76D3FEF020A44C7F00E3CC42 /* DashboardViewCell.swift in Sources */,
