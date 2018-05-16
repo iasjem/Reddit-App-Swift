@@ -37,6 +37,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3p5-6e-2mE">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="9Be-mT-eDw">
@@ -56,14 +57,12 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reddit-title" translatesAutoresizingMaskIntoConstraints="NO" id="cXw-T6-XXP" userLabel="RedditTitle">
-                                                    <rect key="frame" x="16" y="0.0" width="118" height="33"/>
+                                                    <rect key="frame" x="50.5" y="8.5" width="49" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="cXw-T6-XXP" secondAttribute="trailing" constant="16" id="79m-Co-uvZ"/>
-                                                <constraint firstAttribute="bottom" secondItem="cXw-T6-XXP" secondAttribute="bottom" id="PoN-1U-Gj2"/>
-                                                <constraint firstItem="cXw-T6-XXP" firstAttribute="top" secondItem="vvK-Al-L6D" secondAttribute="top" id="cOp-VI-rNu"/>
-                                                <constraint firstItem="cXw-T6-XXP" firstAttribute="leading" secondItem="vvK-Al-L6D" secondAttribute="leading" constant="16" id="y38-Lr-i3O"/>
+                                                <constraint firstItem="cXw-T6-XXP" firstAttribute="centerY" secondItem="vvK-Al-L6D" secondAttribute="centerY" id="U71-mw-cJZ"/>
+                                                <constraint firstItem="cXw-T6-XXP" firstAttribute="centerX" secondItem="vvK-Al-L6D" secondAttribute="centerX" id="Xil-m6-rdX"/>
                                             </constraints>
                                         </view>
                                         <barButtonItem key="rightBarButtonItem" style="done" id="6NL-Cg-xwc" userLabel="Search Bar">
@@ -306,7 +305,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="secondCell" id="tmF-ts-h6p" userLabel="Second Cell" customClass="DashboardViewCell" customModule="Reddit_App" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="secondCell" id="tmF-ts-h6p" userLabel="Second Cell">
                                                 <rect key="frame" x="4" y="268" width="337" height="261"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -514,17 +513,17 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tEk-F7-Qew" userLabel="Container">
                                                                     <rect key="frame" x="0.0" y="0.0" width="337" height="261"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qgd-nd-Rza" userLabel="Left">
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qgd-nd-Rza" userLabel="Left">
                                                                             <rect key="frame" x="0.0" y="0.0" width="168.5" height="261"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Miw-qc-h1d" userLabel="Top">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="168.5" height="130.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="168.5" height="128"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tku-5g-zDk" userLabel="Box">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="158.5" height="125.5"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="158.5" height="123"/>
                                                                                             <subviews>
                                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xYN-U1-hVV" userLabel="Title">
-                                                                                                    <rect key="frame" x="15" y="90" width="131.5" height="25.5"/>
+                                                                                                    <rect key="frame" x="15" y="87.5" width="131.5" height="25.5"/>
                                                                                                     <subviews>
                                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="B0X-Lg-Nyf" userLabel="Image">
                                                                                                             <rect key="frame" x="0.0" y="1" width="24" height="24"/>
@@ -559,7 +558,7 @@
                                                                                                     </subviews>
                                                                                                 </stackView>
                                                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="The un-official VMware Reddit" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4d-9d-x8b">
-                                                                                                    <rect key="frame" x="10" y="35" width="142" height="41"/>
+                                                                                                    <rect key="frame" x="10" y="35" width="142" height="38.5"/>
                                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -601,13 +600,13 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6E-D9-fPv" userLabel="Bottom">
-                                                                                    <rect key="frame" x="0.0" y="130.5" width="168.5" height="130.5"/>
+                                                                                    <rect key="frame" x="0.0" y="133" width="168.5" height="128"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79l-AN-IEy" userLabel="Box">
-                                                                                            <rect key="frame" x="0.0" y="5" width="158.5" height="125.5"/>
+                                                                                            <rect key="frame" x="0.0" y="5" width="158.5" height="123"/>
                                                                                             <subviews>
                                                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="The un-official VMware Reddit" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czR-AH-k8y">
-                                                                                                    <rect key="frame" x="10" y="35" width="147" height="41"/>
+                                                                                                    <rect key="frame" x="10" y="35" width="147" height="38.5"/>
                                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -620,7 +619,7 @@
                                                                                                     </state>
                                                                                                 </button>
                                                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qvz-Jk-kZF" userLabel="Title">
-                                                                                                    <rect key="frame" x="15" y="90" width="131.5" height="25.5"/>
+                                                                                                    <rect key="frame" x="15" y="87.5" width="131.5" height="25.5"/>
                                                                                                     <subviews>
                                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="LHd-0P-PYU" userLabel="Image">
                                                                                                             <rect key="frame" x="0.0" y="1" width="24" height="24"/>

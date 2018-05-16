@@ -17,6 +17,9 @@
 		76D3FED720A3EDA700E3CC42 /* Reddit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */; };
 		76D3FEE520A4308D00E3CC42 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEE420A4308D00E3CC42 /* RoundButton.swift */; };
 		76D3FEF020A44C7F00E3CC42 /* DashboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEEF20A44C7F00E3CC42 /* DashboardViewCell.swift */; };
+		76F662F520ABB890002DE0F0 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F420ABB890002DE0F0 /* GCDBlackBox.swift */; };
+		76F662F720ABB922002DE0F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F620ABB922002DE0F0 /* Constants.swift */; };
+		76F662F920ABF08B002DE0F0 /* RedditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F820ABF08B002DE0F0 /* RedditData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		76D3FED820A3EDA700E3CC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D3FEE420A4308D00E3CC42 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		76D3FEEF20A44C7F00E3CC42 /* DashboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewCell.swift; sourceTree = "<group>"; };
+		76F662F420ABB890002DE0F0 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		76F662F620ABB922002DE0F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		76F662F820ABF08B002DE0F0 /* RedditData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,9 @@
 			children = (
 				76D3FEE420A4308D00E3CC42 /* RoundButton.swift */,
 				7685EFAD20A534EF0092EDAB /* SnappingFlowLayout.swift */,
+				76F662F420ABB890002DE0F0 /* GCDBlackBox.swift */,
+				76F662F620ABB922002DE0F0 /* Constants.swift */,
+				76F662F820ABF08B002DE0F0 /* RedditData.swift */,
 			);
 			path = "App Functions";
 			sourceTree = "<group>";
@@ -282,9 +291,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				76D3FEE520A4308D00E3CC42 /* RoundButton.swift in Sources */,
+				76F662F920ABF08B002DE0F0 /* RedditData.swift in Sources */,
 				76D3FEF020A44C7F00E3CC42 /* DashboardViewCell.swift in Sources */,
 				76D3FEB920A3EDA600E3CC42 /* DashboardViewController.swift in Sources */,
 				76D3FEB720A3EDA600E3CC42 /* AppDelegate.swift in Sources */,
+				76F662F720ABB922002DE0F0 /* Constants.swift in Sources */,
+				76F662F520ABB890002DE0F0 /* GCDBlackBox.swift in Sources */,
 				7685EFAE20A534EF0092EDAB /* SnappingFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

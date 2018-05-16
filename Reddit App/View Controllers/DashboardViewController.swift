@@ -19,8 +19,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         DashboardView.delegate = self
         DashboardView.dataSource = self
         DashboardView.collectionViewLayout = SnappingFlowLayout()
+        RedditData().getData()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.cellViews.count
     }
