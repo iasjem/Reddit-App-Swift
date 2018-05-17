@@ -1,6 +1,6 @@
 //
-//  DashboardViewCell.swift
-//  Reddit App
+//  CollectionViewCell.swift
+//  Contains data to be displayed as content on its collection view cell
 //
 //  Created by Jemimah Beryl M. Sai on 10/05/2018.
 //  Copyright © 2018 Jemimah Beryl M. Sai. All rights reserved.
@@ -30,6 +30,7 @@ class CollectionViewCell: UICollectionViewCell   {
     @IBOutlet weak var fourthCellPostTime: UILabel!
     
     func getMyCell (_ identifier: String,_ postImage: String, _ postTitle: String, _ postText: String, _ subReddit: String, _ postAuthor: String, _ postTime: String) {
+        
          let imageURL = URL(string: postImage)
         switch identifier {
             case "firstCell":

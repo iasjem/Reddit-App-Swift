@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  Reddit App
+//  Contains constants used for comparing keys and values from the JSON file
 //
 //  Created by Jemimah Beryl M. Sai on 16/05/2018.
 //  Copyright © 2018 Jemimah Beryl M. Sai. All rights reserved.
