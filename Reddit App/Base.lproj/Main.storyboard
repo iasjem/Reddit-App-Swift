@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-1242" y="926"/>
         </scene>
-        <!--Dashboard View Controller-->
+        <!--Collection View Controller-->
         <scene sceneID="vvh-6H-OG7">
             <objects>
-                <viewController id="ng1-U6-d8z" customClass="DashboardViewController" customModule="Reddit_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ng1-U6-d8z" customClass="CollectionViewController" customModule="Reddit_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SGP-Yu-JC1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +91,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="firstCell" id="7WM-Nu-P6U" userLabel="First Cell" customClass="DashboardViewCell" customModule="Reddit_App" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="firstCell" id="7WM-Nu-P6U" userLabel="First Cell" customClass="CollectionViewCell" customModule="Reddit_App" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="0.0" width="329" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -300,7 +300,7 @@
                                                     <outlet property="firstCellSubReddit" destination="0mr-yf-fga" id="Ezy-Zn-mGC"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="secondCell" id="tmF-ts-h6p" userLabel="Second Cell" customClass="DashboardViewCell" customModule="Reddit_App" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="secondCell" id="tmF-ts-h6p" userLabel="Second Cell" customClass="CollectionViewCell" customModule="Reddit_App" customModuleProvider="target">
                                                 <rect key="frame" x="4" y="268" width="337" height="261"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -493,7 +493,7 @@
                                                     <outlet property="secondCellSubReddit" destination="zKY-Iu-SPP" id="4Ah-JJ-tXA"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="thirdCell" id="O2s-hU-4GZ" userLabel="Third Cell" customClass="DashboardViewCell" customModule="Reddit_App" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="thirdCell" id="O2s-hU-4GZ" userLabel="Third Cell" customClass="CollectionViewCell" customModule="Reddit_App" customModuleProvider="target">
                                                 <rect key="frame" x="4" y="539" width="337" height="261"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -830,7 +830,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fourthCell" id="PZv-Mf-kES" userLabel="Fourth Cell" customClass="DashboardViewCell" customModule="Reddit_App" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fourthCell" id="PZv-Mf-kES" userLabel="Fourth Cell" customClass="CollectionViewCell" customModule="Reddit_App" customModuleProvider="target">
                                                 <rect key="frame" x="4" y="810" width="337" height="261"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1023,7 +1023,7 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-on-ByF" userLabel="Add Button">
-                                        <rect key="frame" x="297" y="1323" width="54" height="54"/>
+                                        <rect key="frame" x="297" y="1318" width="54" height="54"/>
                                         <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="6qh-u2-jJr"/>
@@ -1045,7 +1045,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Oj6-cf-BId" secondAttribute="trailing" constant="15" id="WDD-mF-MA2"/>
                                     <constraint firstItem="Oj6-cf-BId" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="15" id="cNf-oq-ztR"/>
                                     <constraint firstItem="Oj6-cf-BId" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" constant="5" id="qpP-AP-CHw"/>
-                                    <constraint firstAttribute="bottom" secondItem="ynP-on-ByF" secondAttribute="bottom" constant="10" id="tUh-uU-jPn"/>
+                                    <constraint firstAttribute="bottom" secondItem="ynP-on-ByF" secondAttribute="bottom" constant="15" id="tUh-uU-jPn"/>
                                     <constraint firstAttribute="trailing" secondItem="ynP-on-ByF" secondAttribute="trailing" constant="24" id="vhj-O1-qdV"/>
                                 </constraints>
                             </view>
@@ -1066,7 +1066,7 @@
                     <tabBarItem key="tabBarItem" title="" image="reddit-alien-outline" selectedImage="reddit-alien" id="xWG-qf-22Q"/>
                     <size key="freeformSize" width="375" height="1500"/>
                     <connections>
-                        <outlet property="DashboardView" destination="Oj6-cf-BId" id="R6j-QL-t31"/>
+                        <outlet property="CollectionView" destination="Oj6-cf-BId" id="R6j-QL-t31"/>
                     </connections>
                 </viewController>
                 <exit id="iYI-nc-MZb" userLabel="Exit" sceneMemberID="exit"/>

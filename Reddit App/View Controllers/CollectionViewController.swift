@@ -8,33 +8,32 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBOutlet weak var DashboardView: UICollectionView!
+    @IBOutlet weak var CollectionView: UICollectionView!
     
     var randomIndex = 0
     var myDate = MyDate()
-    
+    var cellCount = 0
     var cellViews = ["firstCell", "secondCell", "thirdCell", "fourthCell"]
     var redditData = RedditData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DashboardView.delegate = self
-        DashboardView.dataSource = self
-        DashboardView.collectionViewLayout = SnappingFlowLayout()
-        
+        CollectionView.delegate = self
+        CollectionView.dataSource = self
+        CollectionView.collectionViewLayout = SnappingFlowLayout()
+        CollectionView.contentInset = UIEdgeInsetsMake(0.0,0.0,75.0,0.0);
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cellViews.count
+        return 1
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        let identifier = cellViews[indexPath.item]
-        let identifier = cellViews[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! DashboardViewCell
+        let identifier = "firstCell"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CollectionViewCell
 
         let session = URLSession.shared
         let url = URL(string: "\(Constants.Source.APIBaseURL)\(Constants.ParameterValues.SubReddit)")!
@@ -71,7 +70,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 
                 self.randomIndex = Int(arc4random_uniform(UInt32(children.count)))
                 let findChildren = children[self.randomIndex] as [String:AnyObject]
-                
+                self.cellCount = children.count
+                print(self.cellCount)
                 if let moreData = findChildren[Constants.ResponseKeys.Data] as? [String:AnyObject] {
                     performUIUpdatesOnMain {
                         cell.getMyCell(identifier, self.redditData.getImage(moreData), self.redditData.getTitle(moreData), self.redditData.getSelfText(moreData), self.redditData.getSubReddit(moreData), "u/\(self.redditData.getAuthor(moreData))", self.redditData.getCreatedUTC(moreData))

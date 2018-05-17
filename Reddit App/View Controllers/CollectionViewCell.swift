@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DashboardViewCell: UICollectionViewCell   {
+class CollectionViewCell: UICollectionViewCell   {
     
     @IBOutlet weak var firstCellPostImage: UIImageView!
     @IBOutlet weak var firstCellPostTitle: UITextView!
