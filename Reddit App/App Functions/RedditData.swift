@@ -13,9 +13,15 @@ class RedditData {
     var randomIndex = 0
     var myDate = MyDate()
 
+    func getSubReddit(_ moreData: [String:AnyObject]) -> String {
+        guard let subreddit = moreData[Constants.ResponseKeys.SubReddit]  as? String else {
+            return "Unknown"
+        }
+        return subreddit
+    }
+    
     func getTitle(_ moreData: [String:AnyObject]) -> String {
         guard let title = moreData[Constants.ResponseKeys.Title]  as? String else {
-            print("No title")
            return "Unknown"
         }
         return title
@@ -58,4 +64,4 @@ class RedditData {
         }
          return getURL
     }
-  }
+}
