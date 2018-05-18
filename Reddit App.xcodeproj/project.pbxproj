@@ -139,10 +139,10 @@
 		76D3FEE620A430A300E3CC42 /* App Functions */ = {
 			isa = PBXGroup;
 			children = (
-				7685EFAD20A534EF0092EDAB /* DesignUI.swift */,
-				76F662F420ABB890002DE0F0 /* OtherFunctions.swift */,
 				76F662F820ABF08B002DE0F0 /* DataFromAPI.swift */,
 				76F662FA20AC33EE002DE0F0 /* DateFunctions.swift */,
+				7685EFAD20A534EF0092EDAB /* DesignUI.swift */,
+				76F662F420ABB890002DE0F0 /* OtherFunctions.swift */,
 			);
 			path = "App Functions";
 			sourceTree = "<group>";

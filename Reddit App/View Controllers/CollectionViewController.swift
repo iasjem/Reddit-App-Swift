@@ -25,12 +25,14 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         CollectionView.delegate = self
         CollectionView.dataSource = self
         CollectionView.collectionViewLayout = SnappingFlowLayout()
-
+        
+        
         DispatchQueue.main.async {
             self.store.connectToAPI() // connect to API
-            self.CollectionView.reloadData()
+             self.store.delegate = self
         }
-
+       
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -43,9 +45,15 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             cell.displayCollectionViewCell(list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
         return cell
     }
-        
 
-    
+}
+
+extension CollectionViewController: refreshDelegate {
+    func reloadView() {
+        DispatchQueue.main.async {
+            self.CollectionView.reloadData()
+        }
+    }
 }
 
 
