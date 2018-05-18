@@ -29,7 +29,7 @@ class CollectionViewCell: UICollectionViewCell   {
     @IBOutlet weak var fourthCellSubReddit: UILabel!
     @IBOutlet weak var fourthCellPostTime: UILabel!
     
-    func getMyCell (_ postTitle: String, _ postText:String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String) {
+    func displayCollectionViewCell (_ postTitle: String, _ postText:String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String) {
         let imageURL = URL(string: postImage) 
         
         firstCellPostTitle.text = postTitle
@@ -46,7 +46,7 @@ class CollectionViewCell: UICollectionViewCell   {
 
     }
     
-//    func getMyCell (_ identifier: String, _ myList: [jsonData]) {
+//    func displayCollectionViewCell (_ identifier: String, _ myList: [jsonData]) {
 //
 //        let index = myList.count
 //        let postImage: String? = myList[index].imageUrl

@@ -11,37 +11,40 @@ import UIKit
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var CollectionView: UICollectionView!
-    
-    var randomIndex = 0
-    var myDate = MyDate()
-    var cellCount = 0
+
     var cellViews = ["firstCell", "secondCell", "thirdCell", "fourthCell"]
-    var redditData = RedditData()
-    var apiClient = API()
+
     let identifier = "firstCell"
     
-    
+    let store = JSONDataStore.sharedInstance
+
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         CollectionView.delegate = self
         CollectionView.dataSource = self
         CollectionView.collectionViewLayout = SnappingFlowLayout()
-        
-        apiClient.connectToAPI() // connect to API
-        
+
+        DispatchQueue.main.async {
+            self.store.connectToAPI() // connect to API
+            self.CollectionView.reloadData()
+        }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return store.myList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            //        let identifier = cellViews[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CollectionViewCell
-       
+        let list = store.myList[indexPath.row]
+            cell.displayCollectionViewCell(list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
         return cell
     }
+        
+
     
 }
 
