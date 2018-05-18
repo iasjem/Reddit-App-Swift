@@ -29,50 +29,76 @@ class CollectionViewCell: UICollectionViewCell   {
     @IBOutlet weak var fourthCellSubReddit: UILabel!
     @IBOutlet weak var fourthCellPostTime: UILabel!
     
-    func getMyCell (_ identifier: String,_ postImage: String, _ postTitle: String, _ postText: String, _ subReddit: String, _ postAuthor: String, _ postTime: String) {
+    func getMyCell (_ postTitle: String, _ postText:String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String) {
+        let imageURL = URL(string: postImage) 
         
-         let imageURL = URL(string: postImage)
-        switch identifier {
-            case "firstCell":
-                self.firstCellPostTitle.text = postTitle
-                self.firstCellPostText.text = postText
-                self.firstCellSubReddit.text = "r/\(subReddit)"
-                self.firstCellPostAuthor.text = postAuthor
-                self.firstCellPostTime.text = postTime
-                
-                guard let imageData = try? Data(contentsOf: imageURL!) else {
-                    firstCellPostImage.image = UIImage(named: "NoImageAvailable")
-                    return
-                }
-                firstCellPostImage.image = UIImage(data: imageData)
-            
-            case "secondCell":
-                self.secondCellPostTitle.text = postTitle
-                self.secondCellSubReddit.text = "r/\(subReddit)"
-                self.secondCellPostAuthor.text = postAuthor
-                self.secondCellPostTime.text = postTime
-    
-                guard let imageData = try? Data(contentsOf: imageURL!) else {
-                    secondCellPostImage.image = UIImage(named: "NoImageAvailable")
-                    return
-                }
-                    secondCellPostImage.image = UIImage(data: imageData)
-            
-            case "fourthCell":
-                self.fourthCellPostTitle.text = postTitle
-                self.fourthCellSubReddit.text = "r/\(subReddit)"
-                self.fourthCellPostAuthor.text = postAuthor
-                self.fourthCellPostTime.text = postTime
-                
-                guard let imageData = try? Data(contentsOf: imageURL!) else {
-                    fourthCellPostImage.image = UIImage(named: "NoImageAvailable")
-                    return
-                }
-                    fourthCellPostImage.image = UIImage(data: imageData)
-            
-                default:
-                    break;
+        firstCellPostTitle.text = postTitle
+        firstCellPostText.text = postText
+        firstCellSubReddit.text = "r/\(subReddit)"
+        firstCellPostAuthor.text = postAuthor
+        firstCellPostTime.text = postTime
+
+        guard let imageData = try? Data(contentsOf: imageURL!) else { 
+            self.firstCellPostImage.image = UIImage(named: "NoImageAvailable")
+            return
         }
+            self.firstCellPostImage.image = UIImage(data: imageData)
+
     }
-}
+    
+//    func getMyCell (_ identifier: String, _ myList: [jsonData]) {
+//
+//        let index = myList.count
+//        let postImage: String? = myList[index].imageUrl
+//        let postTitle = myList[index].title
+//        let subReddit = myList[index].subreddit
+//        let postText: String? = myList[index].selfText
+//        let postTime = myList[index].createdUTC
+//        let postAuthor = myList[index].author
+//
+//        let imageURL = URL(string: postImage!)
+//        switch identifier {
+//            case "firstCell":
+//                    self.firstCellPostTitle.text = postTitle
+//                    self.firstCellPostText.text = postText
+//                    self.firstCellSubReddit.text = "r/\(subReddit)"
+//                    self.firstCellPostAuthor.text = postAuthor
+//                    self.firstCellPostTime.text = postTime
+//
+//                    guard let imageData = try? Data(contentsOf: imageURL!) else {
+//                        self.firstCellPostImage.image = UIImage(named: "NoImageAvailable")
+//                        return
+//                    }
+//                        self.firstCellPostImage.image = UIImage(data: imageData)
+//
+//            case "secondCell":
+//                self.secondCellPostTitle.text = postTitle
+//                self.secondCellSubReddit.text = "r/\(subReddit)"
+//                self.secondCellPostAuthor.text = postAuthor
+//                self.secondCellPostTime.text = postTime
+//
+//                guard let imageData = try? Data(contentsOf: imageURL!) else {
+//                    secondCellPostImage.image = UIImage(named: "NoImageAvailable")
+//                    return
+//                }
+//                    secondCellPostImage.image = UIImage(data: imageData)
+//
+//            case "fourthCell":
+//                self.fourthCellPostTitle.text = postTitle
+//                self.fourthCellSubReddit.text = "r/\(subReddit)"
+//                self.fourthCellPostAuthor.text = postAuthor
+//                self.fourthCellPostTime.text = postTime
+//
+//                guard let imageData = try? Data(contentsOf: imageURL!) else {
+//                    fourthCellPostImage.image = UIImage(named: "NoImageAvailable")
+//                    return
+//                }
+//                    fourthCellPostImage.image = UIImage(data: imageData)
+//
+//                default:
+//                    break;
+//        }
+//    }
+    
+} 
 

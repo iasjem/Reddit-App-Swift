@@ -1,6 +1,6 @@
 //
-//  MyDate.swift
-//  Contains functions used for date conversion including unix time intervals
+//  DateFunctions.swift
+//  Related to date conversions and time intervals
 //
 //  Created by Jemimah Beryl M. Sai on 16/05/2018.
 //  Copyright © 2018 Jemimah Beryl M. Sai. All rights reserved.
@@ -12,27 +12,6 @@ class MyDate {
     let calender = Calendar.autoupdatingCurrent
     let format = DateFormatter()
     var today: Date { return Date() }
-    
-    func dateToString (_ date: Date) -> String {
-        format.dateFormat = "MMM d, yyyy hh:mm a"
-        format.timeZone = TimeZone(identifier: TimeZone.current.identifier )
-        return format.string(from: date)
-    }
-    
-    func stringToDate (_ dateStr: String) -> Date {
-        format.dateFormat = "MMM d, yyyy hh:mm a"
-        format.timeZone = TimeZone(identifier: TimeZone.current.identifier )
-        let myDate = format.date(from: dateStr)
-        return myDate!
-    }
-    
-    func unixToString (_ createdUTC: Double) -> String {
-        let myDate = Date(timeIntervalSince1970: createdUTC)
-        format.timeZone = TimeZone(identifier: TimeZone.current.identifier )
-        format.locale = NSLocale.current
-        format.dateFormat = "yyyy-MM-dd hh:mm a" //Specify your format that you want
-        return format.string(from: myDate)
-    }
     
     func unixToDate (_ createdUTC: Double) -> Date {
         let myDate = Date(timeIntervalSince1970: createdUTC)

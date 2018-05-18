@@ -8,53 +8,61 @@
 
 import Foundation
 
-struct jsonData: Equatable {
+struct jsonData {
     
-    var subreddit: String = ""
-    var id: String = ""
-    var author: String = ""
-    var title: String = ""
-    var createdUTC: String = ""
-    var selfText: String?
-    var imageUrl: String?
-    
-    init (_ subreddit: String, _ id: String, _ author: String, _ title: String, _ createdUTC: String, _ selfText: String, _ imageUrl: String) {
-        self.subreddit = subreddit
-        self.id = id
-        self.author = author
-        self.title = title
-        self.createdUTC = createdUTC
-        self.selfText = selfText
-        self.imageUrl = imageUrl
+    var subreddit: String
+    var id: String
+    var author: String
+    var title: String
+    var createdUTC: String
+    var selfText: String
+    var imageUrl: String
+
+    init(dictionary: AnyObject) {
+        self.subreddit = dictionary[Constants.ResponseKeys.SubReddit] as! String
+        self.id = dictionary[Constants.ResponseKeys.Id] as! String
+        self.author = dictionary[Constants.ResponseKeys.Author] as! String
+        self.title = dictionary[Constants.ResponseKeys.Title]  as! String
+        self.createdUTC = dictionary[Constants.ResponseKeys.CreatedUTC]  as! String
+        self.selfText = dictionary[Constants.ResponseKeys.SelfText] as! String
+        self.imageUrl = dictionary[Constants.ResponseKeys.URL] as! String
     }
     
-    static func == (lhs: jsonData, rhs: jsonData) -> Bool { // for comparing of jsonData types
-        return lhs.id == rhs.id
-    }
+//    init (_ subreddit: String, _ id: String, _ author: String, _ title: String, _ createdUTC: String, _ selfText: String, _ imageUrl: String) {
+//        self.subreddit = subreddit
+//        self.id = id
+//        self.author = author
+//        self.title = title
+//        self.createdUTC = createdUTC
+//        self.selfText = selfText
+//        self.imageUrl = imageUrl
+//    }
+    
 }
 
 class RedditData {
-
+// self.redditData.myList[0].imageUrl!, self.redditData.myList[0].title, self.redditData.myList[0].selfText!, self.redditData.myList[0].subreddit, self.redditData.myList[0].author, self.redditData.myList[0].createdUTC
     var myList = [jsonData]()
     var myDate = MyDate()
     
+    func countJSONData() -> Int {
+        return myList.count
+    }
+    
     func addJSONData (_ subreddit: String, _ id: String, _ author: String, _ title: String, _ createdUTC: String, _ selfText: String, _ imageUrl: String) {
-        myList.append(jsonData(subreddit, id, author, title, createdUTC, selfText, imageUrl))
+//        myList.append(jsonData(subreddit, id, author, title, createdUTC, selfText, imageUrl))
     } // add the collected JSON data to an array of structs
     
     func displayJSONData () { // for test purposes only
         for x in myList {
             print(x)
         }
+        
     } // // show the collected JSON data from an array of structs
     
     func getRandomIndex(_ count: Int) -> Int {
         return Int(arc4random_uniform(UInt32(count)))
     } // for randomnizations
-    
-    func getChildrenCount(_ children: [[String:AnyObject]]) -> Int {
-        return children.count
-    } // get count of posts in current subreddit
 
     func getId(_ moreData: [String:AnyObject]) -> String {
         guard let id = moreData[Constants.ResponseKeys.Id]  as? String else {
