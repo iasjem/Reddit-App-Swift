@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct jsonData {
-     var myDate = MyDate()
+    var myDate = MyDate()
     var subreddit: String = ""
     var id: String = ""
     var author: String = ""
@@ -40,7 +40,7 @@ struct jsonData {
         guard let subreddit = moreData[Constants.ResponseKeys.SubReddit]  as? String else {
             return "Unknown"
         }
-        return subreddit
+        return "r/\(subreddit)"
     } // get the subreddit key and its value from JSON file
     
     func getTitle(_ moreData: [String:AnyObject]) -> String {
@@ -54,7 +54,7 @@ struct jsonData {
         guard let author = moreData[Constants.ResponseKeys.Author]  as? String else {
             return "Unknown"
         }
-        return author
+        return "u/\(author)"
     } // get the author key and its value from JSON file
     
     func getCreatedUTC(_ moreData: [String:AnyObject]) -> String {
@@ -68,6 +68,11 @@ struct jsonData {
         guard let selfText = moreData[Constants.ResponseKeys.SelfText]  as? String else {
             return "Unknown"
         }
+
+        return selfText
+    } // get the selftext key and its value from JSON file
+    
+    func getSelfText() -> String {
         return selfText
     } // get the selftext key and its value from JSON file
     
@@ -87,33 +92,34 @@ struct jsonData {
         }
         return getURL
     } // get the post image url key and its value from JSON file
- 
     func getRandomIndex(_ count: Int) -> Int {
         return Int(arc4random_uniform(UInt32(count)))
-    } // for randomnizations
-    
+    } // for randomnization
 }
 
 final class JSONDataStore  {
     
     static let sharedInstance = JSONDataStore()
-    private init() {}
-    weak var delegate: refreshDelegate?
+    private init() {}  // applying sharing of instance
+
+    weak var refreshMe: refreshDelegate? // delegate for reloading collection view
     
     var myList = [jsonData]()
    
     func getJSONData(_ parsedResult: [String:AnyObject]) {
         // retrieve the data now
         if let data = parsedResult[Constants.ResponseKeys.Data] as? [String:AnyObject], let children = data[Constants.ResponseKeys.Children] as? [[String:AnyObject]]  {
-            
-            let randomIndex = Int(arc4random_uniform(UInt32(children.count)))
-            let findChildren = children[randomIndex] as [String:AnyObject]
-            
-            if let moreData = findChildren[Constants.ResponseKeys.Data] as? [String:AnyObject] {
-                
-               myList.append(jsonData(moreData))
-               delegate?.reloadView()
+            let countChildren = children.count
+            var i = 0
+            while i < countChildren {
+                let findChildren = children[i] as [String:AnyObject]
+
+                if let moreData = findChildren[Constants.ResponseKeys.Data] as? [String:AnyObject] {
+                     myList.append(jsonData(moreData))
+                     i = i + 1
+                }
             }
+            refreshMe?.reloadView() // reload collection view after fetching data
         }
     }
     
@@ -150,13 +156,17 @@ final class JSONDataStore  {
                     displayError("Could not parse the data as JSON: '\(data)'")
                     return
                 }
-                 self.getJSONData(parsedResult)
+                 self.getJSONData(parsedResult) // get data from JSON file by parsing content
         }
         task.resume()
     }
-
+    
 }
 
 protocol refreshDelegate: class { 
     func reloadView()
+}
+
+protocol getIdentifier: class {
+     func isEmptySelfText (_ indexPath: IndexPath)
 }

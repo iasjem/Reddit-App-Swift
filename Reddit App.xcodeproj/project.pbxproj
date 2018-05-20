@@ -16,6 +16,10 @@
 		76D3FECC20A3EDA700E3CC42 /* Reddit_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FECB20A3EDA700E3CC42 /* Reddit_AppTests.swift */; };
 		76D3FED720A3EDA700E3CC42 /* Reddit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */; };
 		76D3FEF020A44C7F00E3CC42 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEEF20A44C7F00E3CC42 /* CollectionViewCell.swift */; };
+		76F237E520B15CF000C0DE3F /* YellowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E420B15CF000C0DE3F /* YellowCell.xib */; };
+		76F237E720B160C500C0DE3F /* BlueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E620B160C500C0DE3F /* BlueCell.xib */; };
+		76F237E920B1631D00C0DE3F /* SubsMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E820B1631D00C0DE3F /* SubsMenu.xib */; };
+		76F237EB20B1633C00C0DE3F /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237EA20B1633C00C0DE3F /* ImageCell.xib */; };
 		76F662F520ABB890002DE0F0 /* OtherFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F420ABB890002DE0F0 /* OtherFunctions.swift */; };
 		76F662F920ABF08B002DE0F0 /* DataFromAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F820ABF08B002DE0F0 /* DataFromAPI.swift */; };
 		76F662FB20AC33EE002DE0F0 /* DateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662FA20AC33EE002DE0F0 /* DateFunctions.swift */; };
@@ -54,6 +58,10 @@
 		76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit_AppUITests.swift; sourceTree = "<group>"; };
 		76D3FED820A3EDA700E3CC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D3FEEF20A44C7F00E3CC42 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		76F237E420B15CF000C0DE3F /* YellowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YellowCell.xib; sourceTree = "<group>"; };
+		76F237E620B160C500C0DE3F /* BlueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueCell.xib; sourceTree = "<group>"; };
+		76F237E820B1631D00C0DE3F /* SubsMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubsMenu.xib; sourceTree = "<group>"; };
+		76F237EA20B1633C00C0DE3F /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		76F662F420ABB890002DE0F0 /* OtherFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherFunctions.swift; sourceTree = "<group>"; };
 		76F662F820ABF08B002DE0F0 /* DataFromAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFromAPI.swift; sourceTree = "<group>"; };
 		76F662FA20AC33EE002DE0F0 /* DateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFunctions.swift; sourceTree = "<group>"; };
@@ -111,6 +119,7 @@
 				76D3FEC220A3EDA700E3CC42 /* Info.plist */,
 				76D3FEB620A3EDA600E3CC42 /* AppDelegate.swift */,
 				76D3FEE720A430C100E3CC42 /* View Controllers */,
+				76F237E320B15CAB00C0DE3F /* Cell Views */,
 				76D3FEE620A430A300E3CC42 /* App Functions */,
 				76D3FEBA20A3EDA600E3CC42 /* Main.storyboard */,
 				76D3FEBF20A3EDA700E3CC42 /* LaunchScreen.storyboard */,
@@ -154,6 +163,17 @@
 				76D3FEEF20A44C7F00E3CC42 /* CollectionViewCell.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		76F237E320B15CAB00C0DE3F /* Cell Views */ = {
+			isa = PBXGroup;
+			children = (
+				76F237E420B15CF000C0DE3F /* YellowCell.xib */,
+				76F237E620B160C500C0DE3F /* BlueCell.xib */,
+				76F237E820B1631D00C0DE3F /* SubsMenu.xib */,
+				76F237EA20B1633C00C0DE3F /* ImageCell.xib */,
+			);
+			path = "Cell Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +282,11 @@
 			files = (
 				76D3FEC120A3EDA700E3CC42 /* LaunchScreen.storyboard in Resources */,
 				76D3FEBE20A3EDA700E3CC42 /* Assets.xcassets in Resources */,
+				76F237EB20B1633C00C0DE3F /* ImageCell.xib in Resources */,
+				76F237E720B160C500C0DE3F /* BlueCell.xib in Resources */,
+				76F237E920B1631D00C0DE3F /* SubsMenu.xib in Resources */,
 				76D3FEBC20A3EDA600E3CC42 /* Main.storyboard in Resources */,
+				76F237E520B15CF000C0DE3F /* YellowCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
