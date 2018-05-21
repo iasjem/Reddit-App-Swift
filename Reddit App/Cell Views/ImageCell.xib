@@ -25,7 +25,7 @@
                                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="O2o-S6-kvG" userLabel="Top">
                                     <rect key="frame" x="0.0" y="0.0" width="330" height="130"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-yE-0nq">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-yE-0nq">
                                             <rect key="frame" x="0.0" y="0.0" width="330" height="130"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </imageView>
@@ -205,6 +205,13 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="0Io-ro-04D"/>
+            <connections>
+                <outlet property="CellPostAuthor" destination="Wfe-d7-tUl" id="5Vt-z2-3wG"/>
+                <outlet property="CellPostImage" destination="S1T-yE-0nq" id="CTx-aR-bXm"/>
+                <outlet property="CellPostTime" destination="0sl-pn-sH5" id="MkM-fy-CoV"/>
+                <outlet property="CellPostTitle" destination="Fxc-9V-euB" id="iuH-9s-3wZ"/>
+                <outlet property="CellSubReddit" destination="g4f-jf-WwK" id="c9A-vp-x93"/>
+            </connections>
             <point key="canvasLocation" x="16" y="68"/>
         </view>
     </objects>

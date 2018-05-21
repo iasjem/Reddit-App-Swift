@@ -27,8 +27,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             self.store.connectToAPI() // connect to API
             self.store.refreshMe = self
             
-            self.CollectionView.register(UINib.init(nibName: self.identifier, bundle: nil), forCellWithReuseIdentifier: self.identifier)
+            self.CollectionView.register(UINib.init(nibName: "YellowCell", bundle: nil), forCellWithReuseIdentifier: "YellowCell")
             self.CollectionView.register(UINib.init(nibName: "BlueCell", bundle: nil), forCellWithReuseIdentifier: "BlueCell")
+            self.CollectionView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
             self.CollectionView.register(UINib.init(nibName: "SubscribeCell", bundle: nil), forCellWithReuseIdentifier: "SubscribeCell")
         }
 
@@ -52,12 +53,19 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "YellowCell", for: indexPath) as! YellowCell
                 
                 cell.displayCollectionViewCell(list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
-return cell
+                return cell
             } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BlueCell", for: indexPath) as! BlueCell
+                if store.myList[indexPath.row].imageWidth <= 600 {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BlueCell", for: indexPath) as! BlueCell
+                    
+                    cell.displayCollectionViewCell(list.title, list.subreddit, list.author, list.createdUTC, list.imageUrl)
+                    return cell
+                }  else {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
                 
-                cell.displayCollectionViewCell(list.title, list.subreddit, list.author, list.createdUTC, list.imageUrl)
-return cell
+                    cell.displayCollectionViewCell(list.title, list.subreddit, list.author, list.createdUTC, list.imageUrl)
+                    return cell
+                }
             }
 
         }

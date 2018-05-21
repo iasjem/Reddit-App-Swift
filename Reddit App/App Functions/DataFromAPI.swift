@@ -18,6 +18,7 @@ struct jsonData {
     var createdUTC: String = ""
     var selfText: String = ""
     var imageUrl: String = ""
+    var imageWidth: Int = 0
 
     init(_ moreData: [String:AnyObject]) {
         self.subreddit = getSubReddit(moreData)
@@ -27,6 +28,7 @@ struct jsonData {
         self.createdUTC = getCreatedUTC(moreData)
         self.selfText = getSelfText(moreData)
         self.imageUrl = getImage(moreData)
+        self.imageWidth = getImageWidth(moreData)
     }
     
     func getId(_ moreData: [String:AnyObject]) -> String {
@@ -80,8 +82,7 @@ struct jsonData {
         guard let preview = moreData[Constants.ResponseKeys.Preview]  as? [String:AnyObject], let images = preview[Constants.ResponseKeys.Images] as? [[String:AnyObject]] else {
             return "Unknown"
         }
-        let randomIndex = getRandomIndex(images.count)
-        let findSource =  images[randomIndex] as [String:AnyObject]
+        let findSource =  images[0] as [String:AnyObject]
         
         if let source = findSource[Constants.ResponseKeys.Source] as? [String:AnyObject]  {
             guard let url = source[Constants.ResponseKeys.URL] as? String else {
@@ -94,6 +95,23 @@ struct jsonData {
     func getRandomIndex(_ count: Int) -> Int {
         return Int(arc4random_uniform(UInt32(count)))
     } // for randomnization
+    
+    func getImageWidth(_ moreData: [String:AnyObject]) -> Int {
+        var width = 0
+        guard let preview = moreData[Constants.ResponseKeys.Preview]  as? [String:AnyObject], let images = preview[Constants.ResponseKeys.Images] as? [[String:AnyObject]] else {
+            return 0
+        }
+        let findSource =  images[0] as [String:AnyObject]
+        
+        if let source = findSource[Constants.ResponseKeys.Source] as? [String:AnyObject]  {
+            guard let imageWidth = source[Constants.ResponseKeys.imageWidth] as? Int else { 
+                return 0
+            }
+            width = imageWidth
+        }
+        return width
+    } // get the id key and its value from JSON file
+
 }
 
 final class JSONDataStore  {

@@ -44,6 +44,8 @@ struct Constants {
         static let Source = "source"
         static let Id = "id" 
         static let URL = "url"
+        static let imageWidth = "width"
+        static let imageHeight = "height"
         static let CreatedUTC = "created_utc"
     }
     
