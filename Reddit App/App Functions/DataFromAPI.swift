@@ -68,7 +68,6 @@ struct jsonData {
         guard let selfText = moreData[Constants.ResponseKeys.SelfText]  as? String else {
             return "Unknown"
         }
-
         return selfText
     } // get the selftext key and its value from JSON file
     
@@ -105,17 +104,19 @@ final class JSONDataStore  {
     weak var refreshMe: refreshDelegate? // delegate for reloading collection view
     
     var myList = [jsonData]()
-   
+    var i = 0
+    
     func getJSONData(_ parsedResult: [String:AnyObject]) {
         // retrieve the data now
         if let data = parsedResult[Constants.ResponseKeys.Data] as? [String:AnyObject], let children = data[Constants.ResponseKeys.Children] as? [[String:AnyObject]]  {
             let countChildren = children.count
-            var i = 0
+            
             while i < countChildren {
                 let findChildren = children[i] as [String:AnyObject]
 
                 if let moreData = findChildren[Constants.ResponseKeys.Data] as? [String:AnyObject] {
                      myList.append(jsonData(moreData))
+                    
                      i = i + 1
                 }
             }
@@ -167,6 +168,6 @@ protocol refreshDelegate: class {
     func reloadView()
 }
 
-protocol getIdentifier: class {
-     func isEmptySelfText (_ indexPath: IndexPath)
-}
+
+
+

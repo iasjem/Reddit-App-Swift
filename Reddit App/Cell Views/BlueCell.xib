@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="GVh-dM-EOd" customClass="CollectionViewCell" customModule="Reddit_App" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="GVh-dM-EOd" customClass="BlueCell" customModule="Reddit_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="330" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -211,13 +211,6 @@
                     <integer key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <connections>
-                <outlet property="CellPostAuthor" destination="x0h-xl-e6P" id="yep-bM-Q2C"/>
-                <outlet property="CellPostImage" destination="BVB-sk-CzA" id="tC4-aC-kv4"/>
-                <outlet property="CellPostTime" destination="464-uF-aQ5" id="SaO-pz-l00"/>
-                <outlet property="CellPostTitle" destination="sZY-mR-KfQ" id="iOP-48-Vph"/>
-                <outlet property="CellSubReddit" destination="T1c-Hr-aet" id="Ca3-or-JWw"/>
-            </connections>
             <point key="canvasLocation" x="-57" y="81"/>
         </view>
     </objects>

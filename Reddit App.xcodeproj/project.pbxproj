@@ -15,10 +15,10 @@
 		76D3FEC120A3EDA700E3CC42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D3FEBF20A3EDA700E3CC42 /* LaunchScreen.storyboard */; };
 		76D3FECC20A3EDA700E3CC42 /* Reddit_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FECB20A3EDA700E3CC42 /* Reddit_AppTests.swift */; };
 		76D3FED720A3EDA700E3CC42 /* Reddit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */; };
-		76D3FEF020A44C7F00E3CC42 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEEF20A44C7F00E3CC42 /* CollectionViewCell.swift */; };
+		76D3FEF020A44C7F00E3CC42 /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEEF20A44C7F00E3CC42 /* CollectionViewCells.swift */; };
 		76F237E520B15CF000C0DE3F /* YellowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E420B15CF000C0DE3F /* YellowCell.xib */; };
 		76F237E720B160C500C0DE3F /* BlueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E620B160C500C0DE3F /* BlueCell.xib */; };
-		76F237E920B1631D00C0DE3F /* SubsMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E820B1631D00C0DE3F /* SubsMenu.xib */; };
+		76F237E920B1631D00C0DE3F /* SubscribeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E820B1631D00C0DE3F /* SubscribeCell.xib */; };
 		76F237EB20B1633C00C0DE3F /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237EA20B1633C00C0DE3F /* ImageCell.xib */; };
 		76F662F520ABB890002DE0F0 /* OtherFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F420ABB890002DE0F0 /* OtherFunctions.swift */; };
 		76F662F920ABF08B002DE0F0 /* DataFromAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F820ABF08B002DE0F0 /* DataFromAPI.swift */; };
@@ -57,10 +57,10 @@
 		76D3FED220A3EDA700E3CC42 /* Reddit AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Reddit AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit_AppUITests.swift; sourceTree = "<group>"; };
 		76D3FED820A3EDA700E3CC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76D3FEEF20A44C7F00E3CC42 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		76D3FEEF20A44C7F00E3CC42 /* CollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCells.swift; sourceTree = "<group>"; };
 		76F237E420B15CF000C0DE3F /* YellowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YellowCell.xib; sourceTree = "<group>"; };
 		76F237E620B160C500C0DE3F /* BlueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueCell.xib; sourceTree = "<group>"; };
-		76F237E820B1631D00C0DE3F /* SubsMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubsMenu.xib; sourceTree = "<group>"; };
+		76F237E820B1631D00C0DE3F /* SubscribeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscribeCell.xib; sourceTree = "<group>"; };
 		76F237EA20B1633C00C0DE3F /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		76F662F420ABB890002DE0F0 /* OtherFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherFunctions.swift; sourceTree = "<group>"; };
 		76F662F820ABF08B002DE0F0 /* DataFromAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFromAPI.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				76D3FEB820A3EDA600E3CC42 /* CollectionViewController.swift */,
-				76D3FEEF20A44C7F00E3CC42 /* CollectionViewCell.swift */,
+				76D3FEEF20A44C7F00E3CC42 /* CollectionViewCells.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -170,7 +170,7 @@
 			children = (
 				76F237E420B15CF000C0DE3F /* YellowCell.xib */,
 				76F237E620B160C500C0DE3F /* BlueCell.xib */,
-				76F237E820B1631D00C0DE3F /* SubsMenu.xib */,
+				76F237E820B1631D00C0DE3F /* SubscribeCell.xib */,
 				76F237EA20B1633C00C0DE3F /* ImageCell.xib */,
 			);
 			path = "Cell Views";
@@ -284,7 +284,7 @@
 				76D3FEBE20A3EDA700E3CC42 /* Assets.xcassets in Resources */,
 				76F237EB20B1633C00C0DE3F /* ImageCell.xib in Resources */,
 				76F237E720B160C500C0DE3F /* BlueCell.xib in Resources */,
-				76F237E920B1631D00C0DE3F /* SubsMenu.xib in Resources */,
+				76F237E920B1631D00C0DE3F /* SubscribeCell.xib in Resources */,
 				76D3FEBC20A3EDA600E3CC42 /* Main.storyboard in Resources */,
 				76F237E520B15CF000C0DE3F /* YellowCell.xib in Resources */,
 			);
@@ -313,7 +313,7 @@
 			files = (
 				76F662FB20AC33EE002DE0F0 /* DateFunctions.swift in Sources */,
 				76F662F920ABF08B002DE0F0 /* DataFromAPI.swift in Sources */,
-				76D3FEF020A44C7F00E3CC42 /* CollectionViewCell.swift in Sources */,
+				76D3FEF020A44C7F00E3CC42 /* CollectionViewCells.swift in Sources */,
 				76D3FEB920A3EDA600E3CC42 /* CollectionViewController.swift in Sources */,
 				76D3FEB720A3EDA600E3CC42 /* AppDelegate.swift in Sources */,
 				76F662F520ABB890002DE0F0 /* OtherFunctions.swift in Sources */,

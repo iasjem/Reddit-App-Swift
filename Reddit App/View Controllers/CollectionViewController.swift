@@ -8,17 +8,12 @@
 
 import UIKit
 
-private let identifier = "YellowCell"
-
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var CollectionView: UICollectionView!
     
     let store = JSONDataStore.sharedInstance
-    
-   
-    
-     weak var identifyMe: getIdentifier?
+    var identifier: String = "YellowCell"
     
     override func viewDidLoad() {
         
@@ -28,13 +23,12 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         CollectionView.dataSource = self
         CollectionView.collectionViewLayout = SnappingFlowLayout()
         
-        CollectionView.register(UINib.init(nibName: identifier, bundle: nil), forCellWithReuseIdentifier: identifier)
-    
         DispatchQueue.main.async {
             self.store.connectToAPI() // connect to API
             self.store.refreshMe = self
+            self.CollectionView.register(UINib.init(nibName: self.identifier, bundle: nil), forCellWithReuseIdentifier: self.identifier)
+            self.CollectionView.register(UINib.init(nibName: "SubscribeCell", bundle: nil), forCellWithReuseIdentifier: "SubscribeCell")
         }
-    
 
     }
     
@@ -44,31 +38,31 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CollectionViewCell
+        if indexPath.row  == 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubscribeCell", for: indexPath) as? SubscribeCell
+            return cell!
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? YellowCell
 
-        let list = store.myList[indexPath.row]
-        
-//        identifyMe?.isEmptySelfText(indexPath)
-        
-        cell.displayCollectionViewCell(identifier, list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
+            let list = store.myList[indexPath.row]
+            
+            cell?.displayCollectionViewCell(list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
 
-        return cell
+            return cell!
+        }
     }
 
 }
 
-extension CollectionViewController: refreshDelegate, getIdentifier { 
+extension CollectionViewController: refreshDelegate  {
     
     func reloadView() {
         DispatchQueue.main.async {
             self.CollectionView.reloadData()
         }
     }
-    
-    func isEmptySelfText (_ indexPath: IndexPath) {
-        let condition = store.myList[indexPath.row].getSelfText() != "" ? true : false
-        
-    }
 
 }
+
+
 
