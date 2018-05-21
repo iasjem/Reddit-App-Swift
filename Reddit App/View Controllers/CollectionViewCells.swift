@@ -105,7 +105,6 @@ class ImageCell: UICollectionViewCell   {
 
 class SubscribeCell: UICollectionViewCell   {
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

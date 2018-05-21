@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="330" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaP-Ai-FQ4">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaP-Ai-FQ4" userLabel="Container">
                     <rect key="frame" x="0.0" y="0.0" width="330" height="260"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8I-Zj-sAZ" userLabel="Top">
@@ -195,7 +195,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="EaP-Ai-FQ4" firstAttribute="bottom" secondItem="GTh-DL-ssw" secondAttribute="bottom" id="5vA-KM-0ED"/>
                 <constraint firstItem="EaP-Ai-FQ4" firstAttribute="top" secondItem="GTh-DL-ssw" secondAttribute="top" id="Dcb-tY-nzE"/>
@@ -206,11 +206,13 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="GTh-DL-ssw"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                    <integer key="value" value="10"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="CellPostAuthor" destination="x0h-xl-e6P" id="Nin-ZQ-10d"/>
+                <outlet property="CellPostImage" destination="BVB-sk-CzA" id="u5J-GK-tN2"/>
+                <outlet property="CellPostTime" destination="464-uF-aQ5" id="x2p-jT-M9E"/>
+                <outlet property="CellPostTitle" destination="sZY-mR-KfQ" id="Kc0-yL-A3G"/>
+                <outlet property="CellSubReddit" destination="T1c-Hr-aet" id="FF8-qx-Rki"/>
+            </connections>
             <point key="canvasLocation" x="-57" y="81"/>
         </view>
     </objects>

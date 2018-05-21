@@ -196,13 +196,13 @@
                                                 </view>
                                             </subviews>
                                         </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLv-04-Gt2" userLabel="Right">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLv-04-Gt2" userLabel="Right">
                                             <rect key="frame" x="165" y="0.0" width="165" height="260"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Czw-Df-HVn" userLabel="Box">
                                                     <rect key="frame" x="0.0" y="0.0" width="165" height="260"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AGJ-W7-YQ5" userLabel="Content">
+                                                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AGJ-W7-YQ5" userLabel="Content">
                                                             <rect key="frame" x="0.0" y="0.0" width="165" height="260"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfW-wv-CVY" userLabel="Top">
@@ -220,11 +220,6 @@
                                                                         <constraint firstItem="c54-WA-GzJ" firstAttribute="top" secondItem="JfW-wv-CVY" secondAttribute="top" id="eyk-bD-px1"/>
                                                                         <constraint firstAttribute="trailing" secondItem="c54-WA-GzJ" secondAttribute="trailing" id="gHC-r9-Mcy"/>
                                                                     </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                            <integer key="value" value="10"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7s-AI-VVZ" userLabel="Bottom">
                                                                     <rect key="frame" x="0.0" y="130" width="165" height="130"/>
@@ -291,11 +286,6 @@
                                                                         <constraint firstAttribute="trailing" secondItem="koS-pY-9RB" secondAttribute="trailing" constant="12.5" id="qT4-8Z-lif"/>
                                                                         <constraint firstItem="KIA-bL-azi" firstAttribute="leading" secondItem="J7s-AI-VVZ" secondAttribute="leading" constant="15" id="vAC-OU-xjf"/>
                                                                     </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                            <integer key="value" value="10"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
                                                                 </view>
                                                             </subviews>
                                                         </stackView>
@@ -321,6 +311,11 @@
                                                 <constraint firstItem="Czw-Df-HVn" firstAttribute="leading" secondItem="iLv-04-Gt2" secondAttribute="leading" id="QiC-Ir-VRP"/>
                                                 <constraint firstItem="Czw-Df-HVn" firstAttribute="top" secondItem="iLv-04-Gt2" secondAttribute="top" id="jrN-nt-qps"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                 </stackView>

@@ -26,7 +26,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         DispatchQueue.main.async {
             self.store.connectToAPI() // connect to API
             self.store.refreshMe = self
+            
             self.CollectionView.register(UINib.init(nibName: self.identifier, bundle: nil), forCellWithReuseIdentifier: self.identifier)
+            self.CollectionView.register(UINib.init(nibName: "BlueCell", bundle: nil), forCellWithReuseIdentifier: "BlueCell")
             self.CollectionView.register(UINib.init(nibName: "SubscribeCell", bundle: nil), forCellWithReuseIdentifier: "SubscribeCell")
         }
 
@@ -39,16 +41,25 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if indexPath.row  == 2 {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubscribeCell", for: indexPath) as? SubscribeCell
             return cell!
+            
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? YellowCell
-
             let list = store.myList[indexPath.row]
             
-            cell?.displayCollectionViewCell(list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
+            if store.myList[indexPath.row].selfText != "" {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "YellowCell", for: indexPath) as! YellowCell
+                
+                cell.displayCollectionViewCell(list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
+return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BlueCell", for: indexPath) as! BlueCell
+                
+                cell.displayCollectionViewCell(list.title, list.subreddit, list.author, list.createdUTC, list.imageUrl)
+return cell
+            }
 
-            return cell!
         }
     }
 

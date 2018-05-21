@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="330" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-yJ-Cev" userLabel="Container">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-yJ-Cev" userLabel="Container">
                     <rect key="frame" x="0.0" y="0.0" width="330" height="260"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPn-h1-ahv" userLabel="Header">
@@ -218,11 +218,6 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="PgX-eG-BQO"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                    <integer key="value" value="10"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="CellPostAuthor" destination="1dh-0G-Sqk" id="Pia-Xw-iqE"/>
                 <outlet property="CellPostImage" destination="4Pp-NG-xTe" id="ORw-eA-8e7"/>
