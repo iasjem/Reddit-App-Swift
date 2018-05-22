@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Reddit App.xcodeproj">
+      location = "self:/Users/jemimah_sai/Desktop/practiceground/Reddit App/RedditApp.xcodeproj">
    </FileRef>
 </Workspace>

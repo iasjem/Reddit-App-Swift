@@ -47,6 +47,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             return cell!
             
         } else {
+            
             let list = store.myList[indexPath.row]
             
             if store.myList[indexPath.row].selfText != "" {
@@ -67,7 +68,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                     return cell
                 }
             }
-
+            
         }
     }
 

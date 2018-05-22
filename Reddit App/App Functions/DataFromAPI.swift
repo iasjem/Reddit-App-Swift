@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import SwiftyJSON
+
 
 struct jsonData {
     var myDate = MyDate()
@@ -121,63 +124,32 @@ final class JSONDataStore  {
 
     weak var refreshMe: refreshDelegate? // delegate for reloading collection view
     
-    var myList = [jsonData]()
-    var i = 0
-    
-    func getJSONData(_ parsedResult: [String:AnyObject]) {
-        // retrieve the data now
-        if let data = parsedResult[Constants.ResponseKeys.Data] as? [String:AnyObject], let children = data[Constants.ResponseKeys.Children] as? [[String:AnyObject]]  {
-            let countChildren = children.count
-            
-            while i < countChildren {
-                let findChildren = children[i] as [String:AnyObject]
-
-                if let moreData = findChildren[Constants.ResponseKeys.Data] as? [String:AnyObject] {
-                     myList.append(jsonData(moreData))
-                    
-                     i = i + 1
-                }
-            }
-            refreshMe?.reloadView() // reload collection view after fetching data
-        }
-    }
+    var myList = [jsonData]() 
     
     func connectToAPI () { // connect to API
-        
+        var i = 0
         let url = URL(string: "\(Constants.Source.APIBaseURL)\(Constants.ParameterValues.SubReddit)")!
-        let session = URLSession.shared
-        let request = URLRequest(url: url)
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            // check for errors on connection to API
-                func displayError(_ error: String) { print(error) }
-            
-                guard (error == nil) else {
-                    displayError("URL at time of error: \(url)")
-                    return
+
+        Alamofire.request(url, method: .get).validate().responseJSON {  response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let countChildren = json[Constants.ResponseKeys.Data][Constants.ResponseKeys.Children].count
+                
+                while i < countChildren {
+                    let findChildren = json[Constants.ResponseKeys.Data][Constants.ResponseKeys.Children][i]
+                    if let moreData = findChildren[Constants.ResponseKeys.Data].dictionaryObject {
+                        self.myList.append(jsonData(moreData as [String : AnyObject]))
+                        i = i + 1
+                    }
                 }
-            
-                guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                    displayError("Your request returned a status code other than 2xx!")
-                    return
-                }
-            
-                guard let data = data else {
-                    displayError("No data was returned by the request!")
-                    return
-                }
-            
-            // start getting data
-                let parsedResult: [String:AnyObject]!
-                do {
-                    parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
-                } catch {
-                    displayError("Could not parse the data as JSON: '\(data)'")
-                    return
-                }
-                 self.getJSONData(parsedResult) // get data from JSON file by parsing content
+                self.refreshMe?.reloadView() // reload collection view after fetching data
+                
+            case .failure(let error):
+                print(error)
+            }
         }
-        task.resume()
+        
     }
     
 }
