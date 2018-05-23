@@ -8,9 +8,11 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     @IBOutlet weak var CollectionView: UICollectionView!
+    
+    var subreddit: String =  Constants.ParameterValues.SubReddit
     
     @IBAction func searchButton(_ sender: Any) {
         performSegue(withIdentifier: "searchForm", sender: nil)
@@ -21,15 +23,15 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
         CollectionView.delegate = self
         CollectionView.dataSource = self
         CollectionView.collectionViewLayout = SnappingFlowLayout()
         
         performUIUpdatesOnMain {
-            self.store.connectToAPI() // connect to API
+            self.store.connectToAPI(self.subreddit) // connect to API
             self.store.refreshMe = self
-            
+           
             self.CollectionView.register(UINib.init(nibName: "YellowCell", bundle: nil), forCellWithReuseIdentifier: "YellowCell")
             self.CollectionView.register(UINib.init(nibName: "BlueCell", bundle: nil), forCellWithReuseIdentifier: "BlueCell")
             self.CollectionView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
@@ -44,15 +46,14 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if indexPath.row  == 2 {
-            
+        if indexPath.row  == 4 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubscribeCell", for: indexPath) as! SubscribeCell
-//                let iconURL = URL(string: store.mySubList[0].subRedditIcon)
-//                cell.DisplayNameOne.text = store.mySubList[0].displayName
-//                cell.PublicDescriptionOne.text = store.mySubList[0].publicDescription
-//                cell.SubscribeCountOne.text = "\(store.mySubList[0].subscribers) subscribers"
-//                cell.SubRedditIconOne.image = UIImage(data: try! Data(contentsOf: iconURL!))
-            
+            var list = store.mySubList[0]
+                cell.displaySubscribeCellOne(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription)
+            list = store.mySubList[1]
+                cell.displaySubscribeCellTwo(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription)
+            list = store.mySubList[2]
+                cell.displaySubscribeCellThree(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription)
             return cell
             
         } else {
@@ -83,12 +84,20 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
 }
 
-extension CollectionViewController: refreshDelegate  {
+extension CollectionViewController: RefreshDelegate, SearchViewControllerDelegate {
     
     func reloadView() {
         performUIUpdatesOnMain {
             self.CollectionView.reloadData()
         }
+    }
+    
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        
+    }
+    
+    func getSearchQuery() {
+        print("test")
     }
 
 }

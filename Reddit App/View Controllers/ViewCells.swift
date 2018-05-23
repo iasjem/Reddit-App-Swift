@@ -120,6 +120,66 @@ class SubscribeCell: UICollectionViewCell   {
     @IBOutlet weak var PublicDescriptionThree: UITextView!
     @IBOutlet weak var SubscribeCountThree: UILabel!
     
+    func displaySubscribeCellOne (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
+        
+        let iconURL = URL(string: icon)
+        let formater = NumberFormatter()
+        formater.numberStyle = .decimal
+        
+        DisplayNameOne.text = displayName
+        SubscribeCountOne.text = "\(String(describing: formater.string(from: NSNumber(value:subscribersCount))!)) subscribers"
+        PublicDescriptionOne.text = publicDescription
+        if iconURL == nil {
+            self.SubRedditIconOne.image = UIImage(named: "NoImageAvailable")
+        } else {
+            guard let imageData = try? Data(contentsOf: iconURL!) else {
+                self.SubRedditIconOne.image = UIImage(named: "NoImageAvailable")
+                return
+            }
+            self.SubRedditIconOne.image = UIImage(data: imageData)
+        }
+    }
+    
+    func displaySubscribeCellTwo (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
+        
+        let iconURL = URL(string: icon)
+        let formater = NumberFormatter()
+        formater.numberStyle = .decimal
+        
+        DisplayNameTwo.text = displayName
+        SubscribeCountTwo.text = "\(String(describing: formater.string(from: NSNumber(value:subscribersCount))!)) subscribers"
+        PublicDescriptionTwo.text = publicDescription
+        if iconURL == nil {
+            self.SubRedditIconTwo.image = UIImage(named: "NoImageAvailable")
+        } else {
+            guard let imageData = try? Data(contentsOf: iconURL!) else {
+                self.SubRedditIconTwo.image = UIImage(named: "NoImageAvailable")
+                return
+            }
+            self.SubRedditIconTwo.image = UIImage(data: imageData)
+        }
+    }
+    
+    func displaySubscribeCellThree (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
+        
+        let iconURL = URL(string: icon)
+        let formater = NumberFormatter()
+        formater.numberStyle = .decimal
+        
+        DisplayNameThree.text = displayName
+        SubscribeCountThree.text = "\(String(describing: formater.string(from: NSNumber(value:subscribersCount))!)) subscribers"
+        PublicDescriptionThree.text = publicDescription
+        if iconURL == nil {
+            self.SubRedditIconThree.image = UIImage(named: "NoImageAvailable")
+        } else {
+            guard let imageData = try? Data(contentsOf: iconURL!) else {
+                self.SubRedditIconThree.image = UIImage(named: "NoImageAvailable")
+                return
+            }
+            self.SubRedditIconThree.image = UIImage(data: imageData)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

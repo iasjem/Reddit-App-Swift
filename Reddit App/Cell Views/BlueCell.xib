@@ -30,7 +30,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <integer key="value" value="15"/>
+                                                    <integer key="value" value="12"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
@@ -54,13 +54,13 @@
                                     </subviews>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="464-uF-aQ5">
-                                    <rect key="frame" x="280.5" y="15" width="13.5" height="14"/>
+                                    <rect key="frame" x="291.5" y="15" width="13.5" height="14"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIl-nS-jfp" userLabel="More Vertical">
-                                    <rect key="frame" x="300" y="10" width="15" height="22"/>
+                                    <rect key="frame" x="311" y="10" width="4" height="22"/>
                                     <state key="normal" image="more_vertical_white"/>
                                 </button>
                             </subviews>
@@ -69,7 +69,6 @@
                                 <constraint firstAttribute="trailing" secondItem="bIl-nS-jfp" secondAttribute="trailing" constant="15" id="1dl-l1-qwF"/>
                                 <constraint firstItem="3HX-C2-0Vt" firstAttribute="leading" secondItem="g8I-Zj-sAZ" secondAttribute="leading" constant="15" id="6aY-3o-WoA"/>
                                 <constraint firstItem="bIl-nS-jfp" firstAttribute="leading" secondItem="464-uF-aQ5" secondAttribute="trailing" constant="6" id="AvD-6j-AbM"/>
-                                <constraint firstItem="464-uF-aQ5" firstAttribute="leading" secondItem="3HX-C2-0Vt" secondAttribute="trailing" constant="134" id="PPv-U9-f0U"/>
                                 <constraint firstItem="3HX-C2-0Vt" firstAttribute="top" secondItem="g8I-Zj-sAZ" secondAttribute="top" constant="10" id="PhR-Gz-sYA"/>
                                 <constraint firstItem="bIl-nS-jfp" firstAttribute="leading" secondItem="464-uF-aQ5" secondAttribute="trailing" constant="6" id="XrP-2H-1It"/>
                                 <constraint firstAttribute="height" constant="40" id="mXi-LF-2dh"/>

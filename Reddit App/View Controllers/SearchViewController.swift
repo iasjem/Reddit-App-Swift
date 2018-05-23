@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol SearchViewControllerDelegate: class {
+    func getSearchQuery()
+}
+
 class SearchViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var modalView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var searchTableView: UITableView!
+    
+    weak var QueryMe: SearchViewControllerDelegate?
     
     let store = JSONDataStore.sharedInstance
     var subreddit: String = ""
@@ -26,9 +32,9 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchBar.delegate = self
+       
         
         searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
-
     }
     
     // Filter list items by active and archived tasks
@@ -52,6 +58,7 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        QueryMe?.getSearchQuery()
         dismissModalView()
     }
     
@@ -66,7 +73,6 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(subreddit)
         dismissModalView()
     }
     
@@ -79,7 +85,7 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
+        searchActive = false
     }
     
     private func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -90,6 +96,9 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         dismiss(animated: true, completion: nil)
     }
     
-
 }
+
+
+
+
 

@@ -167,18 +167,13 @@ final class JSONDataStore  { // data storage parsed from JSON file
     static let sharedInstance = JSONDataStore()
     private init() {}  // applying sharing of instance
     
-    weak var refreshMe: refreshDelegate? // delegate for reloading collection view
+    weak var refreshMe: RefreshDelegate? // delegate for reloading collection view
     
     var myList = [jsonData]() // an array of jsonData
     var mySubList = [subRedditData]()
-
-    func getConstantForSubReddit (_ subreddit: String ) {
-        Constants.ParameterValues.SubReddit = "AskReddit"
-    }
     
-    func connectToAPI () { // connect to API
-        print("condstant is \(Constants.ParameterValues.SubReddit )")
-        var url = URL(string: "\(Constants.Source.APIBaseURL)\(Constants.ParameterValues.SubReddit)")!
+    func connectToAPI (_ subreddit: String) { // connect to API
+        var url = URL(string: "\(Constants.Source.APIBaseURL)\(subreddit)")!
         var forWhatCell = "PostCells"
         getJSONData(url, forWhatCell)
         url = URL(string: "\(Constants.Source.APIBaseURL)")!
@@ -220,10 +215,8 @@ final class JSONDataStore  { // data storage parsed from JSON file
     
 }
 
-protocol refreshDelegate: class { 
+protocol RefreshDelegate: class { 
     func reloadView()
 }
-
-
 
 
