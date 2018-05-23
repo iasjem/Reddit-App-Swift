@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Ssm-TH-zZA" customClass="SearchResultCell" customModule="RedditApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nlg-Se-V0x">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-W4-wqZ" userLabel="SubReddit Icon">
+                            <rect key="frame" x="25" y="30" width="56" height="56"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="QKk-M2-TpP"/>
+                                <constraint firstAttribute="width" constant="56" id="p2a-aY-8hr"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="28"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tRG-BN-Fut">
+                            <rect key="frame" x="104" y="42" width="138.5" height="42"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SubReddit Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxs-pX-xO8">
+                                    <rect key="frame" x="0.0" y="0.0" width="138.5" height="21"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscriber Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuh-AA-Yhm">
+                                    <rect key="frame" x="0.0" y="21" width="138.5" height="21"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Rcx-W4-wqZ" firstAttribute="top" secondItem="Nlg-Se-V0x" secondAttribute="top" constant="30" id="8Mc-r3-EEw"/>
+                        <constraint firstItem="tRG-BN-Fut" firstAttribute="leading" secondItem="Rcx-W4-wqZ" secondAttribute="trailing" constant="23" id="g7u-jD-XrU"/>
+                        <constraint firstItem="tRG-BN-Fut" firstAttribute="baseline" secondItem="Rcx-W4-wqZ" secondAttribute="baseline" constant="-5" id="lec-rD-PlL"/>
+                        <constraint firstItem="Rcx-W4-wqZ" firstAttribute="leading" secondItem="Nlg-Se-V0x" secondAttribute="leading" constant="25" id="p8B-eB-1Hx"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Nlg-Se-V0x" firstAttribute="leading" secondItem="KLt-O4-icn" secondAttribute="leading" id="KBG-qS-ar5"/>
+                <constraint firstItem="Nlg-Se-V0x" firstAttribute="trailing" secondItem="KLt-O4-icn" secondAttribute="trailing" id="PXf-gC-FH2"/>
+                <constraint firstItem="Nlg-Se-V0x" firstAttribute="bottom" secondItem="KLt-O4-icn" secondAttribute="bottom" id="XFZ-AE-0OQ"/>
+                <constraint firstItem="Nlg-Se-V0x" firstAttribute="top" secondItem="KLt-O4-icn" secondAttribute="top" id="b1J-fu-9Pd"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="KLt-O4-icn"/>
+            <connections>
+                <outlet property="SubRedditIcon" destination="Rcx-W4-wqZ" id="SD2-ol-lkh"/>
+                <outlet property="SubRedditName" destination="Lxs-pX-xO8" id="Kz0-57-HUl"/>
+                <outlet property="SubscribersCount" destination="Cuh-AA-Yhm" id="IEo-aw-0S9"/>
+            </connections>
+            <point key="canvasLocation" x="9.5" y="-87"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person" width="24" height="24"/>
+    </resources>
+</document>

@@ -16,7 +16,9 @@
 		76D3FEC120A3EDA700E3CC42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D3FEBF20A3EDA700E3CC42 /* LaunchScreen.storyboard */; };
 		76D3FECC20A3EDA700E3CC42 /* Reddit_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FECB20A3EDA700E3CC42 /* Reddit_AppTests.swift */; };
 		76D3FED720A3EDA700E3CC42 /* Reddit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */; };
-		76D3FEF020A44C7F00E3CC42 /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEEF20A44C7F00E3CC42 /* CollectionViewCells.swift */; };
+		76D3FEF020A44C7F00E3CC42 /* ViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3FEEF20A44C7F00E3CC42 /* ViewCells.swift */; };
+		76E0220120B426C30053456C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E0220020B426C30053456C /* SearchViewController.swift */; };
+		76E0220320B42A390053456C /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E0220220B42A390053456C /* SearchResultCell.xib */; };
 		76F237E520B15CF000C0DE3F /* YellowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E420B15CF000C0DE3F /* YellowCell.xib */; };
 		76F237E720B160C500C0DE3F /* BlueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E620B160C500C0DE3F /* BlueCell.xib */; };
 		76F237E920B1631D00C0DE3F /* SubscribeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E820B1631D00C0DE3F /* SubscribeCell.xib */; };
@@ -65,7 +67,9 @@
 		76D3FED220A3EDA700E3CC42 /* RedditAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D3FED620A3EDA700E3CC42 /* Reddit_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit_AppUITests.swift; sourceTree = "<group>"; };
 		76D3FED820A3EDA700E3CC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76D3FEEF20A44C7F00E3CC42 /* CollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCells.swift; sourceTree = "<group>"; };
+		76D3FEEF20A44C7F00E3CC42 /* ViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCells.swift; sourceTree = "<group>"; };
+		76E0220020B426C30053456C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		76E0220220B42A390053456C /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		76F237E420B15CF000C0DE3F /* YellowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YellowCell.xib; sourceTree = "<group>"; };
 		76F237E620B160C500C0DE3F /* BlueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueCell.xib; sourceTree = "<group>"; };
 		76F237E820B1631D00C0DE3F /* SubscribeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscribeCell.xib; sourceTree = "<group>"; };
@@ -187,7 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				76D3FEB820A3EDA600E3CC42 /* CollectionViewController.swift */,
-				76D3FEEF20A44C7F00E3CC42 /* CollectionViewCells.swift */,
+				76D3FEEF20A44C7F00E3CC42 /* ViewCells.swift */,
+				76E0220020B426C30053456C /* SearchViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 				76F237E620B160C500C0DE3F /* BlueCell.xib */,
 				76F237E820B1631D00C0DE3F /* SubscribeCell.xib */,
 				76F237EA20B1633C00C0DE3F /* ImageCell.xib */,
+				76E0220220B42A390053456C /* SearchResultCell.xib */,
 			);
 			path = "Cell Views";
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 			files = (
 				76D3FEC120A3EDA700E3CC42 /* LaunchScreen.storyboard in Resources */,
 				76D3FEBE20A3EDA700E3CC42 /* Assets.xcassets in Resources */,
+				76E0220320B42A390053456C /* SearchResultCell.xib in Resources */,
 				76F237EB20B1633C00C0DE3F /* ImageCell.xib in Resources */,
 				76F237E720B160C500C0DE3F /* BlueCell.xib in Resources */,
 				76F237E920B1631D00C0DE3F /* SubscribeCell.xib in Resources */,
@@ -434,7 +441,8 @@
 			files = (
 				76F662FB20AC33EE002DE0F0 /* DateFunctions.swift in Sources */,
 				76F662F920ABF08B002DE0F0 /* DataFromAPI.swift in Sources */,
-				76D3FEF020A44C7F00E3CC42 /* CollectionViewCells.swift in Sources */,
+				76E0220120B426C30053456C /* SearchViewController.swift in Sources */,
+				76D3FEF020A44C7F00E3CC42 /* ViewCells.swift in Sources */,
 				76D3FEB920A3EDA600E3CC42 /* CollectionViewController.swift in Sources */,
 				76D3FEB720A3EDA600E3CC42 /* AppDelegate.swift in Sources */,
 				76F662F520ABB890002DE0F0 /* OtherFunctions.swift in Sources */,

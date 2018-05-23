@@ -1,5 +1,5 @@
 //
-//  RedditData.swift
+//  DataFromAPI.swift
 //  Contains functions to get information and JSON data needed from API
 //
 //  Created by Jemimah Beryl M. Sai on 16/05/2018.
@@ -11,8 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-
-struct jsonData {
+struct jsonData { // data model
     var myDate = MyDate()
     var subreddit: String = ""
     var id: String = ""
@@ -35,6 +34,7 @@ struct jsonData {
     }
     
     func getId(_ moreData: [String:AnyObject]) -> String {
+        
         guard let id = moreData[Constants.ResponseKeys.Id]  as? String else {
             return "Unknown"
         }
@@ -42,7 +42,7 @@ struct jsonData {
     } // get the id key and its value from JSON file
     
     func getSubReddit(_ moreData: [String:AnyObject]) -> String {
-        guard let subreddit = moreData[Constants.ResponseKeys.SubReddit]  as? String else {
+        guard let subreddit = moreData[Constants.ResponseKeys.SubReddit] as? String else {
             return "Unknown"
         }
         return "r/\(subreddit)"
@@ -117,40 +117,106 @@ struct jsonData {
 
 }
 
-final class JSONDataStore  {
+struct subRedditData {
+    var subscribers: Int = 0
+    var displayName: String = ""
+    var publicDescription: String = ""
+    var subRedditIcon: String = ""
+    
+    init(_ moreData: [String:AnyObject]) {
+        self.subscribers = getSubscribers(moreData)
+        self.displayName = getDisplayName(moreData)
+        self.publicDescription = getPublicDescription(moreData)
+        self.subRedditIcon = getSubRedditIcon(moreData)
+    }
+    
+    func getSubscribers(_ moreData: [String:AnyObject]) -> Int {
+
+        guard let subscribers = moreData[Constants.ResponseKeys.Subscribers]  as? Int else {
+            return 0
+        }
+
+        return subscribers
+    }
+    
+    func getDisplayName (_ moreData: [String:AnyObject]) -> String {
+        guard let displayName = moreData[Constants.ResponseKeys.DisplayName]  as? String else {
+            return "Unknown"
+        }
+        return displayName
+    }
+    
+    func getPublicDescription (_ moreData: [String:AnyObject]) -> String {
+        guard let publicDescription = moreData[Constants.ResponseKeys.PublicDescription]  as? String else {
+            return "Unknown"
+        }
+        return publicDescription
+    }
+    
+    func getSubRedditIcon (_ moreData: [String:AnyObject]) -> String {
+        guard let subRedditIcon = moreData[Constants.ResponseKeys.SubRedditIcon]  as? String else {
+            return "Unknown"
+        }
+        return subRedditIcon
+    }
+    
+}
+
+final class JSONDataStore  { // data storage parsed from JSON file
     
     static let sharedInstance = JSONDataStore()
     private init() {}  // applying sharing of instance
-
+    
     weak var refreshMe: refreshDelegate? // delegate for reloading collection view
     
-    var myList = [jsonData]() 
+    var myList = [jsonData]() // an array of jsonData
+    var mySubList = [subRedditData]()
+
+    func getConstantForSubReddit (_ subreddit: String ) {
+        Constants.ParameterValues.SubReddit = "AskReddit"
+    }
     
     func connectToAPI () { // connect to API
+        print("condstant is \(Constants.ParameterValues.SubReddit )")
+        var url = URL(string: "\(Constants.Source.APIBaseURL)\(Constants.ParameterValues.SubReddit)")!
+        var forWhatCell = "PostCells"
+        getJSONData(url, forWhatCell)
+        url = URL(string: "\(Constants.Source.APIBaseURL)")!
+        forWhatCell = "SubscribeCell"
+        getJSONData(url, forWhatCell)
+    }
+    
+    func getJSONData (_ url: URL, _ forWhatCell: String) {
         var i = 0
-        let url = URL(string: "\(Constants.Source.APIBaseURL)\(Constants.ParameterValues.SubReddit)")!
-
         Alamofire.request(url, method: .get).validate().responseJSON {  response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
+                
                 let countChildren = json[Constants.ResponseKeys.Data][Constants.ResponseKeys.Children].count
                 
-                while i < countChildren {
+                while i < countChildren { // get more data from children of data
                     let findChildren = json[Constants.ResponseKeys.Data][Constants.ResponseKeys.Children][i]
+                    
                     if let moreData = findChildren[Constants.ResponseKeys.Data].dictionaryObject {
-                        self.myList.append(jsonData(moreData as [String : AnyObject]))
+                        if forWhatCell == "PostCells" {
+                            self.myList.append(jsonData(moreData as [String : AnyObject]))
+                        } else {
+                            self.mySubList.append(subRedditData(moreData as [String : AnyObject]))
+                        }
                         i = i + 1
                     }
                 }
                 self.refreshMe?.reloadView() // reload collection view after fetching data
-                
             case .failure(let error):
                 print(error)
-            }
+            } // if url response failed
         }
-        
     }
+    
+    func getRandomIndex(_ count: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(count)))
+    } // for randomnization
     
 }
 

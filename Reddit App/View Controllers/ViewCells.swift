@@ -1,5 +1,5 @@
 //
-//  CollectionViewCell.swift
+//  ViewCells.swift
 //  Contains data to be displayed as content on its collection view cell
 //
 //  Created by Jemimah Beryl M. Sai on 10/05/2018.
@@ -31,7 +31,6 @@ class YellowCell: UICollectionViewCell   {
             return
         }
         self.CellPostImage.image = UIImage(data: imageData)
-        
     }
     
     override func awakeFromNib() {
@@ -40,6 +39,7 @@ class YellowCell: UICollectionViewCell   {
     }
     
 }
+
 
 class BlueCell: UICollectionViewCell   {
     
@@ -62,7 +62,6 @@ class BlueCell: UICollectionViewCell   {
             return
         }
         self.CellPostImage.image = UIImage(data: imageData)
-        
     }
     
     override func awakeFromNib() {
@@ -71,6 +70,7 @@ class BlueCell: UICollectionViewCell   {
     }
     
 }
+
 
 class ImageCell: UICollectionViewCell   {
     
@@ -93,7 +93,6 @@ class ImageCell: UICollectionViewCell   {
             return
         }
         self.CellPostImage.image = UIImage(data: imageData)
-        
     }
     
     override func awakeFromNib() {
@@ -103,11 +102,70 @@ class ImageCell: UICollectionViewCell   {
     
 }
 
+
 class SubscribeCell: UICollectionViewCell   {
 
+    @IBOutlet weak var SubRedditIconOne: UIImageView!
+    @IBOutlet weak var DisplayNameOne: UILabel!
+    @IBOutlet weak var PublicDescriptionOne: UITextView!
+    @IBOutlet weak var SubscribeCountOne: UILabel!
+
+    @IBOutlet weak var SubRedditIconTwo: UIImageView!
+    @IBOutlet weak var DisplayNameTwo: UILabel!
+    @IBOutlet weak var PublicDescriptionTwo: UITextView!
+    @IBOutlet weak var SubscribeCountTwo: UILabel!
+
+    @IBOutlet weak var SubRedditIconThree: UIImageView!
+    @IBOutlet weak var DisplayNameThree: UILabel!
+    @IBOutlet weak var PublicDescriptionThree: UITextView!
+    @IBOutlet weak var SubscribeCountThree: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
+}
+
+class SearchResultCell: UITableViewCell {
+ 
+    @IBOutlet weak var SubRedditIcon: UIImageView!
+    
+    @IBOutlet weak var SubRedditName: UILabel!
+    
+    @IBOutlet weak var SubscribersCount: UILabel!
+    
+    func displaySearchResults (_ icon: String, _ displayName: String, _ subscribersCount: Int) {
+        
+        let iconURL = URL(string: icon)
+        let formater = NumberFormatter()
+        //        formater.groupingSeparator = ", "
+        formater.numberStyle = .decimal
+        
+        SubRedditName.text = displayName
+        SubscribersCount.text = "\(String(describing: formater.string(from: NSNumber(value:subscribersCount))!)) subscribers"
+
+        if iconURL == nil {
+            self.SubRedditIcon.image = UIImage(named: "NoImageAvailable")
+        } else {
+            guard let imageData = try? Data(contentsOf: iconURL!) else {
+                self.SubRedditIcon.image = UIImage(named: "NoImageAvailable")
+                return
+            }
+            self.SubRedditIcon.image = UIImage(data: imageData)
+        }
+
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+
 }

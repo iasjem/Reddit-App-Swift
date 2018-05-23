@@ -29,9 +29,9 @@
         <!--Collection View Controller-->
         <scene sceneID="vvh-6H-OG7">
             <objects>
-                <viewController id="ng1-U6-d8z" customClass="CollectionViewController" customModule="Reddit_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ng1-U6-d8z" customClass="CollectionViewController" customModule="RedditApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SGP-Yu-JC1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3p5-6e-2mE">
@@ -71,6 +71,7 @@
                                                 <state key="normal" image="search-bar"/>
                                                 <connections>
                                                     <action selector="SearchBar:" destination="iYI-nc-MZb" eventType="touchUpInside" id="aTX-jy-dXc"/>
+                                                    <segue destination="dU6-cA-LEB" kind="presentation" identifier="searchSegue" modalPresentationStyle="overCurrentContext" id="jYY-3B-f8b"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -78,10 +79,10 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3V-U8-wwc" userLabel="Content">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1387"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj6-cf-BId" userLabel="Dashboard">
-                                        <rect key="frame" x="15" y="5" width="345" height="1377"/>
+                                        <rect key="frame" x="15" y="5" width="345" height="544"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="94d-LN-FvS">
                                             <size key="itemSize" width="50" height="50"/>
@@ -92,7 +93,7 @@
                                         <cells/>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-on-ByF" userLabel="Add Button">
-                                        <rect key="frame" x="297" y="1318" width="54" height="54"/>
+                                        <rect key="frame" x="297" y="485" width="54" height="54"/>
                                         <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="6qh-u2-jJr"/>
@@ -133,7 +134,6 @@
                         <viewLayoutGuide key="safeArea" id="McJ-RB-dbN"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="reddit-alien-outline" selectedImage="reddit-alien" id="xWG-qf-22Q"/>
-                    <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="CollectionView" destination="Oj6-cf-BId" id="R6j-QL-t31"/>
                     </connections>
@@ -142,6 +142,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSx-Ea-sff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-288.80000000000001" y="-338.23088455772114"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="XkS-B0-JMQ">
+            <objects>
+                <viewController id="dU6-cA-LEB" customClass="SearchViewController" customModule="RedditApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d69-u5-iIS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ5-uV-1lH" userLabel="Modal View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" barStyle="black" placeholder="Search " showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKU-2h-1dF">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kFW-QD-bbS" userLabel="SubReddit Table View">
+                                        <rect key="frame" x="10" y="56" width="355" height="591"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33000000000000002" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kFW-QD-bbS" secondAttribute="trailing" constant="10" id="4bs-Z6-7FB"/>
+                                    <constraint firstAttribute="bottom" secondItem="kFW-QD-bbS" secondAttribute="bottom" id="JBI-hl-cQn"/>
+                                    <constraint firstItem="TKU-2h-1dF" firstAttribute="top" secondItem="SQ5-uV-1lH" secondAttribute="top" id="Jqx-fx-obE"/>
+                                    <constraint firstItem="kFW-QD-bbS" firstAttribute="top" secondItem="TKU-2h-1dF" secondAttribute="bottom" id="Obt-Vo-3Sb"/>
+                                    <constraint firstAttribute="trailing" secondItem="TKU-2h-1dF" secondAttribute="trailing" id="PW6-0T-lPQ"/>
+                                    <constraint firstItem="TKU-2h-1dF" firstAttribute="leading" secondItem="SQ5-uV-1lH" secondAttribute="leading" id="T0S-dX-1s2"/>
+                                    <constraint firstItem="kFW-QD-bbS" firstAttribute="leading" secondItem="SQ5-uV-1lH" secondAttribute="leading" constant="10" id="yBY-Rs-Wxx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="jMQ-ZF-XII" firstAttribute="trailing" secondItem="SQ5-uV-1lH" secondAttribute="trailing" id="UaL-aC-Y7A"/>
+                            <constraint firstItem="SQ5-uV-1lH" firstAttribute="top" secondItem="jMQ-ZF-XII" secondAttribute="top" id="Uyu-IO-nl3"/>
+                            <constraint firstItem="SQ5-uV-1lH" firstAttribute="leading" secondItem="jMQ-ZF-XII" secondAttribute="leading" id="ejv-tP-wmh"/>
+                            <constraint firstItem="jMQ-ZF-XII" firstAttribute="bottom" secondItem="SQ5-uV-1lH" secondAttribute="bottom" id="pes-4A-FBb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jMQ-ZF-XII"/>
+                    </view>
+                    <connections>
+                        <outlet property="modalView" destination="SQ5-uV-1lH" id="zIi-Gl-gcJ"/>
+                        <outlet property="searchBar" destination="TKU-2h-1dF" id="M0J-kb-xhH"/>
+                        <outlet property="searchTableView" destination="kFW-QD-bbS" id="Nug-ma-6pv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hHn-zr-xbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="488.80000000000001" y="-339.58020989505252"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JGm-ee-gPy">

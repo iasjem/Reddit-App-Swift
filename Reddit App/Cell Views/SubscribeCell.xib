@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="Ifh-oU-3GO" customClass="SubscribeCell" customModule="Reddit_App" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="Ifh-oU-3GO" customClass="SubscribeCell" customModule="RedditApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="330" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -349,6 +349,20 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="asc-6u-N2v"/>
+            <connections>
+                <outlet property="DisplayNameOne" destination="Uo4-J5-da3" id="0Qd-X7-SYy"/>
+                <outlet property="DisplayNameThree" destination="6cP-1A-4Vv" id="1t4-Al-Mbr"/>
+                <outlet property="DisplayNameTwo" destination="EG8-xo-NkM" id="H6J-RK-1aW"/>
+                <outlet property="PublicDescriptionOne" destination="hc4-eR-YXj" id="AaN-Av-7KK"/>
+                <outlet property="PublicDescriptionThree" destination="koS-pY-9RB" id="kNu-GZ-E70"/>
+                <outlet property="PublicDescriptionTwo" destination="8qp-eM-zG1" id="aRp-Nd-uSC"/>
+                <outlet property="SubRedditIconOne" destination="o5z-MC-ghg" id="eq9-M4-JNV"/>
+                <outlet property="SubRedditIconThree" destination="1wP-hP-Okf" id="e69-uM-3Rv"/>
+                <outlet property="SubRedditIconTwo" destination="XIa-iI-4s3" id="GbT-Kw-ZAI"/>
+                <outlet property="SubscribeCountOne" destination="RHx-4e-CK0" id="de3-lR-hK4"/>
+                <outlet property="SubscribeCountThree" destination="X0Y-hk-Phz" id="vNE-z9-vLi"/>
+                <outlet property="SubscribeCountTwo" destination="BaP-Cg-bkg" id="nQr-f4-rAY"/>
+            </connections>
             <point key="canvasLocation" x="44" y="-8"/>
         </view>
     </objects>

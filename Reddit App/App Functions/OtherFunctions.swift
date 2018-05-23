@@ -26,7 +26,7 @@ struct Constants {
     }
     
     struct ParameterValues {
-        static let SubReddit = "iOSProgramming"
+        static var SubReddit = "iOSProgramming"
         static let Format = ".json"
         static let FilterType = ""
     }
@@ -47,6 +47,11 @@ struct Constants {
         static let imageWidth = "width"
         static let imageHeight = "height"
         static let CreatedUTC = "created_utc"
+        
+        static let SubRedditIcon = "icon_img"
+        static let Subscribers = "subscribers"
+        static let DisplayName = "display_name_prefixed"
+        static let PublicDescription = "public_description"
     }
     
     struct ResponseValues {
