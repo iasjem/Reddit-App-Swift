@@ -122,12 +122,14 @@ struct subRedditData {
     var displayName: String = ""
     var publicDescription: String = ""
     var subRedditIcon: String = ""
+    var bannerImage: String = ""
     
     init(_ moreData: [String:AnyObject]) {
         self.subscribers = getSubscribers(moreData)
         self.displayName = getDisplayName(moreData)
         self.publicDescription = getPublicDescription(moreData)
         self.subRedditIcon = getSubRedditIcon(moreData)
+        self.bannerImage = getBannerImage(moreData)
     }
     
     func getSubscribers(_ moreData: [String:AnyObject]) -> Int {
@@ -160,6 +162,12 @@ struct subRedditData {
         return subRedditIcon
     }
     
+    func getBannerImage (_ moreData: [String:AnyObject]) -> String {
+        guard let bannerImage = moreData[Constants.ResponseKeys.BannerImage]  as? String else {
+            return "Unknown"
+        }
+        return bannerImage
+    }
 }
 
 final class JSONDataStore  { // data storage parsed from JSON file

@@ -52,6 +52,7 @@ struct Constants {
         static let Subscribers = "subscribers"
         static let DisplayName = "display_name_prefixed"
         static let PublicDescription = "public_description"
+        static let BannerImage = "header_img"
     }
     
     struct ResponseValues {

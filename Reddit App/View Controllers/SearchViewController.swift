@@ -23,8 +23,6 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     let store = JSONDataStore.sharedInstance
     var subreddit: String = ""
-    var searchActive: Bool = false
-    var filtered: [subRedditData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +31,12 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         searchTableView.dataSource = self
         searchBar.delegate = self
        
-        
         searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
     }
     
     // Filter list items by active and archived tasks
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if(searchActive) {
-//            return filtered.count
-//        }
-//        return store.mySubList.count;
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -64,11 +57,6 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         subreddit = searchText
-        if(filtered.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
-        }
         self.searchTableView.reloadData()
     }
     
@@ -77,19 +65,15 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     private func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = true;
     }
     
     private func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false;
     }
     
     private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false
     }
     
     private func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
     }
     
     func dismissModalView() {

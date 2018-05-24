@@ -53,7 +53,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             list = store.mySubList[1]
                 cell.displaySubscribeCellTwo(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription)
             list = store.mySubList[2]
-                cell.displaySubscribeCellThree(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription)
+                cell.displaySubscribeCellThree(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription, list.bannerImage)
             return cell
             
         } else {

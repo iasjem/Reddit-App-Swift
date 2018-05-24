@@ -119,6 +119,7 @@ class SubscribeCell: UICollectionViewCell   {
     @IBOutlet weak var DisplayNameThree: UILabel!
     @IBOutlet weak var PublicDescriptionThree: UITextView!
     @IBOutlet weak var SubscribeCountThree: UILabel!
+    @IBOutlet weak var BannerImageThree: UIImageView!
     
     func displaySubscribeCellOne (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
         
@@ -160,15 +161,18 @@ class SubscribeCell: UICollectionViewCell   {
         }
     }
     
-    func displaySubscribeCellThree (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
+    func displaySubscribeCellThree (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String, _ bannerImage: String) {
         
         let iconURL = URL(string: icon)
+        let bannerURL = URL(string: bannerImage)
+        
         let formater = NumberFormatter()
         formater.numberStyle = .decimal
         
         DisplayNameThree.text = displayName
         SubscribeCountThree.text = "\(String(describing: formater.string(from: NSNumber(value:subscribersCount))!)) subscribers"
         PublicDescriptionThree.text = publicDescription
+        
         if iconURL == nil {
             self.SubRedditIconThree.image = UIImage(named: "NoImageAvailable")
         } else {
@@ -177,6 +181,17 @@ class SubscribeCell: UICollectionViewCell   {
                 return
             }
             self.SubRedditIconThree.image = UIImage(data: imageData)
+        }
+        
+        if bannerURL == nil {
+            self.BannerImageThree.image = UIImage(named: "NoImageAvailable")
+        } else {
+            guard let imageData = try? Data(contentsOf: bannerURL!) else {
+                self.BannerImageThree.image = UIImage(named: "NoImageAvailable")
+                return
+            }
+            
+            self.BannerImageThree.image = UIImage(data: imageData)
         }
     }
     

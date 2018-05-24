@@ -208,7 +208,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfW-wv-CVY" userLabel="Top">
                                                                     <rect key="frame" x="0.0" y="0.0" width="165" height="130"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="c54-WA-GzJ" userLabel="Image">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="c54-WA-GzJ" userLabel="Image">
                                                                             <rect key="frame" x="0.0" y="0.0" width="165" height="130"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </imageView>
@@ -350,6 +350,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="asc-6u-N2v"/>
             <connections>
+                <outlet property="BannerImageThree" destination="c54-WA-GzJ" id="Ozr-tk-QMo"/>
                 <outlet property="DisplayNameOne" destination="Uo4-J5-da3" id="0Qd-X7-SYy"/>
                 <outlet property="DisplayNameThree" destination="6cP-1A-4Vv" id="1t4-Al-Mbr"/>
                 <outlet property="DisplayNameTwo" destination="EG8-xo-NkM" id="H6J-RK-1aW"/>

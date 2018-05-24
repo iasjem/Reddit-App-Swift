@@ -54,11 +54,11 @@
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uey-OX-wgP" userLabel="More Vertical">
-                                    <rect key="frame" x="300" y="10" width="15" height="22"/>
+                                    <rect key="frame" x="311" y="10" width="4" height="22"/>
                                     <state key="normal" image="more_vertical"/>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqd-Z2-fN9">
-                                    <rect key="frame" x="280.5" y="15" width="13.5" height="14"/>
+                                    <rect key="frame" x="291.5" y="15" width="13.5" height="14"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -69,18 +69,18 @@
                                 <constraint firstItem="uey-OX-wgP" firstAttribute="top" secondItem="MPn-h1-ahv" secondAttribute="top" constant="10" id="IG6-8b-bbc"/>
                                 <constraint firstItem="hdp-k0-KCk" firstAttribute="leading" secondItem="MPn-h1-ahv" secondAttribute="leading" constant="15" id="MLj-Zd-h6s"/>
                                 <constraint firstItem="hqd-Z2-fN9" firstAttribute="top" secondItem="MPn-h1-ahv" secondAttribute="top" constant="15" id="cCt-FR-o6M"/>
-                                <constraint firstItem="hqd-Z2-fN9" firstAttribute="leading" secondItem="hdp-k0-KCk" secondAttribute="trailing" constant="134" id="gxS-Rd-TVM"/>
                                 <constraint firstItem="hdp-k0-KCk" firstAttribute="top" secondItem="MPn-h1-ahv" secondAttribute="top" constant="10" id="hJD-LJ-jha"/>
                                 <constraint firstAttribute="height" constant="40" id="suI-gc-BhH"/>
                                 <constraint firstAttribute="trailing" secondItem="uey-OX-wgP" secondAttribute="trailing" constant="15" id="tlb-pa-HPd"/>
                                 <constraint firstItem="uey-OX-wgP" firstAttribute="leading" secondItem="hqd-Z2-fN9" secondAttribute="trailing" constant="6" id="zH8-Al-T15"/>
+                                <constraint firstItem="hqd-Z2-fN9" firstAttribute="leading" secondItem="MPn-h1-ahv" secondAttribute="leading" constant="291.5" id="zTa-NS-Ykr"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sp-Cd-UJv" userLabel="Middle">
                             <rect key="frame" x="15" y="48" width="300" height="133"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Weekly Question Thread - March 26, 2018" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP9-0E-A2b">
-                                    <rect key="frame" x="8" y="8" width="200" height="60"/>
+                                    <rect key="frame" x="8" y="8" width="200" height="62"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
