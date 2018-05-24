@@ -12,6 +12,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBOutlet weak var CollectionView: UICollectionView!
     
+    @IBOutlet weak var NoResultLabel: UILabel!
+    
     var subreddit: String =  Constants.ParameterValues.SubReddit
     
     @IBAction func searchButton(_ sender: Any) {
@@ -27,17 +29,20 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         CollectionView.delegate = self
         CollectionView.dataSource = self
         CollectionView.collectionViewLayout = SnappingFlowLayout()
+        self.CollectionView.register(UINib.init(nibName: "YellowCell", bundle: nil), forCellWithReuseIdentifier: "YellowCell")
+        self.CollectionView.register(UINib.init(nibName: "BlueCell", bundle: nil), forCellWithReuseIdentifier: "BlueCell")
+        self.CollectionView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
+        self.CollectionView.register(UINib.init(nibName: "SubscribeCell", bundle: nil), forCellWithReuseIdentifier: "SubscribeCell")
         
+        load(false)
+        
+    }
+    
+    func load(_ shouldTableEmpty: Bool) {
         performUIUpdatesOnMain {
-            self.store.connectToAPI(self.subreddit) // connect to API
-            self.store.refreshMe = self
-           
-            self.CollectionView.register(UINib.init(nibName: "YellowCell", bundle: nil), forCellWithReuseIdentifier: "YellowCell")
-            self.CollectionView.register(UINib.init(nibName: "BlueCell", bundle: nil), forCellWithReuseIdentifier: "BlueCell")
-            self.CollectionView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
-            self.CollectionView.register(UINib.init(nibName: "SubscribeCell", bundle: nil), forCellWithReuseIdentifier: "SubscribeCell")
+                self.store.connectToAPI(self.subreddit, shouldTableEmpty) // connect to API
+                self.store.refreshMe = self
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -78,7 +83,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                     return cell
                 }
             }
-            
         }
     }
 
@@ -89,18 +93,33 @@ extension CollectionViewController: RefreshDelegate, SearchViewControllerDelegat
     func reloadView() {
         performUIUpdatesOnMain {
             self.CollectionView.reloadData()
+            if self.store.myList.isEmpty { // if no subreddit found, show no result.
+                self.NoResultLabel.isHidden = false
+                self.CollectionView.isHidden = true
+            } else { // if there are results for subreddit, show all cells
+                self.NoResultLabel.isHidden = true
+                self.CollectionView.isHidden = false
+            }
         }
     }
     
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchSegue" {
+            if let searchViewContoller = segue.destination as? SearchViewController {
+                searchViewContoller.SearchQueryDelegate = self
+            }
+        }
     }
     
-    func getSearchQuery() {
-        print("test")
+     func getSearchQuery(_ searchQuery: String) {
+        var query = searchQuery
+        if query.isEmpty { // if entered search query is empty, set to current subreddit
+            query = subreddit 
+        }
+        subreddit = query
+        load(true)
     }
 
 }
-
 
 

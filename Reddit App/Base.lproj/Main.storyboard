@@ -81,6 +81,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3V-U8-wwc" userLabel="Content">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No result for subreddit found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blL-Ys-mCQ" userLabel="NoResult">
+                                        <rect key="frame" x="50" y="203" width="275" height="81"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj6-cf-BId" userLabel="Dashboard">
                                         <rect key="frame" x="15" y="5" width="345" height="544"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,8 +118,12 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Oj6-cf-BId" secondAttribute="bottom" constant="5" id="8ZA-TH-2MW"/>
+                                    <constraint firstItem="blL-Ys-mCQ" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="50" id="944-91-KLs"/>
+                                    <constraint firstItem="blL-Ys-mCQ" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" constant="203" id="F1e-D0-pji"/>
                                     <constraint firstAttribute="trailing" secondItem="Oj6-cf-BId" secondAttribute="trailing" constant="15" id="WDD-mF-MA2"/>
+                                    <constraint firstAttribute="trailing" secondItem="blL-Ys-mCQ" secondAttribute="trailing" constant="50" id="X02-CG-hLG"/>
                                     <constraint firstItem="Oj6-cf-BId" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="15" id="cNf-oq-ztR"/>
+                                    <constraint firstAttribute="bottom" secondItem="blL-Ys-mCQ" secondAttribute="bottom" constant="270" id="oWr-r6-eKt"/>
                                     <constraint firstItem="Oj6-cf-BId" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" constant="5" id="qpP-AP-CHw"/>
                                     <constraint firstAttribute="bottom" secondItem="ynP-on-ByF" secondAttribute="bottom" constant="15" id="tUh-uU-jPn"/>
                                     <constraint firstAttribute="trailing" secondItem="ynP-on-ByF" secondAttribute="trailing" constant="24" id="vhj-O1-qdV"/>
@@ -136,12 +146,13 @@
                     <tabBarItem key="tabBarItem" title="" image="reddit-alien-outline" selectedImage="reddit-alien" id="xWG-qf-22Q"/>
                     <connections>
                         <outlet property="CollectionView" destination="Oj6-cf-BId" id="R6j-QL-t31"/>
+                        <outlet property="NoResultLabel" destination="blL-Ys-mCQ" id="78W-Ka-xbe"/>
                     </connections>
                 </viewController>
                 <exit id="iYI-nc-MZb" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSx-Ea-sff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-288.80000000000001" y="-338.23088455772114"/>
+            <point key="canvasLocation" x="-288.80000000000001" y="-338.68065967016497"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="XkS-B0-JMQ">

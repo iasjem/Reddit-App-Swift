@@ -8,18 +8,18 @@
 
 import UIKit
 
+
 protocol SearchViewControllerDelegate: class {
-    func getSearchQuery()
+    func getSearchQuery(_ searchQuery: String)
 }
 
 class SearchViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var modalView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var searchTableView: UITableView!
     
-    weak var QueryMe: SearchViewControllerDelegate?
+    weak var SearchQueryDelegate: SearchViewControllerDelegate?
     
     let store = JSONDataStore.sharedInstance
     var subreddit: String = ""
@@ -34,7 +34,6 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
     }
     
-    // Filter list items by active and archived tasks
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
@@ -51,7 +50,6 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        QueryMe?.getSearchQuery()
         dismissModalView()
     }
     
@@ -61,19 +59,8 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        SearchQueryDelegate?.getSearchQuery(subreddit)
         dismissModalView()
-    }
-    
-    private func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-    }
-    
-    private func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-    }
-    
-    private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    }
-    
-    private func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     }
     
     func dismissModalView() {
@@ -81,8 +68,6 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
 }
-
-
 
 
 

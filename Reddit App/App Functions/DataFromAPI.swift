@@ -145,7 +145,7 @@ struct subRedditData {
         guard let displayName = moreData[Constants.ResponseKeys.DisplayName]  as? String else {
             return "Unknown"
         }
-        return displayName
+        return "r/\(displayName)"
     }
     
     func getPublicDescription (_ moreData: [String:AnyObject]) -> String {
@@ -180,10 +180,14 @@ final class JSONDataStore  { // data storage parsed from JSON file
     var myList = [jsonData]() // an array of jsonData
     var mySubList = [subRedditData]()
     
-    func connectToAPI (_ subreddit: String) { // connect to API
+    func connectToAPI (_ subreddit: String, _ shouldTableEmpty: Bool) { // connect to API
+        if shouldTableEmpty {
+            myList = []
+        }
         var url = URL(string: "\(Constants.Source.APIBaseURL)\(subreddit)")!
         var forWhatCell = "PostCells"
         getJSONData(url, forWhatCell)
+        
         url = URL(string: "\(Constants.Source.APIBaseURL)")!
         forWhatCell = "SubscribeCell"
         getJSONData(url, forWhatCell)
