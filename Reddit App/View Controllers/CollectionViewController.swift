@@ -40,8 +40,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func load(_ shouldTableEmpty: Bool) {
         performUIUpdatesOnMain {
-                self.store.connectToAPI(self.subreddit, shouldTableEmpty) // connect to API
-                self.store.refreshMe = self
+            self.store.connectToAPI(self.subreddit, shouldTableEmpty) // connect to API
+            self.store.refreshMe = self
         }
     }
     
@@ -85,7 +85,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
     }
-
 }
 
 extension CollectionViewController: RefreshDelegate, SearchViewControllerDelegate {

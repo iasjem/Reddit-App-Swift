@@ -23,6 +23,16 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     let store = JSONDataStore.sharedInstance
     var subreddit: String = ""
+    var filteredResults = [SubRedditData]()
+    var searchActive = false
+    
+    func isSearchBarTextEmpty () -> Bool {
+        return searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFilterActive() -> Bool {
+        return !isSearchBarTextEmpty()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +40,14 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchBar.delegate = self
-       
+        searchTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFilterActive() {
+            return filteredResults.count
+        }
         return 0
     }
     
@@ -44,9 +57,20 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as! SearchResultCell
-            let subList = store.mySubList[indexPath.row]
-            cell.displaySearchResults(subList.subRedditIcon, subList.displayName, subList.subscribers)
+        let list: SubRedditData
+            if isFilterActive() {
+                list = filteredResults[indexPath.row]
+            } else {
+                list = store.mySubList[indexPath.row]
+            }
+            cell.displaySearchResults(list.subRedditIcon, list.displayName, list.subscribers)
         return cell
+    }
+    
+    func filterContent(_ searchText: String) {
+        filteredResults = store.mySubList.filter({ (sub: SubRedditData) -> Bool in
+            return sub.displayName.lowercased().contains(searchText.lowercased())
+        })
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -55,7 +79,21 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         subreddit = searchText
+        filterContent(searchText)
+//        for x in filteredResults {
+//            print(x)
+//        }
         self.searchTableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+        print("start -> \(searchActive)")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+        print("end -> \(searchActive)")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

@@ -117,7 +117,7 @@ struct jsonData { // data model
 
 }
 
-struct subRedditData {
+struct SubRedditData {
     var subscribers: Int = 0
     var displayName: String = ""
     var publicDescription: String = ""
@@ -178,7 +178,7 @@ final class JSONDataStore  { // data storage parsed from JSON file
     weak var refreshMe: RefreshDelegate? // delegate for reloading collection view
     
     var myList = [jsonData]() // an array of jsonData
-    var mySubList = [subRedditData]()
+    var mySubList = [SubRedditData]()
     
     func connectToAPI (_ subreddit: String, _ shouldTableEmpty: Bool) { // connect to API
         if shouldTableEmpty {
@@ -209,7 +209,7 @@ final class JSONDataStore  { // data storage parsed from JSON file
                         if forWhatCell == "PostCells" {
                             self.myList.append(jsonData(moreData as [String : AnyObject]))
                         } else {
-                            self.mySubList.append(subRedditData(moreData as [String : AnyObject]))
+                            self.mySubList.append(SubRedditData(moreData as [String : AnyObject]))
                         }
                         i = i + 1
                     }
