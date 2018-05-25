@@ -51,6 +51,7 @@ struct Constants {
         static let SubRedditIcon = "icon_img"
         static let Subscribers = "subscribers"
         static let DisplayName = "display_name"
+        static let DisplayNamePrefixed = "display_name_prefixed"
         static let PublicDescription = "public_description"
         static let BannerImage = "header_img"
     }

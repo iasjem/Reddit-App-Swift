@@ -40,14 +40,25 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchBar.delegate = self
+         tapGestureOnTable()
+        
         searchTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
+        
+    }
+    
+    func tapGestureOnTable() {
+        let tapUIView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: searchTableView.frame.height))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissModalView))
+        tapUIView.addGestureRecognizer(tapGesture)
+        searchTableView.tableFooterView = tapUIView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFilterActive() {
             return filteredResults.count
         }
+       
         return 0
     }
     
@@ -56,6 +67,7 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as! SearchResultCell
         let list: SubRedditData
             if isFilterActive() {
@@ -63,8 +75,14 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
             } else {
                 list = store.mySubList[indexPath.row]
             }
-            cell.displaySearchResults(list.subRedditIcon, list.displayName, list.subscribers)
+            cell.displaySearchResults(list.subRedditIcon, list.displayNamePrefixed, list.subscribers)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        subreddit = filteredResults[indexPath.row].displayName
+        SearchQueryDelegate?.getSearchQuery(subreddit)
+        dismissModalView()
     }
     
     func filterContent(_ searchText: String) {
@@ -79,21 +97,8 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         subreddit = searchText
-        filterContent(searchText)
-//        for x in filteredResults {
-//            print(x)
-//        }
+        filterContent(subreddit)
         self.searchTableView.reloadData()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true
-        print("start -> \(searchActive)")
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false
-        print("end -> \(searchActive)")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -101,8 +106,10 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         dismissModalView()
     }
     
-    func dismissModalView() {
+    @objc func dismissModalView() {
+        
         dismiss(animated: true, completion: nil)
+        
     }
     
 }

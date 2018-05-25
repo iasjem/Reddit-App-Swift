@@ -120,6 +120,7 @@ struct jsonData { // data model
 struct SubRedditData {
     var subscribers: Int = 0
     var displayName: String = ""
+    var displayNamePrefixed: String = ""
     var publicDescription: String = ""
     var subRedditIcon: String = ""
     var bannerImage: String = ""
@@ -130,6 +131,7 @@ struct SubRedditData {
         self.publicDescription = getPublicDescription(moreData)
         self.subRedditIcon = getSubRedditIcon(moreData)
         self.bannerImage = getBannerImage(moreData)
+        self.displayNamePrefixed = getDisplayNamePrefixed(moreData)
     }
     
     func getSubscribers(_ moreData: [String:AnyObject]) -> Int {
@@ -145,7 +147,14 @@ struct SubRedditData {
         guard let displayName = moreData[Constants.ResponseKeys.DisplayName]  as? String else {
             return "Unknown"
         }
-        return "r/\(displayName)"
+        return displayName
+    }
+    
+    func getDisplayNamePrefixed (_ moreData: [String:AnyObject]) -> String {
+        guard let displayNamePrefixed = moreData[Constants.ResponseKeys.DisplayNamePrefixed]  as? String else {
+            return "Unknown"
+        }
+        return displayNamePrefixed
     }
     
     func getPublicDescription (_ moreData: [String:AnyObject]) -> String {
@@ -183,6 +192,7 @@ final class JSONDataStore  { // data storage parsed from JSON file
     func connectToAPI (_ subreddit: String, _ shouldTableEmpty: Bool) { // connect to API
         if shouldTableEmpty {
             myList = []
+            mySubList = []
         }
         var url = URL(string: "\(Constants.Source.APIBaseURL)\(subreddit)")!
         var forWhatCell = "PostCells"

@@ -210,14 +210,14 @@ class SearchResultCell: UITableViewCell {
     
     @IBOutlet weak var SubscribersCount: UILabel!
     
-    func displaySearchResults (_ icon: String, _ displayName: String, _ subscribersCount: Int) {
+    func displaySearchResults (_ icon: String, _ displayNamePrefixed: String, _ subscribersCount: Int) {
         
         let iconURL = URL(string: icon)
         let formater = NumberFormatter()
         //        formater.groupingSeparator = ", "
         formater.numberStyle = .decimal
         
-        SubRedditName.text = displayName
+        SubRedditName.text = displayNamePrefixed
         SubscribersCount.text = "\(String(describing: formater.string(from: NSNumber(value:subscribersCount))!)) subscribers"
 
         if iconURL == nil {
@@ -229,7 +229,6 @@ class SearchResultCell: UITableViewCell {
             }
             self.SubRedditIcon.image = UIImage(data: imageData)
         }
-
     }
     
     override func awakeFromNib() {
