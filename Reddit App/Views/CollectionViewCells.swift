@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YellowCell: UICollectionViewCell   {
+class YellowCell: UICollectionViewCell   { // cell with post description (SelfText)
     
     @IBOutlet weak var CellPostImage: UIImageView!
     @IBOutlet weak var CellPostTitle: UITextView!
@@ -30,6 +30,7 @@ class YellowCell: UICollectionViewCell   {
             self.CellPostImage.image = UIImage(named: "NoImageAvailable")
             return
         }
+        
         self.CellPostImage.image = UIImage(data: imageData)
     }
     
@@ -41,7 +42,7 @@ class YellowCell: UICollectionViewCell   {
 }
 
 
-class BlueCell: UICollectionViewCell   {
+class BlueCell: UICollectionViewCell   { // Cell with post title only
     
     @IBOutlet weak var CellPostImage: UIImageView!
     @IBOutlet weak var CellPostTitle: UITextView!
@@ -72,7 +73,7 @@ class BlueCell: UICollectionViewCell   {
 }
 
 
-class ImageCell: UICollectionViewCell   {
+class ImageCell: UICollectionViewCell   { // Cell with post title only but with wider post image
     
     @IBOutlet weak var CellPostImage: UIImageView!
     @IBOutlet weak var CellPostTitle: UITextView!
@@ -103,7 +104,7 @@ class ImageCell: UICollectionViewCell   {
 }
 
 
-class SubscribeCell: UICollectionViewCell   {
+class SubscribeCell: UICollectionViewCell   { // cell with subscription boxes for subreddits
 
     @IBOutlet weak var SubRedditIconOne: UIImageView!
     @IBOutlet weak var DisplayNameOne: UILabel!
@@ -139,7 +140,8 @@ class SubscribeCell: UICollectionViewCell   {
             }
             self.SubRedditIconOne.image = UIImage(data: imageData)
         }
-    }
+    } // display first subscribe cell
+    
     
     func displaySubscribeCellTwo (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
         
@@ -159,7 +161,8 @@ class SubscribeCell: UICollectionViewCell   {
             }
             self.SubRedditIconTwo.image = UIImage(data: imageData)
         }
-    }
+    } // display second subscribe cell
+    
     
     func displaySubscribeCellThree (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String, _ bannerImage: String) {
         
@@ -193,7 +196,8 @@ class SubscribeCell: UICollectionViewCell   {
             
             self.BannerImageThree.image = UIImage(data: imageData)
         }
-    }
+    } // display third subscribe cell
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -202,44 +206,3 @@ class SubscribeCell: UICollectionViewCell   {
     
 }
 
-class SearchResultCell: UITableViewCell {
- 
-    @IBOutlet weak var SubRedditIcon: UIImageView!
-    
-    @IBOutlet weak var SubRedditName: UILabel!
-    
-    @IBOutlet weak var SubscribersCount: UILabel!
-    
-    func displaySearchResults (_ icon: String, _ displayNamePrefixed: String, _ subscribersCount: Int) {
-        
-        let iconURL = URL(string: icon)
-        let formater = NumberFormatter()
-        //        formater.groupingSeparator = ", "
-        formater.numberStyle = .decimal
-        
-        SubRedditName.text = displayNamePrefixed
-        SubscribersCount.text = "\(String(describing: formater.string(from: NSNumber(value:subscribersCount))!)) subscribers"
-
-        if iconURL == nil {
-            self.SubRedditIcon.image = UIImage(named: "NoImageAvailable")
-        } else {
-            guard let imageData = try? Data(contentsOf: iconURL!) else {
-                self.SubRedditIcon.image = UIImage(named: "NoImageAvailable")
-                return
-            }
-            self.SubRedditIcon.image = UIImage(data: imageData)
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-
-}

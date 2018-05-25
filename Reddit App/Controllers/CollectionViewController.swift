@@ -14,13 +14,10 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var NoResultLabel: UILabel!
     @IBOutlet weak var LoadViewIndicator: UIActivityIndicatorView!
     
-    var subreddit: String =  Constants.ParameterValues.SubReddit
-    
-    @IBAction func searchButton(_ sender: Any) {
-        performSegue(withIdentifier: "searchForm", sender: nil)
-    }
+    var subreddit: String =  JSONConstants.ParameterValues.SubReddit // default subreddit is iOSProgramming
     
     let store = JSONDataStore.sharedInstance
+    
     
     override func viewDidLoad() {
         
@@ -28,7 +25,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         
         CollectionView.delegate = self
         CollectionView.dataSource = self
+        
         CollectionView.collectionViewLayout = SnappingFlowLayout()
+        
         self.CollectionView.register(UINib.init(nibName: "YellowCell", bundle: nil), forCellWithReuseIdentifier: "YellowCell")
         self.CollectionView.register(UINib.init(nibName: "BlueCell", bundle: nil), forCellWithReuseIdentifier: "BlueCell")
         self.CollectionView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
@@ -38,6 +37,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
+    
     func load(_ shouldTableEmpty: Bool) {
         performUIUpdatesOnMain {
             self.store.finishMe = self
@@ -46,23 +46,31 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return store.myList.count / 5
+    
+    @IBAction func searchButton(_ sender: Any) {
+        performSegue(withIdentifier: "searchForm", sender: nil)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+         return store.myPostList.count / 5
+    }
+    
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if indexPath.row  == 4 { // display subscription cells
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubscribeCell", for: indexPath) as! SubscribeCell
-            var list = store.mySubList[0]
+            var list = store.mySubRedditList[0]
                 cell.displaySubscribeCellOne(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription)
-            list = store.mySubList[1]
+            list = store.mySubRedditList[1]
                 cell.displaySubscribeCellTwo(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription)
-            list = store.mySubList[2]
+            list = store.mySubRedditList[2]
                 cell.displaySubscribeCellThree(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription, list.bannerImage)
             return cell
         } else { // display post cells
-            let list = store.myList[indexPath.row]
+            
+            let list = store.myPostList[indexPath.row]
+            
             if list.selfText != "" {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "YellowCell", for: indexPath) as! YellowCell
                 cell.displayCollectionViewCell(list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
@@ -77,18 +85,23 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                     cell.displayCollectionViewCell(list.title, list.subreddit, list.author, list.createdUTC, list.imageUrl)
                     return cell
                 }
+                
             }
+            
         }
+        
     }
     
+    
 }
+
 
 extension CollectionViewController: RefreshDelegate, SearchViewControllerDelegate {
     
     func reloadView() {
         performUIUpdatesOnMain {
             self.CollectionView.reloadData()
-            if self.store.myList.isEmpty { // if no subreddit found, show no result.
+            if self.store.myPostList.isEmpty { // if no subreddit found, show no result.
                 self.NoResultLabel.isHidden = false
                 self.CollectionView.isHidden = true
             } else { // if there are results for subreddit, show all cells

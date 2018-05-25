@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable class RoundButton: UIButton {
+@IBDesignable class RoundButton: UIButton { // to make buttons round with customized style
     @IBInspectable var cornerRadius: CGFloat = 15 {
         didSet {
             refreshCorners(value: cornerRadius)
@@ -38,11 +38,10 @@ import UIKit
         layer.borderWidth = 1
         layer.borderColor = UIColor.lightGray.cgColor
     }
-    
-    
 }
 
-class SnappingFlowLayout: UICollectionViewFlowLayout {
+
+class SnappingFlowLayout: UICollectionViewFlowLayout { // displays a snapping glow layout for collection view table
     private var firstSetupDone = false
     
     override func prepare() {

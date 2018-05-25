@@ -71,9 +71,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="KLt-O4-icn"/>
             <connections>
-                <outlet property="SubRedditIcon" destination="Rcx-W4-wqZ" id="SD2-ol-lkh"/>
-                <outlet property="SubRedditName" destination="Lxs-pX-xO8" id="Kz0-57-HUl"/>
-                <outlet property="SubscribersCount" destination="Cuh-AA-Yhm" id="IEo-aw-0S9"/>
+                <outlet property="SubRedditIcon" destination="Rcx-W4-wqZ" id="iW2-pQ-uIZ"/>
+                <outlet property="SubRedditName" destination="Lxs-pX-xO8" id="bk2-FG-4ul"/>
+                <outlet property="SubscribersCount" destination="Cuh-AA-Yhm" id="ARL-fW-mpn"/>
             </connections>
             <point key="canvasLocation" x="9.5" y="-87"/>
         </view>

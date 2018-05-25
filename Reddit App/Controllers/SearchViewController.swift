@@ -26,13 +26,6 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     var filteredResults = [SubRedditData]()
     var searchActive = false
     
-    func isSearchBarTextEmpty () -> Bool {
-        return searchBar.text?.isEmpty ?? true
-    }
-    
-    func isFilterActive() -> Bool {
-        return !isSearchBarTextEmpty()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +33,43 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchBar.delegate = self
-         tapGestureOnTable()
+        tapGestureOnTable()
         
         searchTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
         
     }
     
+    
     func tapGestureOnTable() {
         let tapUIView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: searchTableView.frame.height))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissModalView))
         tapUIView.addGestureRecognizer(tapGesture)
         searchTableView.tableFooterView = tapUIView
+    }
+
+    
+    func isSearchBarTextEmpty () -> Bool {
+        return searchBar.text?.isEmpty ?? true
+    }
+    
+    
+    func isFilterActive() -> Bool {
+        return !isSearchBarTextEmpty()
+    }
+    
+    
+    func filterContent(_ searchText: String) {
+        filteredResults = store.mySubRedditList.filter({ (sub: SubRedditData) -> Bool in
+            return sub.displayName.lowercased().contains(searchText.lowercased())
+        })
+    }
+    
+    
+    @objc func dismissModalView() {
+        
+        dismiss(animated: true, completion: nil)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,9 +80,11 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         return 0
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -73,11 +93,12 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
             if isFilterActive() {
                 list = filteredResults[indexPath.row]
             } else {
-                list = store.mySubList[indexPath.row]
+                list = store.mySubRedditList[indexPath.row]
             }
             cell.displaySearchResults(list.subRedditIcon, list.displayNamePrefixed, list.subscribers)
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         subreddit = filteredResults[indexPath.row].displayName
@@ -85,15 +106,11 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         dismissModalView()
     }
     
-    func filterContent(_ searchText: String) {
-        filteredResults = store.mySubList.filter({ (sub: SubRedditData) -> Bool in
-            return sub.displayName.lowercased().contains(searchText.lowercased())
-        })
-    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismissModalView()
     }
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         subreddit = searchText
@@ -101,15 +118,10 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         self.searchTableView.reloadData()
     }
     
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         SearchQueryDelegate?.getSearchQuery(subreddit)
         dismissModalView()
-    }
-    
-    @objc func dismissModalView() {
-        
-        dismiss(animated: true, completion: nil)
-        
     }
     
 }

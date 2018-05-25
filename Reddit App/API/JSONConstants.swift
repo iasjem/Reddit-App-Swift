@@ -8,13 +8,8 @@
 
 import Foundation
 
-func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
-    DispatchQueue.main.async {
-        updates()
-    }
-}
-
-struct Constants {
+struct JSONConstants {
+    
     struct Source {
         static let APIBaseURL = "https://api.reddit.com/r/"
     }
@@ -59,6 +54,7 @@ struct Constants {
     struct ResponseValues {
         static let OKStatus = "ok"
     }
+    
 }
 
 
