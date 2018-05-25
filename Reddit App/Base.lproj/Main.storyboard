@@ -87,8 +87,19 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj6-cf-BId" userLabel="Dashboard">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hZ8-lu-s57" userLabel="Loading View">
                                         <rect key="frame" x="15" y="5" width="345" height="544"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </activityIndicatorView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj6-cf-BId" userLabel="Dashboard">
+                                        <rect key="frame" x="15" y="0.0" width="345" height="549"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="94d-LN-FvS">
                                             <size key="itemSize" width="50" height="50"/>
@@ -124,7 +135,7 @@
                                     <constraint firstAttribute="trailing" secondItem="blL-Ys-mCQ" secondAttribute="trailing" constant="50" id="X02-CG-hLG"/>
                                     <constraint firstItem="Oj6-cf-BId" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="15" id="cNf-oq-ztR"/>
                                     <constraint firstAttribute="bottom" secondItem="blL-Ys-mCQ" secondAttribute="bottom" constant="270" id="oWr-r6-eKt"/>
-                                    <constraint firstItem="Oj6-cf-BId" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" constant="5" id="qpP-AP-CHw"/>
+                                    <constraint firstItem="Oj6-cf-BId" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" id="qpP-AP-CHw"/>
                                     <constraint firstAttribute="bottom" secondItem="ynP-on-ByF" secondAttribute="bottom" constant="15" id="tUh-uU-jPn"/>
                                     <constraint firstAttribute="trailing" secondItem="ynP-on-ByF" secondAttribute="trailing" constant="24" id="vhj-O1-qdV"/>
                                 </constraints>
@@ -146,6 +157,7 @@
                     <tabBarItem key="tabBarItem" title="" image="reddit-alien-outline" selectedImage="reddit-alien" id="xWG-qf-22Q"/>
                     <connections>
                         <outlet property="CollectionView" destination="Oj6-cf-BId" id="R6j-QL-t31"/>
+                        <outlet property="LoadViewIndicator" destination="hZ8-lu-s57" id="oN0-Uj-Mrh"/>
                         <outlet property="NoResultLabel" destination="blL-Ys-mCQ" id="78W-Ka-xbe"/>
                     </connections>
                 </viewController>

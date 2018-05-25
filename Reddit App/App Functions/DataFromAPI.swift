@@ -139,7 +139,6 @@ struct SubRedditData {
         guard let subscribers = moreData[Constants.ResponseKeys.Subscribers]  as? Int else {
             return 0
         }
-
         return subscribers
     }
     
@@ -185,25 +184,28 @@ final class JSONDataStore  { // data storage parsed from JSON file
     private init() {}  // applying sharing of instance
     
     weak var refreshMe: RefreshDelegate? // delegate for reloading collection view
+    weak var finishMe: RefreshDelegate?
     
     var myList = [jsonData]() // an array of jsonData
     var mySubList = [SubRedditData]()
     
     func connectToAPI (_ subreddit: String, _ shouldTableEmpty: Bool) { // connect to API
-        if shouldTableEmpty {
+        
+        if shouldTableEmpty { // deinitialize all arrays of JSON Data
             myList = []
             mySubList = []
         }
+        
         var url = URL(string: "\(Constants.Source.APIBaseURL)\(subreddit)")!
         var forWhatCell = "PostCells"
-        getJSONData(url, forWhatCell)
+        getJSONData(url, forWhatCell, false)
         
         url = URL(string: "\(Constants.Source.APIBaseURL)")!
         forWhatCell = "SubscribeCell"
-        getJSONData(url, forWhatCell)
+        getJSONData(url, forWhatCell, true)
     }
     
-    func getJSONData (_ url: URL, _ forWhatCell: String) {
+    func getJSONData (_ url: URL, _ forWhatCell: String, _ done: Bool) {
         var i = 0
         Alamofire.request(url, method: .get).validate().responseJSON {  response in
             switch response.result {
@@ -221,13 +223,15 @@ final class JSONDataStore  { // data storage parsed from JSON file
                         } else {
                             self.mySubList.append(SubRedditData(moreData as [String : AnyObject]))
                         }
-                        i = i + 1
                     }
+                    i = i + 1
                 }
-                self.refreshMe?.reloadView() // reload collection view after fetching data
             case .failure(let error):
                 print(error)
             } // if url response failed
+            print(done)
+            self.finishMe?.isFinishedLoading(done) // indicate if arrays are all loaded first before showing all cells
+            self.refreshMe?.reloadView() // reload collection view after fetching data
         }
     }
     
@@ -239,6 +243,7 @@ final class JSONDataStore  { // data storage parsed from JSON file
 
 protocol RefreshDelegate: class { 
     func reloadView()
+    func isFinishedLoading(_ isFinish: Bool)
 }
 
 

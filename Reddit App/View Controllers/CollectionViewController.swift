@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var CollectionView: UICollectionView!
-    
     @IBOutlet weak var NoResultLabel: UILabel!
+    @IBOutlet weak var LoadViewIndicator: UIActivityIndicatorView!
     
     var subreddit: String =  Constants.ParameterValues.SubReddit
     
@@ -40,8 +40,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func load(_ shouldTableEmpty: Bool) {
         performUIUpdatesOnMain {
-            self.store.connectToAPI(self.subreddit, shouldTableEmpty) // connect to API
+            self.store.finishMe = self
             self.store.refreshMe = self
+            self.store.connectToAPI(self.subreddit, shouldTableEmpty) // connect to API
         }
     }
     
@@ -51,7 +52,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if indexPath.row  == 4 {
+        if indexPath.row  == 4 { // display subscription cells
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubscribeCell", for: indexPath) as! SubscribeCell
             var list = store.mySubList[0]
                 cell.displaySubscribeCellOne(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription)
@@ -60,31 +61,26 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             list = store.mySubList[2]
                 cell.displaySubscribeCellThree(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription, list.bannerImage)
             return cell
-            
-        } else {
-            
+        } else { // display post cells
             let list = store.myList[indexPath.row]
-            
-            if store.myList[indexPath.row].selfText != "" {
+            if list.selfText != "" {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "YellowCell", for: indexPath) as! YellowCell
-                
                 cell.displayCollectionViewCell(list.title, list.selfText, list.subreddit, list.author, list.createdUTC, list.imageUrl)
                 return cell
             } else {
-                if store.myList[indexPath.row].imageWidth <= 600 {
+                if list.imageWidth <= 600 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BlueCell", for: indexPath) as! BlueCell
-                    
                     cell.displayCollectionViewCell(list.title, list.subreddit, list.author, list.createdUTC, list.imageUrl)
                     return cell
                 }  else {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
-                
                     cell.displayCollectionViewCell(list.title, list.subreddit, list.author, list.createdUTC, list.imageUrl)
                     return cell
                 }
             }
         }
     }
+    
 }
 
 extension CollectionViewController: RefreshDelegate, SearchViewControllerDelegate {
@@ -102,6 +98,16 @@ extension CollectionViewController: RefreshDelegate, SearchViewControllerDelegat
         }
     }
     
+    func isFinishedLoading(_ isFinish: Bool) {
+        if isFinish == true {
+            LoadViewIndicator.stopAnimating()
+            print("finished loading!")
+        } else {
+            LoadViewIndicator.startAnimating()
+            print("loading data...")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchSegue" {
             if let searchViewContoller = segue.destination as? SearchViewController {
@@ -112,9 +118,11 @@ extension CollectionViewController: RefreshDelegate, SearchViewControllerDelegat
     
      func getSearchQuery(_ searchQuery: String) {
         var query = searchQuery
+        
         if query.isEmpty { // if entered search query is empty, set to current subreddit
             query = subreddit 
         }
+        
         subreddit = query
         load(true)
     }
