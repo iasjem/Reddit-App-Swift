@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="FlS-ca-U8t" customClass="YellowCell" customModule="RedditApp" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="FlS-ca-U8t" customClass="PostDataCells" customModule="RedditApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="330" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -80,7 +80,7 @@
                             <rect key="frame" x="15" y="48" width="300" height="133"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Weekly Question Thread - March 26, 2018" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP9-0E-A2b">
-                                    <rect key="frame" x="8" y="8" width="200" height="62"/>
+                                    <rect key="frame" x="8" y="10" width="200" height="62"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -219,12 +219,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="PgX-eG-BQO"/>
             <connections>
-                <outlet property="CellPostAuthor" destination="1dh-0G-Sqk" id="Pia-Xw-iqE"/>
-                <outlet property="CellPostImage" destination="4Pp-NG-xTe" id="ORw-eA-8e7"/>
-                <outlet property="CellPostText" destination="19K-on-3sl" id="Ev4-mH-EXU"/>
-                <outlet property="CellPostTime" destination="hqd-Z2-fN9" id="xAk-tN-o9U"/>
-                <outlet property="CellPostTitle" destination="nP9-0E-A2b" id="EqC-Uq-S3i"/>
-                <outlet property="CellSubReddit" destination="QvP-Kx-ivp" id="c02-Ln-oLz"/>
+                <outlet property="YellowCellPostAuthor" destination="1dh-0G-Sqk" id="YD2-Ae-1p2"/>
+                <outlet property="YellowCellPostImage" destination="4Pp-NG-xTe" id="yLX-Ud-Mbl"/>
+                <outlet property="YellowCellPostText" destination="19K-on-3sl" id="mYN-tZ-fDt"/>
+                <outlet property="YellowCellPostTime" destination="hqd-Z2-fN9" id="NCW-E2-8dv"/>
+                <outlet property="YellowCellPostTitle" destination="nP9-0E-A2b" id="sT3-tX-cAr"/>
+                <outlet property="YellowCellSubReddit" destination="QvP-Kx-ivp" id="krW-Tc-bbs"/>
             </connections>
             <point key="canvasLocation" x="31" y="82"/>
         </view>

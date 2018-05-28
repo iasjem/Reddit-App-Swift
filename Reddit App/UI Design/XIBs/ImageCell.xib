@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="VTX-s5-Vpy" customClass="ImageCell" customModule="RedditApp" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="VTX-s5-Vpy" customClass="PostDataCells" customModule="RedditApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="330" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -206,11 +206,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="0Io-ro-04D"/>
             <connections>
-                <outlet property="CellPostAuthor" destination="Wfe-d7-tUl" id="5Vt-z2-3wG"/>
-                <outlet property="CellPostImage" destination="S1T-yE-0nq" id="CTx-aR-bXm"/>
-                <outlet property="CellPostTime" destination="0sl-pn-sH5" id="MkM-fy-CoV"/>
-                <outlet property="CellPostTitle" destination="Fxc-9V-euB" id="iuH-9s-3wZ"/>
-                <outlet property="CellSubReddit" destination="g4f-jf-WwK" id="c9A-vp-x93"/>
+                <outlet property="ImageCellPostAuthor" destination="Wfe-d7-tUl" id="Z1K-FK-Dkz"/>
+                <outlet property="ImageCellPostImage" destination="S1T-yE-0nq" id="3qm-fv-0Ev"/>
+                <outlet property="ImageCellPostTime" destination="0sl-pn-sH5" id="1c9-KZ-4E6"/>
+                <outlet property="ImageCellPostTitle" destination="Fxc-9V-euB" id="p5t-Lu-ty5"/>
+                <outlet property="ImageCellSubReddit" destination="g4f-jf-WwK" id="2YR-1p-M7C"/>
             </connections>
             <point key="canvasLocation" x="16" y="68"/>
         </view>

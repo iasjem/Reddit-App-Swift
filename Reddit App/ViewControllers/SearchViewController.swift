@@ -95,7 +95,7 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
             } else {
                 list = store.mySubRedditList[indexPath.row]
             }
-            cell.displaySearchResults(list.subRedditIcon, list.displayNamePrefixed, list.subscribers)
+            cell.setSearchResultCell(list.subRedditIcon, list.displayNamePrefixed, list.subscribers)
         return cell
     }
     
