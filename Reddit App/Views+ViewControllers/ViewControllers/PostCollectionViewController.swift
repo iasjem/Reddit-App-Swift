@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class PostCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var postCollectionView: UICollectionView!
@@ -16,11 +17,7 @@ class PostCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     var subreddit: String =  JSONConstants.ParameterValues.SubReddit // default subreddit is iOSProgramming
     
-    let store = JSONDataStore.sharedInstance
-    
-    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         postCollectionView.delegate = self
@@ -34,7 +31,6 @@ class PostCollectionViewController: UIViewController, UICollectionViewDelegate, 
         self.postCollectionView.register(UINib.init(nibName: "SubscribeCell", bundle: nil), forCellWithReuseIdentifier: "SubscribeCell")
         
         load(false)
-        
     }
     
 
@@ -52,13 +48,15 @@ class PostCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     
+    
+    /** MARK: For collection view functionalities **/
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return store.myPostList.count / 5
+         return store.myPostList.count
     }
     
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         if indexPath.row  == 4 { // display subscription cells
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubscribeCell", for: indexPath) as! SubscribeCell
             var list = store.mySubRedditList[0]
@@ -68,6 +66,7 @@ class PostCollectionViewController: UIViewController, UICollectionViewDelegate, 
             list = store.mySubRedditList[2]
                 cell.setSubscribeCellThree(list.subRedditIcon, list.displayName, list.subscribers, list.publicDescription, list.bannerImage)
             return cell
+            
         } else { // display post cells
             
             let list = store.myPostList[indexPath.row]
@@ -86,47 +85,61 @@ class PostCollectionViewController: UIViewController, UICollectionViewDelegate, 
                         cell.setImageCell(list.title, list.subreddit, list.author, list.createdUTC, list.imageUrl)
                     return cell
                 }
-                
             }
+        }
+    }
+}
+
+
+/** MARK: For additional delegations regarding Post Colleciton View **/
+extension PostCollectionViewController: RefreshDelegate, SearchViewControllerDelegate {
+    
+    func reloadView() { // reload view for data retrieval
+        performUIUpdatesOnMain {
+            
+            self.postCollectionView.reloadData()
+            
+            if self.store.myPostList.isEmpty { // if no subreddit found, show no result.
+                
+                self.NoResultLabel.isHidden = false
+                self.postCollectionView.isHidden = true
+                
+            } else { // if there are results for subreddit, show all cells
+                self.NoResultLabel.isHidden = true
+                self.postCollectionView.isHidden = false
+            }
+            
+        }
+    }
+    
+    
+    func isFinishedLoading(_ isFinish: Bool) {
+        
+        if isFinish == true {
+            
+            LoadViewIndicator.stopAnimating()
+            print("finished loading!")
+            
+        } else {
+            
+            LoadViewIndicator.startAnimating()
+            print("loading data...")
+            
         }
         
     }
     
     
-}
-
-extension PostCollectionViewController: RefreshDelegate, SearchViewControllerDelegate {
-    
-    func reloadView() {
-        performUIUpdatesOnMain {
-            self.postCollectionView.reloadData()
-            if self.store.myPostList.isEmpty { // if no subreddit found, show no result.
-                self.NoResultLabel.isHidden = false
-                self.postCollectionView.isHidden = true
-            } else { // if there are results for subreddit, show all cells
-                self.NoResultLabel.isHidden = true
-                self.postCollectionView.isHidden = false
-            }
-        }
-    }
-    
-    func isFinishedLoading(_ isFinish: Bool) {
-        if isFinish == true {
-            LoadViewIndicator.stopAnimating()
-            print("finished loading!")
-        } else {
-            LoadViewIndicator.startAnimating()
-            print("loading data...")
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchSegue" {
+            
             if let searchViewContoller = segue.destination as? SearchViewController {
                 searchViewContoller.SearchQueryDelegate = self
             }
+            
         }
     }
+    
     
      func getSearchQuery(_ searchQuery: String) {
         var query = searchQuery

@@ -1,0 +1,117 @@
+//
+//  SubRedditViewCells.swift
+//  All cells related to subreddit data including SearchResultCells and SubscribeCells
+//
+//  Created by Jemimah Beryl M. Sai on 25/05/2018.
+//  Copyright © 2018 Jemimah Beryl M. Sai. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+
+protocol SearchResultDataView: class { 
+    
+    func setSearchResultCell (_ icon: String, _ displayNamePrefixed: String, _ subscribersCount: Int)
+    
+}
+
+protocol SubscribeDataView: class {
+    
+    func setSubscribeCellOne (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String)
+    func setSubscribeCellTwo (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String)
+    func setSubscribeCellThree (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String, _ bannerImage: String)
+    
+}
+
+
+class SearchResultCell: UITableViewCell, SearchResultDataView { // search results based on JSON data fetched from API 
+    
+    var presenter: SearchResultDataPresenter!
+    
+    @IBOutlet weak var SubRedditIcon: UIImageView!
+    @IBOutlet weak var SubRedditName: UILabel!
+    @IBOutlet weak var SubscribersCount: UILabel!
+    
+    
+    func setSearchResultCell(_ icon: String, _ displayNamePrefixed: String, _ subscribersCount: Int) {
+        
+       SubRedditName.text = displayNamePrefixed
+       getSubscriberCount(subscribersCount, cell: SubscribersCount) // Please see Globals swift file to see function
+       getImageURL(icon, cell: SubRedditIcon)
+    
+    }
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+}
+
+
+class SubscribeCell: UICollectionViewCell, SubscribeDataView  { // cell with subscription boxes for subreddits
+    var presenter: SubscribeDataPresenter!
+    
+    @IBOutlet weak var SubRedditIconOne: UIImageView!
+    @IBOutlet weak var DisplayNameOne: UILabel!
+    @IBOutlet weak var PublicDescriptionOne: UITextView!
+    @IBOutlet weak var SubscribeCountOne: UILabel!
+    
+    @IBOutlet weak var SubRedditIconTwo: UIImageView!
+    @IBOutlet weak var DisplayNameTwo: UILabel!
+    @IBOutlet weak var PublicDescriptionTwo: UITextView!
+    @IBOutlet weak var SubscribeCountTwo: UILabel!
+    
+    @IBOutlet weak var SubRedditIconThree: UIImageView!
+    @IBOutlet weak var DisplayNameThree: UILabel!
+    @IBOutlet weak var PublicDescriptionThree: UITextView!
+    @IBOutlet weak var SubscribeCountThree: UILabel!
+    @IBOutlet weak var BannerImageThree: UIImageView!
+    
+    
+    func setSubscribeCellOne(_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
+        
+        DisplayNameOne.text = displayName
+        PublicDescriptionOne.text = publicDescription
+        getSubscriberCount(subscribersCount, cell: SubscribeCountOne) // Please see Globals swift file to see function
+        getImageURL(icon, cell: SubRedditIconOne)
+        
+    }
+
+    
+    func setSubscribeCellTwo(_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
+        
+        DisplayNameTwo.text = displayName
+        PublicDescriptionTwo.text = publicDescription
+        getSubscriberCount(subscribersCount, cell: SubscribeCountTwo) // Please see Globals swift file to see function
+        getImageURL(icon, cell: SubRedditIconTwo)
+        
+    }
+    
+    
+    func setSubscribeCellThree(_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String, _ bannerImage: String) {
+        
+        DisplayNameThree.text = displayName
+        PublicDescriptionThree.text = publicDescription
+        getSubscriberCount(subscribersCount, cell: SubscribeCountThree) // Please see Globals swift file to see function
+        getImageURL(icon, cell: SubRedditIconThree)
+        getImageURL(bannerImage, cell: BannerImageThree)
+        
+    }
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+}

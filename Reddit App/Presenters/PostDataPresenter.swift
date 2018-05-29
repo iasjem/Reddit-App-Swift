@@ -11,52 +11,36 @@ import UIKit
 
 
 protocol PostDataViewPresenter: class {
-    init(view: PostDataView, postdata: PostData)
-    func showYellowCell()
-    func showBlueCell()
-    func showImageCell()
+    init(view: PostDataView, postdata: [PostData])
+    func showViewCells(_ index: Int)
+    
 }
 
 class PostDataPresenter: PostDataViewPresenter {
     
     unowned let view: PostDataView
-    let postdata: PostData
+    var postData: [PostData]
     
-    required init(view: PostDataView, postdata: PostData) {
+    required init(view: PostDataView, postdata: [PostData]) {
         self.view = view
-        self.postdata = postdata
+        self.postData = postdata
     }
     
-    func showYellowCell() {
-        let postTitle = self.postdata.title
-        let postText = self.postdata.selfText
-        let subReddit = self.postdata.subreddit
-        let postAuthor = self.postdata.author
-        let postTime = self.postdata.createdUTC
-        let postImage = self.postdata.imageUrl
+    func showViewCells(_ index: Int) {
+        let dataManager = JSONDataManager()
+        postData = dataManager.getPostData()
+        let postTitle = self.postData[index].title
+        let postText = self.postData[index].selfText
+        let subReddit = self.postData[index].subreddit
+        let postAuthor = self.postData[index].author
+        let postTime = self.postData[index].createdUTC
+        let postImage = self.postData[index].imageURL
         
         self.view.setYellowCell(postTitle, postText, subReddit, postAuthor, postTime, postImage)
-    }
-    
-    func showBlueCell() {
-        let postTitle = self.postdata.title
-        let subReddit = self.postdata.subreddit
-        let postAuthor = self.postdata.author
-        let postTime = self.postdata.createdUTC
-        let postImage = self.postdata.imageUrl
-        
         self.view.setBlueCell(postTitle, subReddit, postAuthor, postTime, postImage)
-    }
-    
-    func showImageCell() {
-        let postTitle = self.postdata.title
-        let subReddit = self.postdata.subreddit
-        let postAuthor = self.postdata.author
-        let postTime = self.postdata.createdUTC
-        let postImage = self.postdata.imageUrl
-        
         self.view.setImageCell(postTitle, subReddit, postAuthor, postTime, postImage)
     }
+    
     
 
 }

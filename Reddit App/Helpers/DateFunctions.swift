@@ -56,7 +56,6 @@ class MyDate { // converting date related values
                     } else {
                         return "\(Int(year.rounded())) y" // by years
                     }
-                    
                 }
                 
             }

@@ -13,6 +13,7 @@ protocol SearchViewControllerDelegate: class {
     func getSearchQuery(_ searchQuery: String)
 }
 
+
 class SearchViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var modalView: UIView!
@@ -21,7 +22,6 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     weak var SearchQueryDelegate: SearchViewControllerDelegate?
     
-    let store = JSONDataStore.sharedInstance
     var subreddit: String = ""
     var filteredResults = [SubRedditData]()
     var searchActive = false
@@ -33,45 +33,16 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchBar.delegate = self
+        
         tapGestureOnTable()
-        
         searchTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
         searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
-        
     }
     
     
-    func tapGestureOnTable() {
-        let tapUIView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: searchTableView.frame.height))
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissModalView))
-        tapUIView.addGestureRecognizer(tapGesture)
-        searchTableView.tableFooterView = tapUIView
-    }
-
     
-    func isSearchBarTextEmpty () -> Bool {
-        return searchBar.text?.isEmpty ?? true
-    }
-    
-    
-    func isFilterActive() -> Bool {
-        return !isSearchBarTextEmpty()
-    }
-    
-    
-    func filterContent(_ searchText: String) {
-        filteredResults = store.mySubRedditList.filter({ (sub: SubRedditData) -> Bool in
-            return sub.displayName.lowercased().contains(searchText.lowercased())
-        })
-    }
-    
-    
-    @objc func dismissModalView() {
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
+    /** MARK: For Table View functionalities **/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFilterActive() {
             return filteredResults.count
@@ -107,6 +78,8 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     
+    
+    /** MARK: For Search Bar functionalities **/
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismissModalView()
     }
@@ -122,6 +95,38 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         SearchQueryDelegate?.getSearchQuery(subreddit)
         dismissModalView()
+    }
+    
+    
+    
+    /** MARK: For other functionalities useful for search filtering and modal view dismissal **/
+    func tapGestureOnTable() {
+        let tapUIView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: searchTableView.frame.height))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissModalView))
+        tapUIView.addGestureRecognizer(tapGesture)
+        searchTableView.tableFooterView = tapUIView
+    }
+    
+    
+    func isSearchBarTextEmpty () -> Bool {
+        return searchBar.text?.isEmpty ?? true
+    }
+    
+    
+    func isFilterActive() -> Bool {
+        return !isSearchBarTextEmpty()
+    }
+    
+    
+    func filterContent(_ searchText: String) {
+        filteredResults = store.mySubRedditList.filter({ (sub: SubRedditData) -> Bool in
+            return sub.displayName.lowercased().contains(searchText.lowercased())
+        })
+    }
+    
+    
+    @objc func dismissModalView() {
+        dismiss(animated: true, completion: nil)
     }
     
 }

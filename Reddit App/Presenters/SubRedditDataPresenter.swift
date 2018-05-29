@@ -36,9 +36,7 @@ class SearchResultDataPresenter: SearchResultDataViewPresenter {
 
 protocol SubscribeDataViewPresenter {
     init(view: SubscribeDataView, subscribedata: SubRedditData)
-    func showSubscribeCellOne()
-    func showSubscribeCellTwo()
-    func showSubscribeCellThree()
+    func showAllSubscribeCell()
     
 }
 
@@ -51,31 +49,16 @@ class SubscribeDataPresenter: SubscribeDataViewPresenter {
         self.subscribedata = subscribedata
     }
     
-    func showSubscribeCellOne() {
-        let icon = self.subscribedata.subRedditIcon
-        let displayName = self.subscribedata.displayName
-        let subscriberCount = self.subscribedata.subscribers
-        let publicDescription = self.subscribedata.publicDescription
-        
-        self.view.setSubscribeCellOne(icon, displayName, subscriberCount, publicDescription)
-    }
-    
-    func showSubscribeCellTwo() {
-        let icon = self.subscribedata.subRedditIcon
-        let displayName = self.subscribedata.displayName
-        let subscriberCount = self.subscribedata.subscribers
-        let publicDescription = self.subscribedata.publicDescription
-        
-        self.view.setSubscribeCellTwo(icon, displayName, subscriberCount, publicDescription)
-    }
-    
-    func showSubscribeCellThree() {
+    func showAllSubscribeCell() {
         let icon = self.subscribedata.subRedditIcon
         let displayName = self.subscribedata.displayName
         let subscriberCount = self.subscribedata.subscribers
         let publicDescription = self.subscribedata.publicDescription
         let bannerImage = self.subscribedata.bannerImage
         
+        self.view.setSubscribeCellOne(icon, displayName, subscriberCount, publicDescription)
+        self.view.setSubscribeCellTwo(icon, displayName, subscriberCount, publicDescription)
         self.view.setSubscribeCellThree(icon, displayName, subscriberCount, publicDescription, bannerImage)
     }
+    
 }
