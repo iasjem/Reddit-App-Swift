@@ -9,56 +9,79 @@
 import Foundation
 import UIKit
 
+
+protocol SearchResultDataView: class {
+    
+    func setSearchResultCell (_ icon: String, _ displayNamePrefixed: String, _ subscribersCount: Int)
+    
+}
+
+protocol SubscribeDataView: class {
+    
+    func setSubRedditData(_ subRedditData: [SubRedditData])
+    
+}
+
 protocol SearchResultDataViewPresenter {
-    init(view: SearchResultDataView, subredditdata: SubRedditData)
-    func showSearchResultCell()
+    init(view: SearchResultDataView, subredditdata: [SubRedditData])
+    func showSearchResultCell(_ index: Int)
 
 }
 
 class SearchResultDataPresenter: SearchResultDataViewPresenter {
     unowned let view: SearchResultDataView
-    let searchresultdata: SubRedditData
+    var searchresultdata: [SubRedditData]
     
-    required init(view: SearchResultDataView, subredditdata: SubRedditData) { 
+    required init(view: SearchResultDataView, subredditdata: [SubRedditData]) {
         self.view = view
         self.searchresultdata = subredditdata
     }
     
-    func showSearchResultCell() {
-        let icon = self.searchresultdata.subRedditIcon
-        let displayNamePrefixed = self.searchresultdata.displayNamePrefixed
-        let subscriberCount = self.searchresultdata.subscribers
+    func showSearchResultCell(_ index: Int) {
         
-        self.view.setSearchResultCell(icon, displayNamePrefixed, subscriberCount)
+//        searchresultdata = dataManager.getSubRedditData()
+//        
+//        let icon = self.searchresultdata[index].subRedditIcon
+//        let displayNamePrefixed = self.searchresultdata[index].displayNamePrefixed
+//        let subscriberCount = self.searchresultdata[index].subscribers
+//        
+//        self.view.setSearchResultCell(icon, displayNamePrefixed, subscriberCount)
     }
     
 }
 
-protocol SubscribeDataViewPresenter {
-    init(view: SubscribeDataView, subscribedata: SubRedditData)
-    func showAllSubscribeCell()
-    
-}
 
-class SubscribeDataPresenter: SubscribeDataViewPresenter {
-    unowned let view: SubscribeDataView
-    let subscribedata: SubRedditData
-    
-    required init(view: SubscribeDataView, subscribedata: SubRedditData) {
-        self.view = view
-        self.subscribedata = subscribedata
-    }
-    
-    func showAllSubscribeCell() {
-        let icon = self.subscribedata.subRedditIcon
-        let displayName = self.subscribedata.displayName
-        let subscriberCount = self.subscribedata.subscribers
-        let publicDescription = self.subscribedata.publicDescription
-        let bannerImage = self.subscribedata.bannerImage
-        
-        self.view.setSubscribeCellOne(icon, displayName, subscriberCount, publicDescription)
-        self.view.setSubscribeCellTwo(icon, displayName, subscriberCount, publicDescription)
-        self.view.setSubscribeCellThree(icon, displayName, subscriberCount, publicDescription, bannerImage)
-    }
-    
-}
+//class SubscribeDataPresenter {
+//
+//    weak var subscribeDataView: SubscribeDataView?
+//    fileprivate let subRedditDataRepository: SubRedditDataRepository
+//    
+//    init(subRedditDataRepository: SubRedditDataRepository) {
+//        self.subRedditDataRepository = subRedditDataRepository
+//    }
+//    
+//    func attachSubRedditDataView(_ postdata: SubscribeDataView) {
+//        subscribeDataView = postdata
+//    }
+//    
+//    func detachSubRedditDataView () {
+//        subscribeDataView = nil
+//    }
+//    
+//    func getSubscribeData() {
+//        
+//        let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+//        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+//            
+//            self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
+//             self.subscribeDataView?.setSubRedditData(subRedditData)
+//            }) { (errMessage) in
+//                print(errMessage)
+//            }
+//            
+//        }
+//        
+//        
+//    }
+//
+//}

@@ -16,6 +16,8 @@ protocol SearchViewControllerDelegate: class {
 
 class SearchViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+    var searchResultsPresenter: SearchResultDataPresenter!
+    
     @IBOutlet weak var modalView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
@@ -64,7 +66,7 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
             if isFilterActive() {
                 list = filteredResults[indexPath.row]
             } else {
-                list = store.mySubRedditList[indexPath.row]
+                list = searchResultsPresenter.searchresultdata[indexPath.row]
             }
             cell.setSearchResultCell(list.subRedditIcon, list.displayNamePrefixed, list.subscribers)
         return cell
@@ -119,7 +121,7 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     
     func filterContent(_ searchText: String) {
-        filteredResults = store.mySubRedditList.filter({ (sub: SubRedditData) -> Bool in
+        filteredResults = searchResultsPresenter.searchresultdata.filter({ (sub: SubRedditData) -> Bool in
             return sub.displayName.lowercased().contains(searchText.lowercased())
         })
     }

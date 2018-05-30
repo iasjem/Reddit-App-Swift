@@ -10,21 +10,6 @@ import Foundation
 import UIKit
 
 
-protocol SearchResultDataView: class { 
-    
-    func setSearchResultCell (_ icon: String, _ displayNamePrefixed: String, _ subscribersCount: Int)
-    
-}
-
-protocol SubscribeDataView: class {
-    
-    func setSubscribeCellOne (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String)
-    func setSubscribeCellTwo (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String)
-    func setSubscribeCellThree (_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String, _ bannerImage: String)
-    
-}
-
-
 class SearchResultCell: UITableViewCell, SearchResultDataView { // search results based on JSON data fetched from API 
     
     var presenter: SearchResultDataPresenter!
@@ -58,8 +43,8 @@ class SearchResultCell: UITableViewCell, SearchResultDataView { // search result
 }
 
 
-class SubscribeCell: UICollectionViewCell, SubscribeDataView  { // cell with subscription boxes for subreddits
-    var presenter: SubscribeDataPresenter!
+class SubscribeCell: UICollectionViewCell  { // cell with subscription boxes for subreddits
+    
     
     @IBOutlet weak var SubRedditIconOne: UIImageView!
     @IBOutlet weak var DisplayNameOne: UILabel!
@@ -76,38 +61,6 @@ class SubscribeCell: UICollectionViewCell, SubscribeDataView  { // cell with sub
     @IBOutlet weak var PublicDescriptionThree: UITextView!
     @IBOutlet weak var SubscribeCountThree: UILabel!
     @IBOutlet weak var BannerImageThree: UIImageView!
-    
-    
-    func setSubscribeCellOne(_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
-        
-        DisplayNameOne.text = displayName
-        PublicDescriptionOne.text = publicDescription
-        getSubscriberCount(subscribersCount, cell: SubscribeCountOne) // Please see Globals swift file to see function
-        getImageURL(icon, cell: SubRedditIconOne)
-        
-    }
-
-    
-    func setSubscribeCellTwo(_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String) {
-        
-        DisplayNameTwo.text = displayName
-        PublicDescriptionTwo.text = publicDescription
-        getSubscriberCount(subscribersCount, cell: SubscribeCountTwo) // Please see Globals swift file to see function
-        getImageURL(icon, cell: SubRedditIconTwo)
-        
-    }
-    
-    
-    func setSubscribeCellThree(_ icon: String, _ displayName: String, _ subscribersCount: Int, _ publicDescription: String, _ bannerImage: String) {
-        
-        DisplayNameThree.text = displayName
-        PublicDescriptionThree.text = publicDescription
-        getSubscriberCount(subscribersCount, cell: SubscribeCountThree) // Please see Globals swift file to see function
-        getImageURL(icon, cell: SubRedditIconThree)
-        getImageURL(bannerImage, cell: BannerImageThree)
-        
-    }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

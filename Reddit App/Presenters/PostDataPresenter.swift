@@ -10,37 +10,66 @@ import Foundation
 import UIKit
 
 
-protocol PostDataViewPresenter: class {
-    init(view: PostDataView, postdata: [PostData])
-    func showViewCells(_ index: Int)
+protocol PostDataView: class {
     
+    func startLoading()
+    func finishLoading()
+    func setPostData(_ postdata: [PostData])
+    func emptyPostData(_ errMessage: String)
+    func setSubRedditData(_ subRedditData: [SubRedditData])
 }
 
-class PostDataPresenter: PostDataViewPresenter {
+class PostDataPresenter {
     
-    unowned let view: PostDataView
-    var postData: [PostData]
+    weak var postDataView: PostDataView?
+    fileprivate let postDataRepository: PostDataRepository
     
-    required init(view: PostDataView, postdata: [PostData]) {
-        self.view = view
-        self.postData = postdata
+    weak var subscribeDataView: SubscribeDataView?
+    fileprivate let subRedditDataRepository: SubRedditDataRepository
+    
+    
+    init(postDataRepository: PostDataRepository, subRedditDataRepository: SubRedditDataRepository) {
+        self.postDataRepository = postDataRepository
+         self.subRedditDataRepository = subRedditDataRepository
     }
     
-    func showViewCells(_ index: Int) {
-        let dataManager = JSONDataManager()
-        postData = dataManager.getPostData()
-        let postTitle = self.postData[index].title
-        let postText = self.postData[index].selfText
-        let subReddit = self.postData[index].subreddit
-        let postAuthor = self.postData[index].author
-        let postTime = self.postData[index].createdUTC
-        let postImage = self.postData[index].imageURL
-        
-        self.view.setYellowCell(postTitle, postText, subReddit, postAuthor, postTime, postImage)
-        self.view.setBlueCell(postTitle, subReddit, postAuthor, postTime, postImage)
-        self.view.setImageCell(postTitle, subReddit, postAuthor, postTime, postImage)
+    func attachPostDataView(_ postdata: PostDataView, _ subredditdata: SubscribeDataView) {
+        postDataView = postdata
+        subscribeDataView = subredditdata
     }
     
+    func detachPostDataView () {
+        postDataView = nil
+        subscribeDataView = nil
+    }
     
 
+    func getPostData() {
+        postDataRepository.clearAllPostData()
+        subRedditDataRepository.clearAllSubRedditData()
+        self.postDataView?.startLoading()
+        let delayTime = DispatchTime.now() + Double(Int64(4 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            
+            self.postDataRepository.getAllPostData({ (postData) in
+               self.postDataView?.finishLoading()
+               self.postDataView?.setPostData(postData)
+                print(postData.count)
+            }) { (errMessage) in
+                self.postDataView?.finishLoading()
+                self.postDataView?.emptyPostData(errMessage)
+                print(errMessage)
+            }
+        
+            self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
+                self.subscribeDataView?.setSubRedditData(subRedditData)
+            }) { (errMessage) in
+                print(errMessage)
+            }
+            
+        }
+        
+
+    }
+    
 }

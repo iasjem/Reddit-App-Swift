@@ -9,18 +9,7 @@
 import UIKit
 
 
-protocol PostDataView: class {
-    
-    func setYellowCell(_ postTitle: String, _ postText:String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String)
-    func setBlueCell(_ postTitle: String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String)
-    func setImageCell(_ postTitle: String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String)
-    
-}
-
-
-class PostDataCells: UICollectionViewCell, PostDataView {
-    
-    var presenter: PostDataViewPresenter!
+class PostDataCells: UICollectionViewCell {
     
     @IBOutlet weak var YellowCellSubReddit: UILabel!
     @IBOutlet weak var YellowCellPostAuthor: UILabel!
@@ -40,40 +29,6 @@ class PostDataCells: UICollectionViewCell, PostDataView {
     @IBOutlet weak var ImageCellPostTime: UILabel!
     @IBOutlet weak var ImageCellSubReddit: UILabel!
     @IBOutlet weak var ImageCellPostAuthor: UILabel!
-    
-    
-    func setYellowCell(_ postTitle: String, _ postText: String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String) {
-
-        YellowCellPostTitle.text = postTitle
-        YellowCellSubReddit.text = subReddit
-        YellowCellPostAuthor.text = postAuthor
-        YellowCellPostTime.text = postTime
-        YellowCellPostText.text = postText
-        getImageURL(postImage, cell: YellowCellPostImage) // Please see Globals swift file to see function
-
-    }
-    
-    
-    func setBlueCell(_ postTitle: String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String) {
-        
-        BlueCellPostTitle.text = postTitle
-        BlueCellSubReddit.text = subReddit
-        BlueCellPostAuthor.text = postAuthor
-        BlueCellPostTime.text = postTime
-        getImageURL(postImage, cell: BlueCellPostImage) // Please see Globals swift file to see function
-        
-    }
-    
-    
-    func setImageCell(_ postTitle: String, _ subReddit: String, _ postAuthor: String, _ postTime: String, _ postImage: String) {
-
-        ImageCellPostTitle.text = postTitle
-        ImageCellSubReddit.text = subReddit
-        ImageCellPostAuthor.text = postAuthor
-        ImageCellPostTime.text = postTime
-        getImageURL(postImage, cell: ImageCellPostImage) // Please see Globals swift file to see function
-        
-    }
     
     
     override func awakeFromNib() {
