@@ -10,29 +10,16 @@ import Foundation
 import UIKit
 
 
-class SearchResultCell: UITableViewCell, SearchResultDataView { // search results based on JSON data fetched from API 
-    
-    var presenter: SearchResultDataPresenter!
+class SearchResultCell: UITableViewCell { // search results based on JSON data fetched from API 
     
     @IBOutlet weak var SubRedditIcon: UIImageView!
     @IBOutlet weak var SubRedditName: UILabel!
     @IBOutlet weak var SubscribersCount: UILabel!
     
-    
-    func setSearchResultCell(_ icon: String, _ displayNamePrefixed: String, _ subscribersCount: Int) {
-        
-       SubRedditName.text = displayNamePrefixed
-       getSubscriberCount(subscribersCount, cell: SubscribersCount) // Please see Globals swift file to see function
-       getImageURL(icon, cell: SubRedditIcon)
-    
-    }
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -44,7 +31,6 @@ class SearchResultCell: UITableViewCell, SearchResultDataView { // search result
 
 
 class SubscribeCell: UICollectionViewCell  { // cell with subscription boxes for subreddits
-    
     
     @IBOutlet weak var SubRedditIconOne: UIImageView!
     @IBOutlet weak var DisplayNameOne: UILabel!

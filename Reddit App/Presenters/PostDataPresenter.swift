@@ -17,6 +17,7 @@ protocol PostDataView: class {
     func setPostData(_ postdata: [PostData])
     func emptyPostData(_ errMessage: String)
     func setSubRedditData(_ subRedditData: [SubRedditData])
+
 }
 
 class PostDataPresenter {
@@ -44,22 +45,26 @@ class PostDataPresenter {
     }
     
 
-    func getPostData() {
+    func getPostData(_ sub: String) {
+        
         postDataRepository.clearAllPostData()
         subRedditDataRepository.clearAllSubRedditData()
+        
         self.postDataView?.startLoading()
-        let delayTime = DispatchTime.now() + Double(Int64(4 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        
+        let delayTime = DispatchTime.now() + Double(Int64(3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
             
-            self.postDataRepository.getAllPostData({ (postData) in
-               self.postDataView?.finishLoading()
-               self.postDataView?.setPostData(postData)
-                print(postData.count)
-            }) { (errMessage) in
-                self.postDataView?.finishLoading()
-                self.postDataView?.emptyPostData(errMessage)
-                print(errMessage)
-            }
+            self.postDataRepository.getAllPostData({ () -> String in
+                return sub
+            }, { (postData) in
+                   self.postDataView?.finishLoading()
+                   self.postDataView?.setPostData(postData)
+            }, { (errMessage) in
+                    self.postDataView?.finishLoading()
+                    self.postDataView?.emptyPostData(errMessage)
+                    print(errMessage)
+            })
         
             self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
                 self.subscribeDataView?.setSubRedditData(subRedditData)

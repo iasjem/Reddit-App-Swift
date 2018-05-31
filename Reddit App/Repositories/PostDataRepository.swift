@@ -11,22 +11,21 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-
 class PostDataRepository {
     
     var postData:[PostData] = []
     var errMessage: String = ""
-    private var subreddit: String = "iOSProgramming"
+    
     
     private var myDate = MyDate()
     
-    
-    func getAllPostData(_ success: @escaping ([PostData]) -> Void , _ fail: @escaping (String) -> Void) {
-        
+    func getAllPostData( _ subreddit: () -> String, _ success: @escaping ([PostData]) -> Void , _ fail: @escaping (String) -> Void) {
+
         var i = 0
-        let url = URL(string: "\(JSONConstants.Source.APIBaseURL)\(subreddit)")!
         
-        Alamofire.request(url, method: .get).validate().responseJSON {  response in
+        let url = URL(string: "\(JSONConstants.Source.APIBaseURL)\(subreddit())")!
+        
+        Alamofire.request(url, method: .get).validate().responseJSON {  response in 
             switch response.result {
             case .success(let value): // if url response is successful
                 

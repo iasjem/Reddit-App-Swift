@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TbS-Ln-Qzv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +15,7 @@
             <objects>
                 <viewController id="5Tw-DO-XLN" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8MF-R0-2A2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2tq-p3-mgg"/>
@@ -27,11 +31,11 @@
             <objects>
                 <viewController id="ng1-U6-d8z" customClass="PostCollectionViewController" customModule="RedditApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SGP-Yu-JC1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3p5-6e-2mE">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3p5-6e-2mE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
@@ -39,7 +43,7 @@
                                         <nil key="title"/>
                                         <barButtonItem key="leftBarButtonItem" style="done" id="iit-2A-0hR" userLabel="Main Menu">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YiE-lc-SoG" userLabel="MenuButton">
-                                                <rect key="frame" x="20" y="11" width="18" height="22"/>
+                                                <rect key="frame" x="16" y="11" width="18" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="menu-bar"/>
                                                 <connections>
@@ -48,7 +52,7 @@
                                             </button>
                                         </barButtonItem>
                                         <view key="titleView" contentMode="scaleToFill" id="vvK-Al-L6D" userLabel="Middle">
-                                            <rect key="frame" x="300" y="22" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="187.5" y="22" width="0.0" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reddit-title" translatesAutoresizingMaskIntoConstraints="NO" id="cXw-T6-XXP" userLabel="RedditTitle">
@@ -62,7 +66,7 @@
                                         </view>
                                         <barButtonItem key="rightBarButtonItem" style="done" id="6NL-Cg-xwc" userLabel="Search Bar">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="A7D-e0-Lfs" userLabel="SearchButton">
-                                                <rect key="frame" x="564" y="11" width="16" height="22"/>
+                                                <rect key="frame" x="343" y="11" width="16" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="search-bar"/>
                                                 <connections>
@@ -74,17 +78,17 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F3V-U8-wwc" userLabel="Content">
-                                <rect key="frame" x="0.0" y="64" width="600" height="554"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3V-U8-wwc" userLabel="Content">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No result for subreddit found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blL-Ys-mCQ" userLabel="NoResult">
-                                        <rect key="frame" x="50" y="203" width="500" height="81"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No result for subreddit found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blL-Ys-mCQ" userLabel="NoResult">
+                                        <rect key="frame" x="0.0" y="203" width="375" height="81"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hZ8-lu-s57" userLabel="Loading View">
-                                        <rect key="frame" x="15" y="5" width="345" height="544"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hZ8-lu-s57" userLabel="Loading View">
+                                        <rect key="frame" x="186.5" y="276.5" width="0.0" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,8 +98,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </activityIndicatorView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj6-cf-BId" userLabel="Dashboard">
-                                        <rect key="frame" x="15" y="0.0" width="570" height="549"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj6-cf-BId" userLabel="Dashboard">
+                                        <rect key="frame" x="15" y="0.0" width="345" height="549"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="94d-LN-FvS">
                                             <size key="itemSize" width="50" height="50"/>
@@ -106,7 +110,7 @@
                                         <cells/>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-on-ByF" userLabel="Add Button">
-                                        <rect key="frame" x="522" y="418" width="54" height="54"/>
+                                        <rect key="frame" x="297" y="485" width="54" height="54"/>
                                         <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="6qh-u2-jJr"/>
@@ -125,10 +129,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Oj6-cf-BId" secondAttribute="bottom" constant="5" id="8ZA-TH-2MW"/>
-                                    <constraint firstItem="blL-Ys-mCQ" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="50" id="944-91-KLs"/>
+                                    <constraint firstItem="blL-Ys-mCQ" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" id="944-91-KLs"/>
                                     <constraint firstItem="blL-Ys-mCQ" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" constant="203" id="F1e-D0-pji"/>
                                     <constraint firstAttribute="trailing" secondItem="Oj6-cf-BId" secondAttribute="trailing" constant="15" id="WDD-mF-MA2"/>
-                                    <constraint firstAttribute="trailing" secondItem="blL-Ys-mCQ" secondAttribute="trailing" constant="50" id="X02-CG-hLG"/>
+                                    <constraint firstAttribute="trailing" secondItem="blL-Ys-mCQ" secondAttribute="trailing" id="X02-CG-hLG"/>
                                     <constraint firstItem="Oj6-cf-BId" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="15" id="cNf-oq-ztR"/>
                                     <constraint firstAttribute="bottom" secondItem="blL-Ys-mCQ" secondAttribute="bottom" constant="270" id="oWr-r6-eKt"/>
                                     <constraint firstItem="Oj6-cf-BId" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" id="qpP-AP-CHw"/>
@@ -167,33 +171,64 @@
             <objects>
                 <viewController id="dU6-cA-LEB" customClass="SearchViewController" customModule="RedditApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d69-u5-iIS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ5-uV-1lH" userLabel="Modal View">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" barStyle="black" placeholder="Search " showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKU-2h-1dF">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="BNv-aD-hIR"/>
+                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </searchBar>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kFW-QD-bbS" userLabel="SubReddit Table View">
-                                        <rect key="frame" x="10" y="56" width="580" height="524"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5FU-e8-dwp" userLabel="Container">
+                                        <rect key="frame" x="10" y="56" width="355" height="591"/>
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No result for subreddit found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QY-8d-wqi" userLabel="NoResult">
+                                                <rect key="frame" x="0.0" y="255" width="355" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Q4v-38-KSW" userLabel="Loading View">
+                                                <rect key="frame" x="159" y="277" width="37" height="37"/>
+                                            </activityIndicatorView>
+                                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kFW-QD-bbS" userLabel="SubReddit Table View">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="591"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableView>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Q4v-38-KSW" secondAttribute="bottom" constant="277" id="6ki-cM-uNK"/>
+                                            <constraint firstItem="2QY-8d-wqi" firstAttribute="leading" secondItem="5FU-e8-dwp" secondAttribute="leading" id="DNc-iU-Yon"/>
+                                            <constraint firstAttribute="trailing" secondItem="2QY-8d-wqi" secondAttribute="trailing" id="JkS-8a-D6y"/>
+                                            <constraint firstItem="2QY-8d-wqi" firstAttribute="top" secondItem="5FU-e8-dwp" secondAttribute="top" constant="255" id="Kh0-0C-gyI"/>
+                                            <constraint firstAttribute="trailing" secondItem="kFW-QD-bbS" secondAttribute="trailing" id="Rce-JX-tQl"/>
+                                            <constraint firstAttribute="bottom" secondItem="2QY-8d-wqi" secondAttribute="bottom" constant="315" id="T5m-SK-4He"/>
+                                            <constraint firstAttribute="bottom" secondItem="kFW-QD-bbS" secondAttribute="bottom" id="YTu-YC-fth"/>
+                                            <constraint firstItem="kFW-QD-bbS" firstAttribute="top" secondItem="5FU-e8-dwp" secondAttribute="top" id="el3-Kq-qW1"/>
+                                            <constraint firstAttribute="trailing" secondItem="Q4v-38-KSW" secondAttribute="trailing" constant="159" id="h4T-It-rNn"/>
+                                            <constraint firstItem="Q4v-38-KSW" firstAttribute="leading" secondItem="5FU-e8-dwp" secondAttribute="leading" constant="159" id="mzU-aj-nwS"/>
+                                            <constraint firstItem="kFW-QD-bbS" firstAttribute="leading" secondItem="5FU-e8-dwp" secondAttribute="leading" id="uHI-9X-m8c"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33000000000000002" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="kFW-QD-bbS" secondAttribute="trailing" constant="10" id="4bs-Z6-7FB"/>
-                                    <constraint firstAttribute="bottom" secondItem="kFW-QD-bbS" secondAttribute="bottom" id="JBI-hl-cQn"/>
-                                    <constraint firstItem="TKU-2h-1dF" firstAttribute="top" secondItem="SQ5-uV-1lH" secondAttribute="top" id="Jqx-fx-obE"/>
-                                    <constraint firstItem="kFW-QD-bbS" firstAttribute="top" secondItem="TKU-2h-1dF" secondAttribute="bottom" id="Obt-Vo-3Sb"/>
-                                    <constraint firstAttribute="trailing" secondItem="TKU-2h-1dF" secondAttribute="trailing" id="PW6-0T-lPQ"/>
-                                    <constraint firstItem="TKU-2h-1dF" firstAttribute="leading" secondItem="SQ5-uV-1lH" secondAttribute="leading" id="T0S-dX-1s2"/>
-                                    <constraint firstItem="kFW-QD-bbS" firstAttribute="leading" secondItem="SQ5-uV-1lH" secondAttribute="leading" constant="10" id="yBY-Rs-Wxx"/>
+                                    <constraint firstItem="5FU-e8-dwp" firstAttribute="leading" secondItem="SQ5-uV-1lH" secondAttribute="leading" constant="10" id="Wec-t6-Ak9"/>
+                                    <constraint firstItem="TKU-2h-1dF" firstAttribute="top" secondItem="SQ5-uV-1lH" secondAttribute="top" id="ZIn-eA-TVa"/>
+                                    <constraint firstAttribute="trailing" secondItem="5FU-e8-dwp" secondAttribute="trailing" constant="10" id="mlr-OG-XVd"/>
+                                    <constraint firstAttribute="bottom" secondItem="5FU-e8-dwp" secondAttribute="bottom" id="oa7-cq-Yz0"/>
+                                    <constraint firstAttribute="trailing" secondItem="TKU-2h-1dF" secondAttribute="trailing" id="tbh-M5-s14"/>
+                                    <constraint firstItem="TKU-2h-1dF" firstAttribute="leading" secondItem="SQ5-uV-1lH" secondAttribute="leading" id="yD9-qs-8fs"/>
+                                    <constraint firstItem="5FU-e8-dwp" firstAttribute="top" secondItem="TKU-2h-1dF" secondAttribute="bottom" id="zZg-oz-DQs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -206,6 +241,8 @@
                         <viewLayoutGuide key="safeArea" id="jMQ-ZF-XII"/>
                     </view>
                     <connections>
+                        <outlet property="LoadViewIndicator" destination="Q4v-38-KSW" id="9KT-Zm-6dD"/>
+                        <outlet property="NoResultLabel" destination="2QY-8d-wqi" id="Wli-Hf-Lhl"/>
                         <outlet property="modalView" destination="SQ5-uV-1lH" id="zIi-Gl-gcJ"/>
                         <outlet property="searchBar" destination="TKU-2h-1dF" id="M0J-kb-xhH"/>
                         <outlet property="searchTableView" destination="kFW-QD-bbS" id="Nug-ma-6pv"/>
@@ -245,7 +282,7 @@
             <objects>
                 <viewController id="LxE-KB-UzQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sjN-cV-4qv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="iUR-23-cd7"/>
@@ -261,7 +298,7 @@
             <objects>
                 <viewController id="Tbt-HQ-Cne" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xik-Bb-XcH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Hsl-Xe-O2V"/>
@@ -277,7 +314,7 @@
             <objects>
                 <viewController id="USf-kr-l8d" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4lz-oo-wLf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hAG-tm-Daq"/>

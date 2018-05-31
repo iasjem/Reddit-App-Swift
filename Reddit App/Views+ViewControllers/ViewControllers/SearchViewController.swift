@@ -16,15 +16,19 @@ protocol SearchViewControllerDelegate: class {
 
 class SearchViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    var searchResultsPresenter: SearchResultDataPresenter!
+    fileprivate let searchResultsPresenter = SearchResultDataPresenter(subRedditDataRepository: SubRedditDataRepository())
     
     @IBOutlet weak var modalView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
+    @IBOutlet weak var NoResultLabel: UILabel!
+    @IBOutlet weak var LoadViewIndicator: UIActivityIndicatorView!
+    
     weak var SearchQueryDelegate: SearchViewControllerDelegate?
     
     var subreddit: String = ""
+    var searchResultDisplay = [SubRedditData]()
     var filteredResults = [SubRedditData]()
     var searchActive = false
     
@@ -40,12 +44,17 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
         searchTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
+        
+        searchResultsPresenter.attachSubRedditDataView(self)
+        searchResultsPresenter.getSearchResults()
+
     }
     
     
     
     /** MARK: For Table View functionalities **/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if isFilterActive() {
             return filteredResults.count
         }
@@ -62,15 +71,23 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as! SearchResultCell
+        
         let list: SubRedditData
+        
             if isFilterActive() {
                 list = filteredResults[indexPath.row]
             } else {
-                list = searchResultsPresenter.searchresultdata[indexPath.row]
+                list = searchResultDisplay[indexPath.row]
             }
-            cell.setSearchResultCell(list.subRedditIcon, list.displayNamePrefixed, list.subscribers)
+        
+            cell.SubRedditName.text = list.displayNamePrefixed
+            getSubscriberCount(list.subscribers, cell: cell.SubscribersCount) // Please see Globals swift file to see function
+            getImageURL(list.subRedditIcon, cell: cell.SubRedditIcon)
+        
         return cell
     }
+    
+    
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -88,9 +105,18 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         subreddit = searchText
-        filterContent(subreddit)
-        self.searchTableView.reloadData()
+        startLoading()
+        
+            let delayTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                self.finishLoading()
+                self.filterContent(self.subreddit)
+                self.searchTableView.reloadData()
+            }
+        
+
     }
     
     
@@ -121,9 +147,10 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
     
     func filterContent(_ searchText: String) {
-        filteredResults = searchResultsPresenter.searchresultdata.filter({ (sub: SubRedditData) -> Bool in
+        filteredResults = searchResultDisplay.filter({ (sub: SubRedditData) -> Bool in
             return sub.displayName.lowercased().contains(searchText.lowercased())
         })
+        
     }
     
     
@@ -133,5 +160,30 @@ class SearchViewController: UIViewController , UITableViewDelegate, UITableViewD
     
 }
 
+extension SearchViewController: SearchResultDataView { 
+    
+    func startLoading() {
+        LoadViewIndicator.startAnimating()
+        print("loading data...")
+    }
+    
+    func finishLoading() {
+        LoadViewIndicator.stopAnimating()
+        print("finished loading!")
+    }
+    
+    func emptySubRedditData(_ errMessage: String) {
+        NoResultLabel.isHidden = false
+        searchTableView.isHidden = true
+        NoResultLabel.text = errMessage
+    }
+    
+    func setSubRedditData(_ subRedditData: [SubRedditData]) {
+        searchResultDisplay = subRedditData
+        NoResultLabel.isHidden = true
+        searchTableView.isHidden = false
+         self.searchTableView.reloadData()
+    }
+}
 
 

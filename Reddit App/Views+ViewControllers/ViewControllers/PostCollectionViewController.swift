@@ -29,13 +29,14 @@ class PostCollectionViewController: UIViewController, UICollectionViewDelegate, 
         postCollectionView.dataSource = self
         postCollectionView.collectionViewLayout = SnappingFlowLayout()
 
+
         self.postCollectionView.register(UINib.init(nibName: "YellowCell", bundle: nil), forCellWithReuseIdentifier: "YellowCell")
         self.postCollectionView.register(UINib.init(nibName: "BlueCell", bundle: nil), forCellWithReuseIdentifier: "BlueCell")
         self.postCollectionView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
         self.postCollectionView.register(UINib.init(nibName: "SubscribeCell", bundle: nil), forCellWithReuseIdentifier: "SubscribeCell")
         
         postDataPresenter.attachPostDataView(self, self)
-         self.postDataPresenter.getPostData()
+         self.postDataPresenter.getPostData(subreddit)
         
     }
     
@@ -114,9 +115,11 @@ class PostCollectionViewController: UIViewController, UICollectionViewDelegate, 
 }
 
 
+///** MARK: For additional delegations regarding Post Colleciton View **/
 extension PostCollectionViewController: PostDataView, SubscribeDataView {
  
     func startLoading() {
+        self.postCollectionView.isHidden = true
         LoadViewIndicator.startAnimating()
         print("loading data...")
     }
@@ -127,16 +130,21 @@ extension PostCollectionViewController: PostDataView, SubscribeDataView {
     }
     
     func setPostData(_ postdata: [PostData]) {
-        postDataDisplay = postdata
-        NoResultLabel.isHidden = true
-        postCollectionView.isHidden = false
-        postCollectionView.reloadData()
+        performUIUpdatesOnMain {
+            self.postDataDisplay = postdata
+            self.NoResultLabel.isHidden = true
+            self.postCollectionView.isHidden = false
+            self.postCollectionView.reloadData()
+        }
     }
     
     func emptyPostData(_ errMessage: String) {
-        NoResultLabel.isHidden = false
-        postCollectionView.isHidden = true
-        NoResultLabel.text = errMessage
+        performUIUpdatesOnMain {
+            self.NoResultLabel.isHidden = false
+            self.postCollectionView.isHidden = true
+            self.NoResultLabel.text = errMessage
+        }
+
     }
     
     func setSubRedditData(_ subRedditData: [SubRedditData]) {
@@ -145,33 +153,38 @@ extension PostCollectionViewController: PostDataView, SubscribeDataView {
     
 }
 
-///** MARK: For additional delegations regarding Post Colleciton View **/
-//extension PostCollectionViewController: SearchViewControllerDelegate {
-//
-//
-//
-////    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-////        if segue.identifier == "searchSegue" {
-////
-////            if let searchViewContoller = segue.destination as? SearchViewController {
-////                searchViewContoller.SearchQueryDelegate = self
-////            }
-////
-////        }
-////    }
-////
-//
-////     func getSearchQuery(_ searchQuery: String) {
-////        var query = searchQuery
-////
-////        if query.isEmpty { // if entered search query is empty, set to current subreddit
-////            query = subreddit
-////        }
-////
-////        subreddit = query
-////    }
-//
-//
-//}
+
+extension PostCollectionViewController: SearchViewControllerDelegate {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchSegue" {
+
+            if let searchViewContoller = segue.destination as? SearchViewController {
+                searchViewContoller.SearchQueryDelegate = self
+            }
+
+        }
+    }
+
+     func getSearchQuery(_ searchQuery: String) {
+        var query = searchQuery
+
+        if query.isEmpty { // if entered search query is empty, set to current subreddit
+            query = subreddit
+        }
+
+        subreddit = query
+
+        self.postDataPresenter.getPostData(subreddit)
+        
+    }
+    
+    func setSubReddit(_ subreddit:String) -> String{
+        return subreddit
+    }
+
+}
+
+
 
 
