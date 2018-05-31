@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -219,12 +215,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="PgX-eG-BQO"/>
             <connections>
-                <outlet property="YellowCellPostAuthor" destination="1dh-0G-Sqk" id="YD2-Ae-1p2"/>
-                <outlet property="YellowCellPostImage" destination="4Pp-NG-xTe" id="yLX-Ud-Mbl"/>
-                <outlet property="YellowCellPostText" destination="19K-on-3sl" id="mYN-tZ-fDt"/>
-                <outlet property="YellowCellPostTime" destination="hqd-Z2-fN9" id="NCW-E2-8dv"/>
-                <outlet property="YellowCellPostTitle" destination="nP9-0E-A2b" id="sT3-tX-cAr"/>
-                <outlet property="YellowCellSubReddit" destination="QvP-Kx-ivp" id="krW-Tc-bbs"/>
+                <outlet property="yellowCellPostAuthor" destination="1dh-0G-Sqk" id="YD2-Ae-1p2"/>
+                <outlet property="yellowCellPostImage" destination="4Pp-NG-xTe" id="yLX-Ud-Mbl"/>
+                <outlet property="yellowCellPostText" destination="19K-on-3sl" id="mYN-tZ-fDt"/>
+                <outlet property="yellowCellPostTime" destination="hqd-Z2-fN9" id="NCW-E2-8dv"/>
+                <outlet property="yellowCellPostTitle" destination="nP9-0E-A2b" id="sT3-tX-cAr"/>
+                <outlet property="yellowCellSubReddit" destination="QvP-Kx-ivp" id="krW-Tc-bbs"/>
             </connections>
             <point key="canvasLocation" x="31" y="82"/>
         </view>

@@ -156,8 +156,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="reddit-alien-outline" selectedImage="reddit-alien" id="xWG-qf-22Q"/>
                     <connections>
-                        <outlet property="LoadViewIndicator" destination="hZ8-lu-s57" id="oN0-Uj-Mrh"/>
-                        <outlet property="NoResultLabel" destination="blL-Ys-mCQ" id="78W-Ka-xbe"/>
+                        <outlet property="loadViewIndicator" destination="hZ8-lu-s57" id="oN0-Uj-Mrh"/>
+                        <outlet property="noResultLabel" destination="blL-Ys-mCQ" id="78W-Ka-xbe"/>
                         <outlet property="postCollectionView" destination="Oj6-cf-BId" id="R6j-QL-t31"/>
                     </connections>
                 </viewController>
@@ -241,9 +241,9 @@
                         <viewLayoutGuide key="safeArea" id="jMQ-ZF-XII"/>
                     </view>
                     <connections>
-                        <outlet property="LoadViewIndicator" destination="Q4v-38-KSW" id="9KT-Zm-6dD"/>
-                        <outlet property="NoResultLabel" destination="2QY-8d-wqi" id="Wli-Hf-Lhl"/>
+                        <outlet property="loadViewIndicator" destination="Q4v-38-KSW" id="9KT-Zm-6dD"/>
                         <outlet property="modalView" destination="SQ5-uV-1lH" id="zIi-Gl-gcJ"/>
+                        <outlet property="noResultLabel" destination="2QY-8d-wqi" id="Wli-Hf-Lhl"/>
                         <outlet property="searchBar" destination="TKU-2h-1dF" id="M0J-kb-xhH"/>
                         <outlet property="searchTableView" destination="kFW-QD-bbS" id="Nug-ma-6pv"/>
                     </connections>

@@ -9,34 +9,29 @@
 import UIKit
 
 
-class PostDataCells: UICollectionViewCell {
-    
-    @IBOutlet weak var YellowCellSubReddit: UILabel!
-    @IBOutlet weak var YellowCellPostAuthor: UILabel!
-    @IBOutlet weak var YellowCellPostTime: UILabel!
-    @IBOutlet weak var YellowCellPostTitle: UITextView!
-    @IBOutlet weak var YellowCellPostText: UITextView!
-    @IBOutlet weak var YellowCellPostImage: UIImageView!
-    
-    @IBOutlet weak var BlueCellSubReddit: UILabel!
-    @IBOutlet weak var BlueCellPostAuthor: UILabel!
-    @IBOutlet weak var BlueCellPostTime: UILabel!
-    @IBOutlet weak var BlueCellPostTitle: UITextView!
-    @IBOutlet weak var BlueCellPostImage: UIImageView!
-    
-    @IBOutlet weak var ImageCellPostImage: UIImageView!
-    @IBOutlet weak var ImageCellPostTitle: UITextView!
-    @IBOutlet weak var ImageCellPostTime: UILabel!
-    @IBOutlet weak var ImageCellSubReddit: UILabel!
-    @IBOutlet weak var ImageCellPostAuthor: UILabel!
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+/** MARK: viewcells PostData Cells **/
+    class PostDataCells: UICollectionViewCell {
+        
+        @IBOutlet weak var yellowCellSubReddit: UILabel!
+        @IBOutlet weak var yellowCellPostAuthor: UILabel!
+        @IBOutlet weak var yellowCellPostTime: UILabel!
+        @IBOutlet weak var yellowCellPostTitle: UITextView!
+        @IBOutlet weak var yellowCellPostText: UITextView!
+        @IBOutlet weak var yellowCellPostImage: UIImageView!
+        
+        @IBOutlet weak var blueCellSubReddit: UILabel!
+        @IBOutlet weak var blueCellPostAuthor: UILabel!
+        @IBOutlet weak var blueCellPostTime: UILabel!
+        @IBOutlet weak var blueCellPostTitle: UITextView!
+        @IBOutlet weak var blueCellPostImage: UIImageView!
+        
+        @IBOutlet weak var imageCellPostImage: UIImageView!
+        @IBOutlet weak var imageCellPostTitle: UITextView!
+        @IBOutlet weak var imageCellPostTime: UILabel!
+        @IBOutlet weak var imageCellSubReddit: UILabel!
+        @IBOutlet weak var imageCellPostAuthor: UILabel!
+        
     }
-    
-}
 
 
 

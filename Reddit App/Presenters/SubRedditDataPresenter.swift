@@ -10,52 +10,62 @@ import Foundation
 import UIKit
 
 
-protocol SubscribeDataView: class {
-    
-    func setSubRedditData(_ subRedditData: [SubRedditData])
-    
-}
+/** MARK: protocol SubscribeData View **/
+    protocol SubscribeDataView: class {
 
-protocol SearchResultDataView: class {
-    
-    func startLoading()
-    func finishLoading()
-    func emptySubRedditData(_ errMessage: String)
-    func setSubRedditData(_ subRedditData: [SubRedditData])
-    
-}
+        func setSubRedditData(_ subRedditData: [SubRedditData])
+        
+    }
 
-class SearchResultDataPresenter {
-    
-    weak var searchResultDataView: SearchResultDataView?
-    fileprivate let subRedditDataRepository: SubRedditDataRepository
-    
-    init(subRedditDataRepository: SubRedditDataRepository) {
-        self.subRedditDataRepository = subRedditDataRepository
-    }
-    
-    func attachSubRedditDataView(_ postdata: SearchResultDataView) {
-        searchResultDataView = postdata
-    }
-    
-    func detachSubRedditDataView () {
-        searchResultDataView = nil
-    }
-    
-    func getSearchResults() {
+
+/** MARK: protocol SearchResultData View **/
+    protocol SearchResultDataView: class {
         
-        subRedditDataRepository.clearAllSubRedditData()
+        func startLoading()
+        func finishLoading()
+        func emptySubRedditData(_ errMessage: String)
+        func setSubRedditData(_ subRedditData: [SubRedditData])
         
-        searchResultDataView?.startLoading()
-        self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
-            self.searchResultDataView?.finishLoading()
+    }
+
+
+/** MARK: class SearchResultData Presenter **/
+    class SearchResultDataPresenter {
+        
+        weak var searchResultDataView: SearchResultDataView?
+        fileprivate let subRedditDataRepository: SubRedditDataRepository
+        
+        
+        init(subRedditDataRepository: SubRedditDataRepository) {
+            self.subRedditDataRepository = subRedditDataRepository
+        }
+        
+        func attachSubRedditDataView(_ postdata: SearchResultDataView) {
+            searchResultDataView = postdata
+        }
+        
+        func detachSubRedditDataView () {
+            searchResultDataView = nil
+        }
+        
+        func getSearchResults() {
+            
+            subRedditDataRepository.clearAllSubRedditData()
+            
+            searchResultDataView?.startLoading()
+            
+            self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
+                
+                self.searchResultDataView?.finishLoading()
                 self.searchResultDataView?.setSubRedditData(subRedditData)
                 
-            }) { (errMessage) in
-                self.searchResultDataView?.finishLoading()
-                self.searchResultDataView?.emptySubRedditData(errMessage)
-                print(errMessage)
-            }
+                }) { (errMessage) in
+                    
+                    self.searchResultDataView?.finishLoading()
+                    self.searchResultDataView?.emptySubRedditData(errMessage)
+                    print(errMessage)
+                    
+                }
+        }
         
     }
-}

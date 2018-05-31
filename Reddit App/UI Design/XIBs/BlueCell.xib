@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -207,11 +203,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="GTh-DL-ssw"/>
             <connections>
-                <outlet property="BlueCellPostAuthor" destination="x0h-xl-e6P" id="rLt-02-WXx"/>
-                <outlet property="BlueCellPostImage" destination="BVB-sk-CzA" id="Kle-ZI-sez"/>
-                <outlet property="BlueCellPostTime" destination="464-uF-aQ5" id="r0O-sv-gP4"/>
-                <outlet property="BlueCellPostTitle" destination="sZY-mR-KfQ" id="qeQ-fc-SeN"/>
-                <outlet property="BlueCellSubReddit" destination="T1c-Hr-aet" id="CK9-BO-q7e"/>
+                <outlet property="blueCellPostAuthor" destination="x0h-xl-e6P" id="rLt-02-WXx"/>
+                <outlet property="blueCellPostImage" destination="BVB-sk-CzA" id="Kle-ZI-sez"/>
+                <outlet property="blueCellPostTime" destination="464-uF-aQ5" id="r0O-sv-gP4"/>
+                <outlet property="blueCellPostTitle" destination="sZY-mR-KfQ" id="qeQ-fc-SeN"/>
+                <outlet property="blueCellSubReddit" destination="T1c-Hr-aet" id="CK9-BO-q7e"/>
             </connections>
             <point key="canvasLocation" x="-57" y="81"/>
         </view>

@@ -350,19 +350,19 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="asc-6u-N2v"/>
             <connections>
-                <outlet property="BannerImageThree" destination="c54-WA-GzJ" id="Ozr-tk-QMo"/>
-                <outlet property="DisplayNameOne" destination="Uo4-J5-da3" id="0Qd-X7-SYy"/>
-                <outlet property="DisplayNameThree" destination="6cP-1A-4Vv" id="1t4-Al-Mbr"/>
-                <outlet property="DisplayNameTwo" destination="EG8-xo-NkM" id="H6J-RK-1aW"/>
-                <outlet property="PublicDescriptionOne" destination="hc4-eR-YXj" id="AaN-Av-7KK"/>
-                <outlet property="PublicDescriptionThree" destination="koS-pY-9RB" id="kNu-GZ-E70"/>
-                <outlet property="PublicDescriptionTwo" destination="8qp-eM-zG1" id="aRp-Nd-uSC"/>
-                <outlet property="SubRedditIconOne" destination="o5z-MC-ghg" id="eq9-M4-JNV"/>
-                <outlet property="SubRedditIconThree" destination="1wP-hP-Okf" id="e69-uM-3Rv"/>
-                <outlet property="SubRedditIconTwo" destination="XIa-iI-4s3" id="GbT-Kw-ZAI"/>
-                <outlet property="SubscribeCountOne" destination="RHx-4e-CK0" id="de3-lR-hK4"/>
-                <outlet property="SubscribeCountThree" destination="X0Y-hk-Phz" id="vNE-z9-vLi"/>
-                <outlet property="SubscribeCountTwo" destination="BaP-Cg-bkg" id="nQr-f4-rAY"/>
+                <outlet property="firstDisplayName" destination="Uo4-J5-da3" id="0Qd-X7-SYy"/>
+                <outlet property="firstPublicDescription" destination="hc4-eR-YXj" id="AaN-Av-7KK"/>
+                <outlet property="firstSubRedditIcon" destination="o5z-MC-ghg" id="eq9-M4-JNV"/>
+                <outlet property="firstSubscribersCount" destination="RHx-4e-CK0" id="de3-lR-hK4"/>
+                <outlet property="secondDisplayName" destination="EG8-xo-NkM" id="H6J-RK-1aW"/>
+                <outlet property="secondPublicDescription" destination="8qp-eM-zG1" id="aRp-Nd-uSC"/>
+                <outlet property="secondSubRedditIcon" destination="XIa-iI-4s3" id="iZ4-CI-voZ"/>
+                <outlet property="secondSubscribersCount" destination="BaP-Cg-bkg" id="nQr-f4-rAY"/>
+                <outlet property="thirdBannerImage" destination="c54-WA-GzJ" id="Ozr-tk-QMo"/>
+                <outlet property="thirdDisplayName" destination="6cP-1A-4Vv" id="1t4-Al-Mbr"/>
+                <outlet property="thirdPublicDescription" destination="koS-pY-9RB" id="kNu-GZ-E70"/>
+                <outlet property="thirdSubRedditIcon" destination="1wP-hP-Okf" id="quZ-3G-4Yd"/>
+                <outlet property="thirdSubscribersCount" destination="X0Y-hk-Phz" id="vNE-z9-vLi"/>
             </connections>
             <point key="canvasLocation" x="44" y="-8"/>
         </view>

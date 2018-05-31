@@ -10,47 +10,33 @@ import Foundation
 import UIKit
 
 
-class SearchResultCell: UITableViewCell { // search results based on JSON data fetched from API 
-    
-    @IBOutlet weak var SubRedditIcon: UIImageView!
-    @IBOutlet weak var SubRedditName: UILabel!
-    @IBOutlet weak var SubscribersCount: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+/** MARK: viewcells SearchResult Celll **/
+    class SearchResultCell: UITableViewCell { // search results based on JSON data fetched from API
         
-        // Configure the view for the selected state
+        @IBOutlet weak var subRedditIcon: UIImageView!
+        @IBOutlet weak var subRedditName: UILabel!
+        @IBOutlet weak var subscribersCount: UILabel!
+        
     }
-    
-}
 
 
-class SubscribeCell: UICollectionViewCell  { // cell with subscription boxes for subreddits
-    
-    @IBOutlet weak var SubRedditIconOne: UIImageView!
-    @IBOutlet weak var DisplayNameOne: UILabel!
-    @IBOutlet weak var PublicDescriptionOne: UITextView!
-    @IBOutlet weak var SubscribeCountOne: UILabel!
-    
-    @IBOutlet weak var SubRedditIconTwo: UIImageView!
-    @IBOutlet weak var DisplayNameTwo: UILabel!
-    @IBOutlet weak var PublicDescriptionTwo: UITextView!
-    @IBOutlet weak var SubscribeCountTwo: UILabel!
-    
-    @IBOutlet weak var SubRedditIconThree: UIImageView!
-    @IBOutlet weak var DisplayNameThree: UILabel!
-    @IBOutlet weak var PublicDescriptionThree: UITextView!
-    @IBOutlet weak var SubscribeCountThree: UILabel!
-    @IBOutlet weak var BannerImageThree: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+/** MARK: viewcells Subscribe Celll **/
+    class SubscribeCell: UICollectionViewCell  { // cell with subscription boxes for subreddits
+        
+        @IBOutlet weak var firstSubRedditIcon: UIImageView!
+        @IBOutlet weak var firstDisplayName: UILabel!
+        @IBOutlet weak var firstPublicDescription: UITextView!
+        @IBOutlet weak var firstSubscribersCount: UILabel!
+        
+        @IBOutlet weak var secondSubRedditIcon: UIImageView!
+        @IBOutlet weak var secondDisplayName: UILabel!
+        @IBOutlet weak var secondPublicDescription: UITextView!
+        @IBOutlet weak var secondSubscribersCount: UILabel!
+        
+        @IBOutlet weak var thirdSubRedditIcon: UIImageView!
+        @IBOutlet weak var thirdDisplayName: UILabel!
+        @IBOutlet weak var thirdPublicDescription: UITextView!
+        @IBOutlet weak var thirdSubscribersCount: UILabel!
+        @IBOutlet weak var thirdBannerImage: UIImageView!
+        
     }
-    
-}

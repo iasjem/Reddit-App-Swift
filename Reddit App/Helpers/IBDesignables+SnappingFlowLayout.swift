@@ -9,54 +9,59 @@
 import Foundation
 import UIKit
 
-@IBDesignable class RoundButton: UIButton { // to make buttons round with customized style
-    @IBInspectable var cornerRadius: CGFloat = 15 {
-        didSet {
+
+/** MARK: class Round Buttons **/
+    @IBDesignable class RoundButton: UIButton {
+        @IBInspectable var cornerRadius: CGFloat = 15 {
+            didSet {
+                refreshCorners(value: cornerRadius)
+            }
+        }
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            sharedInit()
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+            sharedInit()
+        }
+        
+        override func prepareForInterfaceBuilder() {
+            sharedInit()
+        }
+        
+        func sharedInit() {
             refreshCorners(value: cornerRadius)
         }
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        sharedInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        sharedInit()
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        sharedInit()
-    }
-    
-    func sharedInit() {
-        refreshCorners(value: cornerRadius)
-    }
-    
-    func refreshCorners(value: CGFloat) {
-        layer.cornerRadius = value
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
-    }
-}
-
-
-class SnappingFlowLayout: UICollectionViewFlowLayout { // displays a snapping glow layout for collection view table
-    private var firstSetupDone = false
-    
-    override func prepare() {
-        super.prepare()
-        if !firstSetupDone {
-            setup()
-            firstSetupDone = true
+        
+        func refreshCorners(value: CGFloat) {
+            layer.cornerRadius = value
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.lightGray.cgColor
         }
     }
-    
-    private func setup() {
-        scrollDirection = .vertical
-        minimumLineSpacing = 20
-        itemSize = CGSize(width: collectionView!.bounds.width, height: collectionView!.bounds.height / 2.25)
-        collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
-        collectionView!.contentInset = UIEdgeInsetsMake(0.0,0.0,75.0,0.0)
+
+
+/** MARK: class Snapping Flow Layout **/
+    class SnappingFlowLayout: UICollectionViewFlowLayout {
+        
+        private var firstSetupDone = false
+        
+            override func prepare() {
+                super.prepare()
+                if !firstSetupDone {
+                    setup()
+                    firstSetupDone = true
+                }
+            }
+        
+            private func setup() {
+                scrollDirection = .vertical
+                minimumLineSpacing = 20
+                itemSize = CGSize(width: collectionView!.bounds.width, height: collectionView!.bounds.height / 2.25)
+                collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
+                collectionView!.contentInset = UIEdgeInsetsMake(0.0,0.0,75.0,0.0)
+            }
+        
     }
-}

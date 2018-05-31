@@ -32,7 +32,7 @@
 		76F237E920B1631D00C0DE3F /* SubscribeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237E820B1631D00C0DE3F /* SubscribeCell.xib */; };
 		76F237EB20B1633C00C0DE3F /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F237EA20B1633C00C0DE3F /* ImageCell.xib */; };
 		76F662F520ABB890002DE0F0 /* JSONConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662F420ABB890002DE0F0 /* JSONConstants.swift */; };
-		76F662FB20AC33EE002DE0F0 /* DateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662FA20AC33EE002DE0F0 /* DateFunctions.swift */; };
+		76F662FB20AC33EE002DE0F0 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F662FA20AC33EE002DE0F0 /* DateConverter.swift */; };
 		7754EB5F00D316A7178BD1EC /* Pods_RedditAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE466C8AC34F72BB5C25D441 /* Pods_RedditAppUITests.framework */; };
 		ED68C36FD1E953D920712D96 /* Pods_RedditApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6D25AB7FE8F7B585F4DD2E /* Pods_RedditApp.framework */; };
 /* End PBXBuildFile section */
@@ -90,7 +90,7 @@
 		76F237E820B1631D00C0DE3F /* SubscribeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscribeCell.xib; sourceTree = "<group>"; };
 		76F237EA20B1633C00C0DE3F /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		76F662F420ABB890002DE0F0 /* JSONConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConstants.swift; sourceTree = "<group>"; };
-		76F662FA20AC33EE002DE0F0 /* DateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFunctions.swift; sourceTree = "<group>"; };
+		76F662FA20AC33EE002DE0F0 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		88CD4BB79E0394798712071A /* Pods_RedditAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedditAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADCCA721B776E4E30E057D2 /* Pods-RedditAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RedditAppUITests/Pods-RedditAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF9A679D1C5EE9358B78656D /* Pods-RedditAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RedditAppUITests/Pods-RedditAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				7685EFAD20A534EF0092EDAB /* IBDesignables+SnappingFlowLayout.swift */,
-				76F662FA20AC33EE002DE0F0 /* DateFunctions.swift */,
+				76F662FA20AC33EE002DE0F0 /* DateConverter.swift */,
 				76CF15A720BC120000060B54 /* Globals.swift */,
 				76F662F420ABB890002DE0F0 /* JSONConstants.swift */,
 			);
@@ -525,7 +525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				767F6DDC20B8107C005BE29E /* SubRedditViewCells.swift in Sources */,
-				76F662FB20AC33EE002DE0F0 /* DateFunctions.swift in Sources */,
+				76F662FB20AC33EE002DE0F0 /* DateConverter.swift in Sources */,
 				76CF15A820BC120000060B54 /* Globals.swift in Sources */,
 				76E0220120B426C30053456C /* SearchViewController.swift in Sources */,
 				76D3FEF020A44C7F00E3CC42 /* PostViewCells.swift in Sources */,

@@ -10,48 +10,38 @@ import Foundation
 import UIKit
 
 
-/** MARK: For data reloading on Post Collection View **/
-func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
-    
-    DispatchQueue.main.async {  updates()  }
-    
-}
-
-
-
-/** MARK: For Post and Subreddit View Cells **/
-private var imageURL: URL?
-
-func getImageURL (_ postImage: String, cell: UIImageView) {
-    
-    imageURL = URL(string: postImage)
-    
-    if imageURL == nil {
-        
-        cell.image = UIImage(named: "NoImageAvailable")
-        
-    } else {
-        
-        guard let imageData = try? Data(contentsOf: imageURL!) else {
-            return cell.image = UIImage(named: "NoImageAvailable")
-        }
-        
-        return cell.image = UIImage(data: imageData)
-        
+/** MARK: Perform UI Updates **/
+    func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
+        DispatchQueue.main.async {  updates()  }
     }
-    
-}
 
 
-private let numberFormatter = NumberFormatter()
+/** MARK: Cells Image **/
+    private var imageURL: URL?
 
-func getSubscriberCount(_ subscribersCount: Int, cell: UILabel) {
-    
-    numberFormatter.numberStyle = .decimal
-    cell.text = "\(String(describing: numberFormatter.string(from: NSNumber(value:subscribersCount))!)) subscribers"
-    
-}
+        func getImageURL (_ postImage: String, cell: UIImageView) {
+            imageURL = URL(string: postImage)
+            
+            if imageURL == nil {
+                
+                cell.image = UIImage(named: "NoImageAvailable")
+                
+            } else {
+                
+                guard let imageData = try? Data(contentsOf: imageURL!) else {
+                    return cell.image = UIImage(named: "NoImageAvailable")
+                }
+                
+                return cell.image = UIImage(data: imageData)
+                
+            }
+        }
 
 
+/** MARK: Number Conversion **/
+    private let numberFormatter = NumberFormatter()
 
-
+        func getSubscriberCount(_ subscribersCount: Int, cell: UILabel) {
+            numberFormatter.numberStyle = .decimal
+            cell.text = "\(String(describing: numberFormatter.string(from: NSNumber(value:subscribersCount))!)) subscribers"
+        }
