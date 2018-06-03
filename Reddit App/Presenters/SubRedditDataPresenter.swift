@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 
-/** MARK: protocol SubscribeData View **/
+
+/** MARK: protocol SubscribeDataView **/
     protocol SubscribeDataView: class {
 
         func setSubRedditData(_ subRedditData: [SubRedditData])
@@ -18,7 +19,7 @@ import UIKit
     }
 
 
-/** MARK: protocol SearchResultData View **/
+/** MARK: protocol SearchResultDataView **/
     protocol SearchResultDataView: class {
         
         func startLoading()
@@ -29,8 +30,8 @@ import UIKit
     }
 
 
-/** MARK: class SearchResultData Presenter **/
-    class SearchResultDataPresenter {
+/** MARK: presenter SearchResultData **/
+class SearchResultDataPresenter {
         
         weak var searchResultDataView: SearchResultDataView?
         fileprivate let subRedditDataRepository: SubRedditDataRepository

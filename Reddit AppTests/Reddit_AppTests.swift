@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Reddit_App
+//@testable import Reddit_App
 
 class Reddit_AppTests: XCTestCase {
     

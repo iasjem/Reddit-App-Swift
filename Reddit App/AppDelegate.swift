@@ -7,17 +7,50 @@
 //
 
 import UIKit
+import Swinject
+import SwinjectStoryboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let container: Container = {
+        let container = Container()
+        
+        Container.loggingFunction = nil // Swinject issue: https://github.com/Swinject/Swinject/issues/210
+        
+            container.autoregister(PostDataPresenter.self, initializer: PostDataPresenter.init)
+            container.autoregister(SearchResultDataPresenter.self, initializer: SearchResultDataPresenter.init)
+        
+            container.storyboardInitCompleted(PostCollectionViewController.self) { r, c in
+                c.postDataPresenter = r.resolve(PostDataPresenter.self)
+            }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+            container.storyboardInitCompleted(SearchViewController.self, initCompleted: { (r, c) in
+                c.searchResultDataPresenter = r.resolve(SearchResultDataPresenter.self)
+            })
+        
+            container.register(PostDataRepository.self) { _ in PostDataRepository() }
+            container.register(SubRedditDataRepository.self) { _ in SubRedditDataRepository() }
+        
+        return container
+    }()
+    
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
+        [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.makeKeyAndVisible()
+        self.window = window
+        
+        let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
+        window.rootViewController = storyboard.instantiateInitialViewController()
+        
         return true
     }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

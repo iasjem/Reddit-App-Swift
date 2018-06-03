@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-/** MARK: protocol PostData View **/
+/** MARK: protocol PostDataView **/
     protocol PostDataView: class {
         
         func startLoading()
@@ -22,14 +22,14 @@ import UIKit
     }
 
 
-/** MARK: presenter PostData Presenter **/
-    class PostDataPresenter {
+/** MARK: presenter PostData **/
+class PostDataPresenter{
         
         weak var postDataView: PostDataView?
-        fileprivate let postDataRepository: PostDataRepository
+         let postDataRepository: PostDataRepository
         
         weak var subscribeDataView: SubscribeDataView?
-        fileprivate let subRedditDataRepository: SubRedditDataRepository
+       let subRedditDataRepository: SubRedditDataRepository
         
         
         init(postDataRepository: PostDataRepository, subRedditDataRepository: SubRedditDataRepository) {
@@ -41,7 +41,11 @@ import UIKit
             postDataView = postData
             subscribeDataView = subRedditData
         }
-        
+    
+    func test() {
+        print("ayos!")
+    }
+    
         func detachPostDataView () {
             postDataView = nil
             subscribeDataView = nil
@@ -50,7 +54,7 @@ import UIKit
         func getPostData(_ subReddit: String) {
             postDataRepository.clearAllPostData()
             subRedditDataRepository.clearAllSubRedditData()
-            
+   
             self.postDataView?.startLoading()
             
             let delayTime = DispatchTime.now() + Double(Int64(3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)

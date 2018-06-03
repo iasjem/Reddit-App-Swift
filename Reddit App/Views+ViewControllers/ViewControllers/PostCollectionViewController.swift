@@ -1,18 +1,19 @@
 //
 //  CollectionViewController.swift
 //  Main view controller of app (the Dashboard)
-//
+//i
 //  Created by Jemimah Beryl M. Sai on 10/05/2018.
 //  Copyright © 2018 Jemimah Beryl M. Sai. All rights reserved.
 //
 
 import UIKit
-
+import Swinject
+import SwinjectAutoregistration
 
 /** MARK: viewcontroller PostCollectionViewController **/
-    class PostCollectionViewController: UIViewController {
+    class PostCollectionViewController: UIViewController { 
         
-        fileprivate let postDataPresenter = PostDataPresenter(postDataRepository: PostDataRepository(), subRedditDataRepository: SubRedditDataRepository())
+        var postDataPresenter: PostDataPresenter?
 
         @IBOutlet weak var postCollectionView: UICollectionView!
         @IBOutlet weak var noResultLabel: UILabel!
@@ -20,7 +21,7 @@ import UIKit
         
         var postDataDisplay = [PostData]()
         var subRedditDataDisplay = [SubRedditData]()
-        
+      
         var subreddit: String =  JSONConstants.ParameterValues.SubReddit // default subreddit is iOSProgramming
         
         
@@ -30,7 +31,6 @@ import UIKit
             postCollectionView.delegate = self
             postCollectionView.dataSource = self
             postCollectionView.collectionViewLayout = SnappingFlowLayout()
-
             
             self.postCollectionView.register(UINib.init(nibName: "YellowCell", bundle: nil), forCellWithReuseIdentifier: "YellowCell")
             self.postCollectionView.register(UINib.init(nibName: "BlueCell", bundle: nil), forCellWithReuseIdentifier: "BlueCell")
@@ -38,8 +38,8 @@ import UIKit
             self.postCollectionView.register(UINib.init(nibName: "SubscribeCell", bundle: nil), forCellWithReuseIdentifier: "SubscribeCell")
             
             
-            postDataPresenter.attachPostDataView(self, self)
-            self.postDataPresenter.getPostData(subreddit)
+            postDataPresenter?.attachPostDataView(self, self)
+            postDataPresenter?.getPostData(subreddit)
         }
         
         
@@ -218,7 +218,7 @@ import UIKit
                 }
 
                 subreddit = query
-                self.postDataPresenter.getPostData(subreddit)
+                self.postDataPresenter?.getPostData(subreddit)
         }
         
         func setSubReddit(_ subreddit:String) -> String{
@@ -226,7 +226,4 @@ import UIKit
         }
         
     }
-
-
-
 

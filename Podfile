@@ -8,7 +8,11 @@ target 'RedditApp' do
   # Pods for RedditApp
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 4.7'
-  
+  pod 'Swinject', '~> 2.0'
+  pod 'SwinjectStoryboard', '~> 1.0'
+  pod 'SwinjectAutoregistration', '~> 2.0'
+  pod 'IGListKit', '~> 3.0'
+
   target 'RedditAppTests' do
     inherit! :search_paths
     # Pods for testing

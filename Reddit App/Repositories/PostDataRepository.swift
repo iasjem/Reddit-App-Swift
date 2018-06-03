@@ -12,12 +12,13 @@ import Alamofire
 import SwiftyJSON
 
 
+
+
 /** MARK: repository PostData Repository **/
     class PostDataRepository {
-        
+
         private var postData:[PostData] = []
         private var errorMessage: String = ""
-        
         private var postTime = MyDate()
         
         

@@ -18,8 +18,8 @@ import UIKit
 /** MARK: viewcontroller SearchViewController **/
     class SearchViewController: UIViewController {
         
-        fileprivate let searchResultsPresenter = SearchResultDataPresenter(subRedditDataRepository: SubRedditDataRepository())
-        
+        var searchResultDataPresenter: SearchResultDataPresenter?
+
         @IBOutlet weak var modalView: UIView!
         @IBOutlet weak var searchBar: UISearchBar!
         @IBOutlet weak var searchTableView: UITableView!
@@ -47,8 +47,8 @@ import UIKit
             
             searchTableView.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellReuseIdentifier: "SearchResultCell")
             
-            searchResultsPresenter.attachSubRedditDataView(self)
-            searchResultsPresenter.getSearchResults()
+            searchResultDataPresenter?.attachSubRedditDataView(self)
+            searchResultDataPresenter?.getSearchResults()
         }
         
         
