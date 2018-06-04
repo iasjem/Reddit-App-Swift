@@ -12,8 +12,6 @@ import Alamofire
 import SwiftyJSON
 
 
-
-
 /** MARK: repository PostData Repository **/
     class PostDataRepository {
 
@@ -69,7 +67,7 @@ import SwiftyJSON
         func clearAllPostData () {
             postData = []
         }
-
+        
         
     /** MARK: Conversions of JSON data from API **/
         private func getSubReddit(_ moreData: [String:AnyObject]) -> String {

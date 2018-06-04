@@ -9,6 +9,7 @@
 import UIKit
 import Swinject
 import SwinjectAutoregistration
+import IGListKit
 
 /** MARK: viewcontroller PostCollectionViewController **/
     class PostCollectionViewController: UIViewController { 
@@ -24,6 +25,15 @@ import SwinjectAutoregistration
       
         var subreddit: String =  JSONConstants.ParameterValues.SubReddit // default subreddit is iOSProgramming
         
+        lazy var adapter: ListAdapter =  {
+            let updater = ListAdapterUpdater()
+            let adapter = ListAdapter(updater: updater,
+                                      viewController: self,
+                                      workingRangeSize: 1)
+            adapter.collectionView = postCollectionView
+            adapter.dataSource = SuperHeroDatasource()
+            return adapter
+        }()
         
         override func viewDidLoad() {
             super.viewDidLoad()

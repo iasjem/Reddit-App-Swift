@@ -27,7 +27,7 @@ class PostDataPresenter{
         
         weak var postDataView: PostDataView?
          let postDataRepository: PostDataRepository
-        
+    
         weak var subscribeDataView: SubscribeDataView?
        let subRedditDataRepository: SubRedditDataRepository
         
@@ -41,10 +41,6 @@ class PostDataPresenter{
             postDataView = postData
             subscribeDataView = subRedditData
         }
-    
-    func test() {
-        print("ayos!")
-    }
     
         func detachPostDataView () {
             postDataView = nil
