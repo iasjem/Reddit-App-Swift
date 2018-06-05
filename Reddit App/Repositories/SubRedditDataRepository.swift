@@ -39,6 +39,7 @@ import SwiftyJSON
                         
                         if let moreData = findChildren[JSONConstants.ResponseKeys.Data].dictionaryObject  {
                             
+                            let id = self.getId(moreData as [String : AnyObject])
                             let subscribersCount = self.getSubscribers(moreData as [String : AnyObject])
                             let displayName = self.getDisplayName(moreData as [String : AnyObject])
                             let displayNamePrefixed = self.getDisplayNamePrefixed(moreData as [String : AnyObject])
@@ -46,7 +47,7 @@ import SwiftyJSON
                             let subRedditIconURL = self.getSubRedditIcon(moreData as [String : AnyObject])
                             let bannerImageuRL = self.getBannerImage(moreData as [String : AnyObject])
                             
-                            self.subRedditData.append(SubRedditData(subscribersCount, displayName, displayNamePrefixed, publicDescription, subRedditIconURL, bannerImageuRL))
+                            self.subRedditData.append(SubRedditData(id, subscribersCount, displayName, displayNamePrefixed, publicDescription, subRedditIconURL, bannerImageuRL))
                             
                         }
                         
@@ -73,6 +74,14 @@ import SwiftyJSON
         
         
     /** MARK: Conversions of JSON data from API **/
+        private func getId(_ moreData: [String:AnyObject]) -> String {
+            guard let Id = moreData[JSONConstants.ResponseKeys.Id] as? String else {
+                return "Unknown"
+            }
+            return "r/\(Id)"
+        }
+        
+        
         private func getSubscribers(_ moreData: [String:AnyObject]) -> Int {
             
             guard let subscribers = moreData[JSONConstants.ResponseKeys.Subscribers]  as? Int else {

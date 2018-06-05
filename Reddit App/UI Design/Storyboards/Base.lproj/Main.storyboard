@@ -98,17 +98,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </activityIndicatorView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj6-cf-BId" userLabel="Dashboard">
-                                        <rect key="frame" x="15" y="0.0" width="345" height="549"/>
-                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="94d-LN-FvS">
-                                            <size key="itemSize" width="50" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-on-ByF" userLabel="Add Button">
                                         <rect key="frame" x="297" y="485" width="54" height="54"/>
                                         <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
@@ -125,19 +114,23 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09e-Ke-htE" userLabel="Dashboard">
+                                        <rect key="frame" x="8" y="0.0" width="359" height="554"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Oj6-cf-BId" secondAttribute="bottom" constant="5" id="8ZA-TH-2MW"/>
+                                    <constraint firstAttribute="bottom" secondItem="09e-Ke-htE" secondAttribute="bottom" id="5ew-bh-RFO"/>
                                     <constraint firstItem="blL-Ys-mCQ" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" id="944-91-KLs"/>
                                     <constraint firstItem="blL-Ys-mCQ" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" constant="203" id="F1e-D0-pji"/>
-                                    <constraint firstAttribute="trailing" secondItem="Oj6-cf-BId" secondAttribute="trailing" constant="15" id="WDD-mF-MA2"/>
+                                    <constraint firstAttribute="trailing" secondItem="09e-Ke-htE" secondAttribute="trailing" constant="8" id="HC8-GK-83L"/>
+                                    <constraint firstItem="09e-Ke-htE" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" id="Nrw-bA-Adf"/>
                                     <constraint firstAttribute="trailing" secondItem="blL-Ys-mCQ" secondAttribute="trailing" id="X02-CG-hLG"/>
-                                    <constraint firstItem="Oj6-cf-BId" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="15" id="cNf-oq-ztR"/>
                                     <constraint firstAttribute="bottom" secondItem="blL-Ys-mCQ" secondAttribute="bottom" constant="270" id="oWr-r6-eKt"/>
-                                    <constraint firstItem="Oj6-cf-BId" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" id="qpP-AP-CHw"/>
                                     <constraint firstAttribute="bottom" secondItem="ynP-on-ByF" secondAttribute="bottom" constant="15" id="tUh-uU-jPn"/>
                                     <constraint firstAttribute="trailing" secondItem="ynP-on-ByF" secondAttribute="trailing" constant="24" id="vhj-O1-qdV"/>
+                                    <constraint firstItem="09e-Ke-htE" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="8" id="w6Z-xG-RSI"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -158,7 +151,6 @@
                     <connections>
                         <outlet property="loadViewIndicator" destination="hZ8-lu-s57" id="oN0-Uj-Mrh"/>
                         <outlet property="noResultLabel" destination="blL-Ys-mCQ" id="78W-Ka-xbe"/>
-                        <outlet property="postCollectionView" destination="Oj6-cf-BId" id="R6j-QL-t31"/>
                     </connections>
                 </viewController>
                 <exit id="iYI-nc-MZb" userLabel="Exit" sceneMemberID="exit"/>

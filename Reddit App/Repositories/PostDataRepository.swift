@@ -39,6 +39,7 @@ import SwiftyJSON
                         
                         if let moreData = findChildren[JSONConstants.ResponseKeys.Data].dictionaryObject {
                             
+                            let id = self.getId(moreData as [String : AnyObject])
                             let subReddit = self.getSubReddit(moreData as [String : AnyObject])
                             let title = self.getTitle(moreData as [String : AnyObject])
                             let author = self.getAuthor(moreData as [String : AnyObject])
@@ -47,7 +48,7 @@ import SwiftyJSON
                             let imageURL = self.getImage(moreData as [String : AnyObject])
                             let imageWidth = self.getImageWidth(moreData as [String : AnyObject])
                             
-                            self.postData.append(PostData(subReddit, author, title, createdUTC, selfText, imageURL, imageWidth))
+                            self.postData.append(PostData(id, subReddit, author, title, createdUTC, selfText, imageURL, imageWidth))
                             
                         }
                         index = index + 1
@@ -70,6 +71,14 @@ import SwiftyJSON
         
         
     /** MARK: Conversions of JSON data from API **/
+        private func getId(_ moreData: [String:AnyObject]) -> String {
+            guard let Id = moreData[JSONConstants.ResponseKeys.Id] as? String else {
+                return "Unknown"
+            }
+            return "r/\(Id)"
+        }
+        
+        
         private func getSubReddit(_ moreData: [String:AnyObject]) -> String {
             guard let subreddit = moreData[JSONConstants.ResponseKeys.SubReddit] as? String else {
                 return "Unknown"
@@ -135,7 +144,7 @@ import SwiftyJSON
             let findSource =  images[0] as [String:AnyObject]
             
             if let source = findSource[JSONConstants.ResponseKeys.Source] as? [String:AnyObject]  {
-                guard let imageWidth = source[JSONConstants.ResponseKeys.imageWidth] as? Int else {
+                guard let imageWidth = source[JSONConstants.ResponseKeys.ImageWidth] as? Int else {
                     return 0
                 }
                 width = imageWidth

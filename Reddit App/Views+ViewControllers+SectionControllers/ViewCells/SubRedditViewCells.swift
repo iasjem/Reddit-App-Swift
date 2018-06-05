@@ -39,4 +39,38 @@ import UIKit
         @IBOutlet weak var thirdSubscribersCount: UILabel!
         @IBOutlet weak var thirdBannerImage: UIImageView!
         
+        
+        func displayFirstSubscribeCell(_ subRedditData: SubRedditData) {
+            
+            firstDisplayName.text = subRedditData.displayName
+            firstPublicDescription.text = subRedditData.publicDescription
+
+            getSubscriberCount(subRedditData.subscribers, cell: firstSubscribersCount) // Please see Globals swift file to see function
+            getImageURL(subRedditData.subRedditIcon, cell: firstSubRedditIcon)
+            
+        }
+        
+        
+        func displaySecondSubscribeCell(_ subRedditData: SubRedditData) {
+            
+            secondDisplayName.text = subRedditData.displayName
+            secondPublicDescription.text = subRedditData.publicDescription
+
+            getSubscriberCount(subRedditData.subscribers, cell: secondSubscribersCount) // Please see Globals swift file to see function
+            getImageURL(subRedditData.subRedditIcon, cell: secondSubRedditIcon)
+            
+        }
+        
+        
+        func displayThirdSubscribeCell(_ subRedditData: SubRedditData) {
+            
+            thirdDisplayName.text = subRedditData.displayName
+            thirdPublicDescription.text = subRedditData.publicDescription
+
+            getSubscriberCount(subRedditData.subscribers, cell: thirdSubscribersCount) // Please see Globals swift file to see function
+            getImageURL(subRedditData.subRedditIcon, cell: thirdSubRedditIcon)
+            getImageURL(subRedditData.bannerImage, cell: thirdBannerImage)
+            
+        }
+        
     }

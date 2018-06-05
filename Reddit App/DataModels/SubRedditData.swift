@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import IGListKit
 
 
 /** MARK: model SubRedditData Model **/
-    struct SubRedditData {
+    class SubRedditData {
         
+        let id: String
         let subscribers: Int
         let displayName: String
         let displayNamePrefixed: String
@@ -20,7 +22,8 @@ import Foundation
         let bannerImage: String
         
         
-        init(_ subscribers: Int, _ displayName: String, _ displayNamePrefixed: String, _ publicDescription: String, _ subRedditIcon: String, _ bannerImage: String) {
+        init(_ id: String, _ subscribers: Int, _ displayName: String, _ displayNamePrefixed: String, _ publicDescription: String, _ subRedditIcon: String, _ bannerImage: String) {
+            self.id = id
             self.subscribers = subscribers
             self.displayName = displayName
             self.displayNamePrefixed = displayNamePrefixed
@@ -29,4 +32,31 @@ import Foundation
             self.bannerImage = bannerImage
         }
         
+    }
+
+
+/** MARK: equatable SubRedditData **/
+    extension SubRedditData: Equatable {
+        
+        static public func ==(rhs: SubRedditData, lhs: SubRedditData) -> Bool {
+            return rhs.id == lhs.id
+        }
+        
+    }
+
+
+/** MARK: diff SubRedditData ListDiffable **/
+    extension SubRedditData: ListDiffable {
+        
+        func diffIdentifier() -> NSObjectProtocol {
+            return id as NSObjectProtocol
+        }
+    
+        func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+            guard let object = object as? SubRedditData else {
+                return false
+            }
+            return self.id == object.id
+        }
+    
     }

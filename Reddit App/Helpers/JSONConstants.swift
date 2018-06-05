@@ -31,13 +31,14 @@ import Foundation
             static let Preview = "preview"
             static let Images = "images"
             static let Source = "source"
-            
             static let SubReddit = "subreddit"
+            
+            static let Id = "id"
             static let Title = "title"
             static let Author = "author"
             static let SelfText = "selftext"
             static let URL = "url"
-            static let imageWidth = "width"
+            static let ImageWidth = "width"
             static let CreatedUTC = "created_utc"
             
             static let SubRedditIcon = "icon_img"

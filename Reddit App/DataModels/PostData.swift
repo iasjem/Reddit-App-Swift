@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import IGListKit
 
 
 /** MARK: model PostData Model **/
-    struct PostData { 
+    class PostData {
         
+        let id: String
         let subreddit: String
         let author: String
         let title: String
@@ -21,7 +23,8 @@ import Foundation
         let imageWidth: Int
         
         
-        init(_ subreddit: String, _ author: String, _ title: String, _ createdUTC: String, _ selfText: String, _ imageURL: String, _ imageWidth: Int) {
+        init(_ id: String, _ subreddit: String, _ author: String, _ title: String, _ createdUTC: String, _ selfText: String, _ imageURL: String, _ imageWidth: Int) {
+            self.id = id
             self.subreddit = subreddit
             self.author = author
             self.title = title
@@ -32,3 +35,30 @@ import Foundation
         } 
         
     }
+
+
+/** MARK: equatable SubRedditData **/
+extension PostData: Equatable {
+    
+    static public func ==(rhs: PostData, lhs: PostData) -> Bool {
+        return rhs.id == lhs.id
+    }
+    
+}
+
+
+/** MARK: diff PostData ListDiffable **/
+    extension PostData: ListDiffable {
+        public func diffIdentifier() -> NSObjectProtocol {
+            return id as NSObjectProtocol
+        }
+    
+        func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+            guard let object = object as? PostData else {
+                return false
+            }
+            return self.id == object.id
+        }
+        
+    
+        }
