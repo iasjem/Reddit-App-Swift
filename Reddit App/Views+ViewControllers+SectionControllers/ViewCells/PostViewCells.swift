@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Reusable
 
 
 /** MARK: viewcells PostData Cells **/
@@ -30,45 +31,7 @@ import UIKit
         @IBOutlet weak var imageCellPostTime: UILabel!
         @IBOutlet weak var imageCellSubReddit: UILabel!
         @IBOutlet weak var imageCellPostAuthor: UILabel!
-     
-        
-        func displayYellowCell (_ postData: PostData) {
-            
-            yellowCellPostTitle.text = postData.title
-            yellowCellSubReddit.text = postData.subreddit
-            yellowCellPostAuthor.text = postData.author
-            yellowCellPostTime.text = postData.createdUTC
-            yellowCellPostText.text = postData.selfText
-            
-            getImageURL(postData.imageURL, cell: yellowCellPostImage) // Please see Globals swift file to see function
 
-        }
-        
-        
-        func displayBlueCell (_ postData: PostData) {
-            
-            blueCellPostTitle.text = postData.title
-            blueCellSubReddit.text = postData.subreddit
-            blueCellPostAuthor.text = postData.author
-            blueCellPostTime.text = postData.createdUTC
-            
-            getImageURL(postData.imageURL, cell: blueCellPostImage) // Please see Globals swift file to see function
-
-        }
-        
-        
-        func displayImageCell (_ postData: PostData) {
-            
-            imageCellPostTitle.text = postData.title
-            imageCellSubReddit.text = postData.subreddit
-            imageCellPostAuthor.text = postData.author
-            imageCellPostTime.text = postData.createdUTC
-            
-            getImageURL(postData.imageURL, cell: imageCellPostImage) // Please see Globals swift file to see functionL)
-
-        }
-        
-        
     }
 
 

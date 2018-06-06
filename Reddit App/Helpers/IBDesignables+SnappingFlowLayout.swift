@@ -58,10 +58,8 @@ import UIKit
         
             private func setup() {
                 scrollDirection = .vertical
-                minimumLineSpacing = 20
-                itemSize = CGSize(width: collectionView!.bounds.width, height: collectionView!.bounds.height / 2.25)
                 collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
-                collectionView!.contentInset = UIEdgeInsetsMake(0.0,0.0,75.0,0.0)
+                collectionView!.contentInset = UIEdgeInsetsMake(0.0,0.0,150.0,0.0)
             }
         
     }

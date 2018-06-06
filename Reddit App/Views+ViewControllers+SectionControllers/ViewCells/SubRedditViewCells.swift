@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Reusable
 
 /** MARK: viewcells SearchResult Celll **/
     class SearchResultCell: UITableViewCell { // search results based on JSON data fetched from API
@@ -21,7 +21,7 @@ import UIKit
 
 
 /** MARK: viewcells Subscribe Celll **/
-    class SubscribeCell: UICollectionViewCell  { // cell with subscription boxes for subreddits
+    class SubscribeCell: UICollectionViewCell , NibReusable{ // cell with subscription boxes for subreddits
         
         @IBOutlet weak var firstSubRedditIcon: UIImageView!
         @IBOutlet weak var firstDisplayName: UILabel!

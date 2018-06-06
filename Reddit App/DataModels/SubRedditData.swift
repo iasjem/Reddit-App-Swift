@@ -52,6 +52,7 @@ import IGListKit
             return id as NSObjectProtocol
         }
     
+        
         func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
             guard let object = object as? SubRedditData else {
                 return false

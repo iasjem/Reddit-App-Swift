@@ -20,10 +20,13 @@ import IGListKit
         @IBOutlet weak var noResultLabel: UILabel!
         @IBOutlet weak var loadViewIndicator: UIActivityIndicatorView!
         
-        var postDataDisplay = [PostData]()
-        var subRedditDataDisplay = [SubRedditData]()
-      
-        var subreddit: String =  JSONConstants.ParameterValues.SubReddit // default subreddit is iOSProgramming
+        private var postDataDisplay = [PostData]()
+        private var subRedditDataDisplay = [SubRedditData]()
+        private var subscribeDataDisplay = [SubscribeData]()
+        private var countPost = 0
+        private var listData = [ListDiffable]()
+        
+        private var subreddit: String =  JSONConstants.ParameterValues.SubReddit // default subreddit is iOSProgramming
 
         lazy var adapter: ListAdapter =  {
             let adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 1)
@@ -31,29 +34,49 @@ import IGListKit
         }()
         
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            postCollectionView.collectionViewLayout = SnappingFlowLayout()
+            override func viewDidLoad() {
+                super.viewDidLoad()
 
-            postDataPresenter?.attachPostDataView(self, self)
-            postDataPresenter?.getPostData(subreddit)
-            
-            adapter.collectionView = postCollectionView
-            adapter.dataSource = self
-            
-        }
+                postCollectionView.collectionViewLayout = SnappingFlowLayout()
+                adapter.collectionView = postCollectionView
+                adapter.dataSource = self
+                
+                loadData()
+                
+            }
+        
+            private func loadData() {
+                postDataPresenter?.attachPostDataView(self, self)
+                postDataPresenter?.getPostData(subreddit)
+            }
+        
+            @IBAction func searchButton(_ sender: Any) {
+                performSegue(withIdentifier: "searchForm", sender: nil)
+            }
         
         
-        @IBAction func searchButton(_ sender: Any) {
-            performSegue(withIdentifier: "searchForm", sender: nil)
-        }
+            override func viewDidLayoutSubviews() {
+                super.viewDidLayoutSubviews()
+                postCollectionView.frame = view.bounds
+            }
         
         
-        override func viewDidLayoutSubviews() {
-            super.viewDidLayoutSubviews()
-            postCollectionView.frame = view.bounds
-        }
+    /** MARK: compilation of all data for display **/
+            private func setListOfData(_ postData: [PostData], _ subscribeDataDisplay: [SubscribeData]) -> [ListDiffable] {
+                var data: [ListDiffable] = []
+                
+                    var i = 0
+                    while i < self.countPost {
+                        if i % 4 == 0 && i != 0 {
+                            data.append(self.subscribeDataDisplay[i])
+                        } else {
+                            data.append(self.postDataDisplay[i])
+                        }
+                        
+                        i = i + 1
+                    }
+                return data
+            }
         
     }
 
@@ -62,11 +85,8 @@ import IGListKit
     extension PostCollectionViewController: ListAdapterDataSource {
 
         func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-            var items: [ListDiffable] = postDataDisplay as [ListDiffable]
-            items += subRedditDataDisplay as [ListDiffable]
-
+            let items: [ListDiffable] = listData
             return items
-    
         }
 
         func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -74,7 +94,7 @@ import IGListKit
                 return PostSectionController()
             }
             else {
-                return SubRedditSectionController()
+                return SubscribeSectionController()
             }
         }
 
@@ -102,6 +122,7 @@ import IGListKit
         func setPostData(_ postData: [PostData]) {
             performUIUpdatesOnMain {
                 self.postDataDisplay = postData
+                self.countPost = postData.count
                 self.noResultLabel.isHidden = true
                 self.postCollectionView.isHidden = false
                 self.adapter.performUpdates(animated: true, completion: nil)
@@ -125,6 +146,12 @@ import IGListKit
         
         func setSubRedditData(_ subRedditData: [SubRedditData]) {
             subRedditDataDisplay = subRedditData
+            for x in 0..<10{
+                subscribeDataDisplay.append(SubscribeData(subRedditDataDisplay[x], subRedditDataDisplay[x+1], subRedditDataDisplay[x+2]))
+            }
+            listData = setListOfData(postDataDisplay, subscribeDataDisplay) // set listData object
+            self.adapter.performUpdates(animated: true, completion: nil)
+            
         }
         
     }
@@ -135,15 +162,12 @@ import IGListKit
 
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "searchSegue" {
-
                 if let searchViewContoller = segue.destination as? SearchViewController {
                     searchViewContoller.SearchQueryDelegate = self
                 }
-
             }
         }
         
-
          func getSearchQuery(_ searchQuery: String) {
             var query = searchQuery
 
@@ -155,7 +179,6 @@ import IGListKit
                 self.postDataPresenter?.getPostData(subreddit)
         }
     
-        
         func setSubReddit(_ subreddit:String) -> String{
             return subreddit
         }

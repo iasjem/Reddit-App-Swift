@@ -15,7 +15,7 @@ import UIKit
     protocol SubscribeDataView: class {
 
         func setSubRedditData(_ subRedditData: [SubRedditData])
-        
+
     }
 
 

@@ -49,10 +49,12 @@ extension PostData: Equatable {
 
 /** MARK: diff PostData ListDiffable **/
     extension PostData: ListDiffable {
+        
         public func diffIdentifier() -> NSObjectProtocol {
             return id as NSObjectProtocol
         }
     
+        
         func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
             guard let object = object as? PostData else {
                 return false
@@ -60,5 +62,4 @@ extension PostData: Equatable {
             return self.id == object.id
         }
         
-    
-        }
+    }

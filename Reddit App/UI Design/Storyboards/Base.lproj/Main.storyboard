@@ -29,9 +29,9 @@
         <!--Post Collection View Controller-->
         <scene sceneID="vvh-6H-OG7">
             <objects>
-                <viewController id="ng1-U6-d8z" customClass="PostCollectionViewController" customModule="RedditApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overCurrentContext" id="ng1-U6-d8z" customClass="PostCollectionViewController" customModule="RedditApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SGP-Yu-JC1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3p5-6e-2mE">
@@ -98,6 +98,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </activityIndicatorView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b1J-YN-agy" userLabel="Dashboard" customClass="ListCollectionView">
+                                        <rect key="frame" x="8" y="0.0" width="359" height="554"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hgH-Cu-9NX">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-on-ByF" userLabel="Add Button">
                                         <rect key="frame" x="297" y="485" width="54" height="54"/>
                                         <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
@@ -114,23 +125,19 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09e-Ke-htE" userLabel="Dashboard">
-                                        <rect key="frame" x="8" y="0.0" width="359" height="554"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="09e-Ke-htE" secondAttribute="bottom" id="5ew-bh-RFO"/>
                                     <constraint firstItem="blL-Ys-mCQ" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" id="944-91-KLs"/>
+                                    <constraint firstAttribute="trailing" secondItem="b1J-YN-agy" secondAttribute="trailing" constant="8" id="DWh-Ie-4mD"/>
                                     <constraint firstItem="blL-Ys-mCQ" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" constant="203" id="F1e-D0-pji"/>
-                                    <constraint firstAttribute="trailing" secondItem="09e-Ke-htE" secondAttribute="trailing" constant="8" id="HC8-GK-83L"/>
-                                    <constraint firstItem="09e-Ke-htE" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" id="Nrw-bA-Adf"/>
+                                    <constraint firstItem="b1J-YN-agy" firstAttribute="top" secondItem="F3V-U8-wwc" secondAttribute="top" id="JVC-up-VO1"/>
                                     <constraint firstAttribute="trailing" secondItem="blL-Ys-mCQ" secondAttribute="trailing" id="X02-CG-hLG"/>
+                                    <constraint firstAttribute="bottom" secondItem="b1J-YN-agy" secondAttribute="bottom" id="fNY-Sg-9fN"/>
                                     <constraint firstAttribute="bottom" secondItem="blL-Ys-mCQ" secondAttribute="bottom" constant="270" id="oWr-r6-eKt"/>
                                     <constraint firstAttribute="bottom" secondItem="ynP-on-ByF" secondAttribute="bottom" constant="15" id="tUh-uU-jPn"/>
                                     <constraint firstAttribute="trailing" secondItem="ynP-on-ByF" secondAttribute="trailing" constant="24" id="vhj-O1-qdV"/>
-                                    <constraint firstItem="09e-Ke-htE" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="8" id="w6Z-xG-RSI"/>
+                                    <constraint firstItem="b1J-YN-agy" firstAttribute="leading" secondItem="F3V-U8-wwc" secondAttribute="leading" constant="8" id="ywH-wC-oRN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -147,10 +154,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="McJ-RB-dbN"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="" image="reddit-alien-outline" selectedImage="reddit-alien" id="xWG-qf-22Q"/>
                     <connections>
                         <outlet property="loadViewIndicator" destination="hZ8-lu-s57" id="oN0-Uj-Mrh"/>
                         <outlet property="noResultLabel" destination="blL-Ys-mCQ" id="78W-Ka-xbe"/>
+                        <outlet property="postCollectionView" destination="b1J-YN-agy" id="Ylc-x8-wOZ"/>
                     </connections>
                 </viewController>
                 <exit id="iYI-nc-MZb" userLabel="Exit" sceneMemberID="exit"/>

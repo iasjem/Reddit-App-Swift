@@ -18,7 +18,7 @@ import UIKit
         func setPostData(_ postData: [PostData])
         func emptyPostData(_ errMessage: String)
         func setSubRedditData(_ subRedditData: [SubRedditData])
-        
+
     }
 
 
@@ -27,7 +27,7 @@ class PostDataPresenter{
         
         weak var postDataView: PostDataView?
          let postDataRepository: PostDataRepository
-    
+
         weak var subscribeDataView: SubscribeDataView?
        let subRedditDataRepository: SubRedditDataRepository
         
@@ -48,21 +48,30 @@ class PostDataPresenter{
         }
         
         func getPostData(_ subReddit: String) {
+            
             postDataRepository.clearAllPostData()
             subRedditDataRepository.clearAllSubRedditData()
    
             self.postDataView?.startLoading()
             
-            let delayTime = DispatchTime.now() + Double(Int64(3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            
+            let delayTime = DispatchTime.now() + Double(Int64(5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
                 DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                    
+                    self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
+                        
+                        self.subscribeDataView?.setSubRedditData(subRedditData)
+                        
+                    }) { (errMessage) in
+                        
+                        print(errMessage)
+                    }
+                    
                     self.postDataRepository.getAllPostData({ () -> String in
                         
                         return subReddit
                         
                     }, { (postData) in
-                        
-                           self.postDataView?.finishLoading()
+                            self.postDataView?.finishLoading()
                            self.postDataView?.setPostData(postData)
                         
                     }, { (errMessage) in
@@ -73,17 +82,9 @@ class PostDataPresenter{
                             print(errMessage)
                         
                     })
-                
-                    self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
-
-                        self.subscribeDataView?.setSubRedditData(subRedditData)
-                        
-                    }) { (errMessage) in
-
-                        print(errMessage)
-                    }
+                    
+                    
                 }
-
         }
         
     }

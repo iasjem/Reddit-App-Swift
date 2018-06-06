@@ -32,9 +32,9 @@ import SwiftyJSON
                     
                     let json = JSON(value)
                     
-                    let countChildren = json[JSONConstants.ResponseKeys.Data][JSONConstants.ResponseKeys.Children].count
+                    let countChildren = json[JSONConstants.ResponseKeys.Data][JSONConstants.ResponseKeys.Children].count 
                     
-                    while index < countChildren { // get more data from children of data
+                    while index <= countChildren { // get more data from children of data
                         let findChildren = json[JSONConstants.ResponseKeys.Data][JSONConstants.ResponseKeys.Children][index]
                         
                         if let moreData = findChildren[JSONConstants.ResponseKeys.Data].dictionaryObject  {
