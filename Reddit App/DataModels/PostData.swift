@@ -38,13 +38,13 @@ import IGListKit
 
 
 /** MARK: equatable SubRedditData **/
-extension PostData: Equatable {
-    
-    static public func ==(rhs: PostData, lhs: PostData) -> Bool {
-        return rhs.id == lhs.id
+    extension PostData: Equatable {
+        
+        static public func ==(rhs: PostData, lhs: PostData) -> Bool {
+            return rhs.id == lhs.id
+        }
+        
     }
-    
-}
 
 
 /** MARK: diff PostData ListDiffable **/

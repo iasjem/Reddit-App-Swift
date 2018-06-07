@@ -61,7 +61,7 @@ import IGListKit
             }
         
         
-    /** MARK: compilation of all data for display **/
+        /** MARK: compilation of all data for display **/
             private func setListOfData(_ postData: [PostData], _ subscribeDataDisplay: [SubscribeData]) -> [ListDiffable] {
                 var data: [ListDiffable] = []
                 

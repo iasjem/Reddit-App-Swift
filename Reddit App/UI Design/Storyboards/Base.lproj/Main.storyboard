@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -111,7 +112,7 @@
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-on-ByF" userLabel="Add Button">
                                         <rect key="frame" x="297" y="485" width="54" height="54"/>
-                                        <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="RedAddButton"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="6qh-u2-jJr"/>
                                             <constraint firstAttribute="height" constant="54" id="MA3-au-HAA"/>
@@ -264,7 +265,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="1" green="0.27058823529411763" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" name="RedAddButton"/>
                     </tabBar>
                     <connections>
                         <segue destination="ng1-U6-d8z" kind="relationship" relationship="viewControllers" id="sZt-tx-FMg"/>
@@ -342,5 +343,8 @@
         <image name="search-bar" width="16" height="16"/>
         <image name="th-view" width="20" height="20"/>
         <image name="th-view-outline" width="20" height="20"/>
+        <namedColor name="RedAddButton">
+            <color red="1" green="0.27843137254901962" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

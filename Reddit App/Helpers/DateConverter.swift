@@ -41,17 +41,17 @@ import Foundation
                 if min >= 1440 {
 
                     if day < 7 {
-                        return "\(Int(day.rounded())) d" // by days
+                        return "\(Int(day.rounded()))d" // by days
                     } else {
                         
                         if week < 4.35 {
-                            return "\(Int(week.rounded())) w" // by weeks
+                            return "\(Int(week.rounded()))w" // by weeks
                         } else {
                             
                             if month < 12 {
-                                return "\(Int(month.rounded())) m" // by months
+                                return "\(Int(month.rounded()))m" // by months
                             } else {
-                                return "\(Int(year.rounded())) y" // by years
+                                return "\(Int(year.rounded()))y" // by years
                             }
                         }
                         
@@ -59,11 +59,11 @@ import Foundation
                     
                 } else if min >= 60 && min < 1440 {
                     
-                    return "\(Int(hourInterval.rounded())) h" // by hours
+                    return "\(Int(hourInterval.rounded()))h" // by hours
                     
                 }  else if min > 1 && min < 60 {
                     
-                    return "\(Int(min.rounded())) min" // by minutes
+                    return "\(Int(min.rounded()))min" // by minutes
                     
                 } else {
                     

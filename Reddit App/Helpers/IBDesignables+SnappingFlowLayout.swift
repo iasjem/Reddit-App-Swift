@@ -36,9 +36,10 @@ import UIKit
         }
         
         func refreshCorners(value: CGFloat) {
+            let srgb = UIColor(red: 237/255.0, green: 237/255.0, blue: 237/255.0, alpha: 1.0)
             layer.cornerRadius = value
-            layer.borderWidth = 1
-            layer.borderColor = UIColor.lightGray.cgColor
+            layer.borderWidth = 0.5
+            layer.borderColor = srgb.cgColor 
         }
     }
 

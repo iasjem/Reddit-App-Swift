@@ -42,8 +42,15 @@ import UIKit
     private let numberFormatter = NumberFormatter()
 
         func getSubscriberCount(_ subscribersCount: Int, cell: UILabel) {
-            numberFormatter.numberStyle = .decimal
-            cell.text = "\(String(describing: numberFormatter.string(from: NSNumber(value:subscribersCount))!)) subscribers"
+            var subCount: String = ""
+            
+            if (subscribersCount >= 1000 && subscribersCount < 1000000) {
+                subCount = "\(String(format: "%.2f", Double(subscribersCount) * 0.001))k subscribers"
+            } else if (subscribersCount > 1000000) {
+                subCount = "\(String(format: "%.2f", Double(subscribersCount) * 0.000001))m subscribers"
+            }
+            
+            cell.text = subCount
         }
 
 
