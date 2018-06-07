@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 
 
-/** MARK: repository SubRedditData Repository **/
+/** MARK: repository SubRedditData **/
     class SubRedditDataRepository {
         
         private var subRedditData:[SubRedditData] = []
@@ -20,7 +20,6 @@ import SwiftyJSON
         
         
         func getAllSubRedditData(_ success: @escaping ([SubRedditData]) -> Void , _ fail: @escaping (String) -> Void) {
-
             var index = 0
             let url = URL(string: "\(JSONConstants.Source.APIBaseURL)")!
             
@@ -62,11 +61,8 @@ import SwiftyJSON
                     self.errorMessage = "Failed to load data. Please try again."
                     fail(self.errorMessage)
                 }
-                
             }
-            
         }
-        
         
         func clearAllSubRedditData () {
             subRedditData = []
@@ -81,7 +77,6 @@ import SwiftyJSON
             return "r/\(Id)"
         }
         
-        
         private func getSubscribers(_ moreData: [String:AnyObject]) -> Int {
             
             guard let subscribers = moreData[JSONConstants.ResponseKeys.Subscribers]  as? Int else {
@@ -90,14 +85,12 @@ import SwiftyJSON
             return subscribers
         }
         
-        
         private func getDisplayName (_ moreData: [String:AnyObject]) -> String {
             guard let displayName = moreData[JSONConstants.ResponseKeys.DisplayName]  as? String else {
                 return "Unknown"
             }
             return displayName
         }
-        
         
         private func getDisplayNamePrefixed (_ moreData: [String:AnyObject]) -> String {
             guard let displayNamePrefixed = moreData[JSONConstants.ResponseKeys.DisplayNamePrefixed]  as? String else {
@@ -106,7 +99,6 @@ import SwiftyJSON
             return displayNamePrefixed
         }
         
-        
         private func getPublicDescription (_ moreData: [String:AnyObject]) -> String {
             guard let publicDescription = moreData[JSONConstants.ResponseKeys.PublicDescription]  as? String else {
                 return "Unknown"
@@ -114,14 +106,12 @@ import SwiftyJSON
             return publicDescription
         }
         
-        
         private func getSubRedditIcon (_ moreData: [String:AnyObject]) -> String {
             guard let subRedditIcon = moreData[JSONConstants.ResponseKeys.SubRedditIcon]  as? String else {
                 return "Unknown"
             }
             return subRedditIcon
         }
-        
         
         private func getBannerImage (_ moreData: [String:AnyObject]) -> String {
             guard let bannerImage = moreData[JSONConstants.ResponseKeys.BannerImage]  as? String else {

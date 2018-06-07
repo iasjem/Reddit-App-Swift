@@ -10,6 +10,7 @@ import Foundation
 import IGListKit
 
 
+/** MARK: model SubscribeData Model **/
     class SubscribeData {
         
         let id: String
@@ -27,7 +28,6 @@ import IGListKit
         
     }
 
-
 /** MARK: equatable SubscribeData **/
     extension SubscribeData: Equatable {
         
@@ -37,13 +37,12 @@ import IGListKit
         
     }
 
-/** MARK: diff SubRedditData ListDiffable **/
+/** MARK: ListDiffable SubscribeData **/
     extension SubscribeData: ListDiffable {
         
         func diffIdentifier() -> NSObjectProtocol {
             return id as NSObjectProtocol
         }
-        
         
         func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
             guard let object = object as? SubscribeData else {

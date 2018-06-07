@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 
-
-/** MARK: protocol SubscribeDataView **/
+/** MARK: view SubscribeDataView **/
     protocol SubscribeDataView: class {
 
         func setSubRedditData(_ subRedditData: [SubRedditData])
@@ -19,7 +18,7 @@ import UIKit
     }
 
 
-/** MARK: protocol SearchResultDataView **/
+/** MARK: view SearchResultDataView **/
     protocol SearchResultDataView: class {
         
         func startLoading()
@@ -31,42 +30,42 @@ import UIKit
 
 
 /** MARK: presenter SearchResultData **/
-class SearchResultDataPresenter {
+    class SearchResultDataPresenter {
         
         weak var searchResultDataView: SearchResultDataView?
         fileprivate let subRedditDataRepository: SubRedditDataRepository
         
         
-        init(subRedditDataRepository: SubRedditDataRepository) {
-            self.subRedditDataRepository = subRedditDataRepository
-        }
+            init(subRedditDataRepository: SubRedditDataRepository) {
+                self.subRedditDataRepository = subRedditDataRepository
+            }
         
-        func attachSubRedditDataView(_ postdata: SearchResultDataView) {
-            searchResultDataView = postdata
-        }
+            func attachSubRedditDataView(_ postdata: SearchResultDataView) {
+                searchResultDataView = postdata
+            }
         
-        func detachSubRedditDataView () {
-            searchResultDataView = nil
-        }
+            func detachSubRedditDataView () {
+                searchResultDataView = nil
+            }
         
-        func getSearchResults() {
-            
-            subRedditDataRepository.clearAllSubRedditData()
-            
-            searchResultDataView?.startLoading()
-            
-            self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
+            func getSearchResults() {
                 
-                self.searchResultDataView?.finishLoading()
-                self.searchResultDataView?.setSubRedditData(subRedditData)
+                subRedditDataRepository.clearAllSubRedditData()
                 
-                }) { (errMessage) in
+                searchResultDataView?.startLoading()
+                
+                self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
                     
                     self.searchResultDataView?.finishLoading()
-                    self.searchResultDataView?.emptySubRedditData(errMessage)
-                    print(errMessage)
+                    self.searchResultDataView?.setSubRedditData(subRedditData)
                     
-                }
-        }
+                    }) { (errMessage) in
+                        
+                        self.searchResultDataView?.finishLoading()
+                        self.searchResultDataView?.emptySubRedditData(errMessage)
+                        print(errMessage)
+                        
+                    }
+            }
         
     }

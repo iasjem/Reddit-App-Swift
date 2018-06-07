@@ -11,6 +11,7 @@ import Swinject
 import SwinjectAutoregistration
 import IGListKit
 
+
 /** MARK: viewcontroller PostCollectionViewController **/
     class PostCollectionViewController: UIViewController { 
         
@@ -23,8 +24,8 @@ import IGListKit
         private var postDataDisplay = [PostData]()
         private var subRedditDataDisplay = [SubRedditData]()
         private var subscribeDataDisplay = [SubscribeData]()
-        private var countPost = 0
-        private var listData = [ListDiffable]()
+        private var postCount = 0
+        private var dataList = [ListDiffable]()
         
         private var subreddit: String =  JSONConstants.ParameterValues.SubReddit // default subreddit is iOSProgramming
 
@@ -33,40 +34,35 @@ import IGListKit
             return adapter
         }()
         
-        
             override func viewDidLoad() {
                 super.viewDidLoad()
-
+                
                 postCollectionView.collectionViewLayout = SnappingFlowLayout()
                 adapter.collectionView = postCollectionView
                 adapter.dataSource = self
                 
-                loadData()
-                
-            }
-        
-            private func loadData() {
                 postDataPresenter?.attachPostDataView(self, self)
                 postDataPresenter?.getPostData(subreddit)
             }
-        
+
+    
             @IBAction func searchButton(_ sender: Any) {
                 performSegue(withIdentifier: "searchForm", sender: nil)
             }
-        
-        
+    
+    
             override func viewDidLayoutSubviews() {
                 super.viewDidLayoutSubviews()
                 postCollectionView.frame = view.bounds
             }
-        
-        
+    
+    
         /** MARK: compilation of all data for display **/
             private func setListOfData(_ postData: [PostData], _ subscribeDataDisplay: [SubscribeData]) -> [ListDiffable] {
                 var data: [ListDiffable] = []
                 
                     var i = 0
-                    while i < self.countPost {
+                    while i < self.postCount {
                         if i % 4 == 0 && i != 0 {
                             data.append(self.subscribeDataDisplay[i])
                         } else {
@@ -85,7 +81,7 @@ import IGListKit
     extension PostCollectionViewController: ListAdapterDataSource {
 
         func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-            let items: [ListDiffable] = listData
+            let items: [ListDiffable] = dataList
             return items
         }
 
@@ -122,7 +118,7 @@ import IGListKit
         func setPostData(_ postData: [PostData]) {
             performUIUpdatesOnMain {
                 self.postDataDisplay = postData
-                self.countPost = postData.count
+                self.postCount = postData.count
                 self.noResultLabel.isHidden = true
                 self.postCollectionView.isHidden = false
                 self.adapter.performUpdates(animated: true, completion: nil)
@@ -149,9 +145,8 @@ import IGListKit
             for x in 0..<10{
                 subscribeDataDisplay.append(SubscribeData(subRedditDataDisplay[x], subRedditDataDisplay[x+1], subRedditDataDisplay[x+2]))
             }
-            listData = setListOfData(postDataDisplay, subscribeDataDisplay) // set listData object
+            dataList = setListOfData(postDataDisplay, subscribeDataDisplay) // set listData object
             self.adapter.performUpdates(animated: true, completion: nil)
-            
         }
         
     }

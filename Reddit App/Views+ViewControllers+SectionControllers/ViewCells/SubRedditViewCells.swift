@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Reusable
 
-/** MARK: viewcells SearchResult Celll **/
+/** MARK: cells SearchResultCelll **/
     class SearchResultCell: UITableViewCell { // search results based on JSON data fetched from API
         
         @IBOutlet weak var subRedditIcon: UIImageView!
@@ -20,8 +20,8 @@ import Reusable
     }
 
 
-/** MARK: viewcells Subscribe Celll **/
-    class SubscribeCell: UICollectionViewCell , NibReusable{ // cell with subscription boxes for subreddits
+/** MARK: cells SubscribeCelll **/
+    class SubscribeCell: UICollectionViewCell , NibReusable { // cell with subscription boxes for subreddits
         
         @IBOutlet weak var firstSubRedditIcon: UIImageView!
         @IBOutlet weak var firstDisplayName: UILabel!
@@ -39,38 +39,5 @@ import Reusable
         @IBOutlet weak var thirdSubscribersCount: UILabel!
         @IBOutlet weak var thirdBannerImage: UIImageView!
         
-        
-        func displayFirstSubscribeCell(_ subRedditData: SubRedditData) {
-            
-            firstDisplayName.text = subRedditData.displayName
-            firstPublicDescription.text = subRedditData.publicDescription
-
-            getSubscriberCount(subRedditData.subscribers, cell: firstSubscribersCount) // Please see Globals swift file to see function
-            getImageURL(subRedditData.subRedditIcon, cell: firstSubRedditIcon)
-            
-        }
-        
-        
-        func displaySecondSubscribeCell(_ subRedditData: SubRedditData) {
-            
-            secondDisplayName.text = subRedditData.displayName
-            secondPublicDescription.text = subRedditData.publicDescription
-
-            getSubscriberCount(subRedditData.subscribers, cell: secondSubscribersCount) // Please see Globals swift file to see function
-            getImageURL(subRedditData.subRedditIcon, cell: secondSubRedditIcon)
-            
-        }
-        
-        
-        func displayThirdSubscribeCell(_ subRedditData: SubRedditData) {
-            
-            thirdDisplayName.text = subRedditData.displayName
-            thirdPublicDescription.text = subRedditData.publicDescription
-
-            getSubscriberCount(subRedditData.subscribers, cell: thirdSubscribersCount) // Please see Globals swift file to see function
-            getImageURL(subRedditData.subRedditIcon, cell: thirdSubRedditIcon)
-            getImageURL(subRedditData.bannerImage, cell: thirdBannerImage)
-            
-        }
         
     }

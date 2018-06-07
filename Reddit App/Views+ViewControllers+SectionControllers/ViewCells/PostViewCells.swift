@@ -10,7 +10,7 @@ import UIKit
 import Reusable
 
 
-/** MARK: viewcells PostData Cells **/
+/** MARK: cells PostDataCells **/
     class PostDataCells: UICollectionViewCell {
         
         @IBOutlet weak var yellowCellSubReddit: UILabel!

@@ -13,6 +13,7 @@ target 'RedditApp' do
   pod 'SwinjectAutoregistration', '~> 2.0'
   pod 'IGListKit', '~> 3.0'
   pod 'Reusable', '~> 4.0.2'
+  pod 'SwiftLint'
 
   target 'RedditAppTests' do
     inherit! :search_paths

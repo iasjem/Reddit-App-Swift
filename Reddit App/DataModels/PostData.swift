@@ -36,8 +36,7 @@ import IGListKit
         
     }
 
-
-/** MARK: equatable SubRedditData **/
+/** MARK: equatable PostData **/
     extension PostData: Equatable {
         
         static public func ==(rhs: PostData, lhs: PostData) -> Bool {
@@ -46,15 +45,13 @@ import IGListKit
         
     }
 
-
-/** MARK: diff PostData ListDiffable **/
+/** MARK: ListDiffable PostData **/
     extension PostData: ListDiffable {
         
         public func diffIdentifier() -> NSObjectProtocol {
             return id as NSObjectProtocol
         }
     
-        
         func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
             guard let object = object as? PostData else {
                 return false

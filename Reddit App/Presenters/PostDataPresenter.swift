@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-/** MARK: protocol PostDataView **/
+/** MARK: view PostDataView **/
     protocol PostDataView: class {
         
         func startLoading()
@@ -23,69 +23,68 @@ import UIKit
 
 
 /** MARK: presenter PostData **/
-class PostDataPresenter{
+    class PostDataPresenter {
         
-        weak var postDataView: PostDataView?
-         let postDataRepository: PostDataRepository
-
-        weak var subscribeDataView: SubscribeDataView?
+       weak var postDataView: PostDataView?
+       let postDataRepository: PostDataRepository
+        
+       weak var subscribeDataView: SubscribeDataView?
        let subRedditDataRepository: SubRedditDataRepository
         
         
-        init(postDataRepository: PostDataRepository, subRedditDataRepository: SubRedditDataRepository) {
-            self.postDataRepository = postDataRepository
-             self.subRedditDataRepository = subRedditDataRepository
-        }
+            init(postDataRepository: PostDataRepository, subRedditDataRepository: SubRedditDataRepository) {
+                self.postDataRepository = postDataRepository
+                 self.subRedditDataRepository = subRedditDataRepository
+            }
         
-        func attachPostDataView(_ postData: PostDataView, _ subRedditData: SubscribeDataView) {
-            postDataView = postData
-            subscribeDataView = subRedditData
-        }
-    
-        func detachPostDataView () {
-            postDataView = nil
-            subscribeDataView = nil
-        }
+            func attachPostDataView(_ postData: PostDataView, _ subRedditData: SubscribeDataView) {
+                postDataView = postData
+                subscribeDataView = subRedditData
+            }
+
+            func detachPostDataView () {
+                postDataView = nil
+                subscribeDataView = nil
+            }
         
-        func getPostData(_ subReddit: String) {
-            
-            postDataRepository.clearAllPostData()
-            subRedditDataRepository.clearAllSubRedditData()
-   
-            self.postDataView?.startLoading()
-            
-            let delayTime = DispatchTime.now() + Double(Int64(5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-                DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                    
-                    self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
+            func getPostData(_ subReddit: String) {
+                
+                postDataRepository.clearAllPostData()
+                subRedditDataRepository.clearAllSubRedditData()
+
+                self.postDataView?.startLoading()
+                
+                let delayTime = DispatchTime.now() + Double(Int64(5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                    DispatchQueue.main.asyncAfter(deadline: delayTime) {
                         
-                        self.subscribeDataView?.setSubRedditData(subRedditData)
-                        
-                    }) { (errMessage) in
-                        
-                        print(errMessage)
-                    }
-                    
-                    self.postDataRepository.getAllPostData({ () -> String in
-                        
-                        return subReddit
-                        
-                    }, { (postData) in
-                            self.postDataView?.finishLoading()
-                           self.postDataView?.setPostData(postData)
-                        
-                    }, { (errMessage) in
-                        
-                            self.postDataView?.finishLoading()
-                            self.postDataView?.emptyPostData(errMessage)
-                        
+                        self.subRedditDataRepository.getAllSubRedditData({ (subRedditData) in
+                            
+                            self.subscribeDataView?.setSubRedditData(subRedditData)
+                            
+                        }) { (errMessage) in
+                            
                             print(errMessage)
+                        }
                         
-                    })
-                    
-                    
-                }
-        }
+                        self.postDataRepository.getAllPostData({ () -> String in
+                            
+                            return subReddit
+                            
+                        }, { (postData) in
+                               self.postDataView?.finishLoading()
+                               self.postDataView?.setPostData(postData)
+                            
+                        }, { (errMessage) in
+                            
+                                self.postDataView?.finishLoading()
+                                self.postDataView?.emptyPostData(errMessage)
+                            
+                                print(errMessage)
+                            
+                        })
+                        
+                    }
+            }
         
     }
 

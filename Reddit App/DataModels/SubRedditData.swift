@@ -34,7 +34,6 @@ import IGListKit
         
     }
 
-
 /** MARK: equatable SubRedditData **/
     extension SubRedditData: Equatable {
         
@@ -44,15 +43,13 @@ import IGListKit
         
     }
 
-
-/** MARK: diff SubRedditData ListDiffable **/
+/** MARK: ListDiffable SubRedditData **/
     extension SubRedditData: ListDiffable {
         
         func diffIdentifier() -> NSObjectProtocol {
             return id as NSObjectProtocol
         }
     
-        
         func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
             guard let object = object as? SubRedditData else {
                 return false

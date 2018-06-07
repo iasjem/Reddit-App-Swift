@@ -37,7 +37,6 @@ import Foundation
             let month = week / 4.35 // for every 1m there is 4.35w as per computations
             let year = month / 12 // for every 1y there are 12m
             
-            
                 if min >= 1440 {
 
                     if day < 7 {
