@@ -37,6 +37,7 @@ import IGListKit
             override func viewDidLoad() {
                 super.viewDidLoad()
                 
+                print("hello")
                 postCollectionView.collectionViewLayout = SnappingFlowLayout()
                 adapter.collectionView = postCollectionView
                 adapter.dataSource = self
